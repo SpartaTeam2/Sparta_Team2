@@ -1,19 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class PlayerCtrl : MonoBehaviour
 {
+    [Header("플레이어 기본 스탯")]
     public float MaxHp;
     public float HP;
-
     public float speed = 10.0f; //스피드
+    public float AttackDamage; 
+
+    [Header("플레이어 공격 정보")]
     public GameObject BulletPrefab; // 투사체
-    public Transform GunPoint; // 발사 위치
+    public GameObject GUN; // 발사 위치
     public float GunRate = 10f; //  발사 시간
     private float GunTimer; // 발사 타이머
 
-    private Animator animator; // 애니메이터
+    Animator animator; // 애니메이터
 
     // Start is called before the first frame update
     void Start()
@@ -49,21 +53,15 @@ public class PlayerCtrl : MonoBehaviour
         {
             animator.SetBool("Player_Walk", false);
         }
-
+        GunAtClosestMonster();
         GunTimer += Time.deltaTime;
         if (GunTimer >= GunRate)
         {
             GunTimer = 0f;
-            GunAtClosestMonster();
+            fire();
         }
-
-        Vector3 pos = Camera.main.WorldToViewportPoint(transform.position);
-        if (pos.x < 0f) pos.x = 0f;
-        if (pos.x > 1f) pos.x = 1f;
-        if (pos.y < 0f) pos.y = 0f;
-        if (pos.y > 1f) pos.y = 1f;
-        transform.position = Camera.main.ViewportToWorldPoint(pos);
     }
+
     void GunAtClosestMonster()
     {
         GameObject FindClosestMonster()
@@ -85,21 +83,24 @@ public class PlayerCtrl : MonoBehaviour
         GameObject closestEnemy = FindClosestMonster();
         if (closestEnemy == null)
             return;
-        GameObject Bullet = Instantiate(BulletPrefab, GunPoint.position, Quaternion.identity);
+        Vector2 newPos = closestEnemy.transform.position - transform.position;
+        float rotZ = Mathf.Atan2(newPos.y, newPos.x) * Mathf.Rad2Deg;
+        GUN.transform.rotation = Quaternion.Euler(0, 0, rotZ);
 
-        // Rigidbody2D 가져오기            
-        Rigidbody2D rb = Bullet.GetComponent<Rigidbody2D>();
-        if (rb == null)
+        if (closestEnemy.transform.position.x - transform.position.x>0)
         {
-            Debug.LogError("Rigidbody2D가 없농");
-            return;
+            GUN.GetComponent<SpriteRenderer>().flipY = false;
         }
-
-        // 투사체가 적을 향해 날아가도록 설정            
-        Vector2 direction = (closestEnemy.transform.position - GunPoint.position).normalized;
-        rb.velocity = direction * 10f;
+        else
+        {
+            GUN.GetComponent<SpriteRenderer>().flipY = true;
+        }
     }
-
+    void fire()
+    {
+        GameObject Bullet = Instantiate(BulletPrefab, GUN.transform.position, GUN.transform.rotation);
+        Bullet.GetComponent<BulletCtrl>().Attacker = gameObject;
+    }
     public void GetDamage(float Damage)
     {
         HP -= Damage;

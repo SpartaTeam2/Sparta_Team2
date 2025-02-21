@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &85182406 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7030457459591017407, guid: de358acb2123b6f488943ee2c6f26c14, type: 3}
+  m_PrefabInstance: {fileID: 1466640159}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1466640159
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -131,9 +136,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -3370623417837262171, guid: de358acb2123b6f488943ee2c6f26c14, type: 3}
+      propertyPath: GunRate
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -3370623417837262171, guid: de358acb2123b6f488943ee2c6f26c14, type: 3}
+      propertyPath: AttackDamage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1978680749978569718, guid: de358acb2123b6f488943ee2c6f26c14, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2472636660383753890, guid: de358acb2123b6f488943ee2c6f26c14, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5227387646448892570, guid: de358acb2123b6f488943ee2c6f26c14, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7030457459591017407, guid: de358acb2123b6f488943ee2c6f26c14, type: 3}
       propertyPath: m_LocalPosition.x
@@ -177,7 +198,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 7030457459591017407, guid: de358acb2123b6f488943ee2c6f26c14, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1619743086}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de358acb2123b6f488943ee2c6f26c14, type: 3}
 --- !u!1 &1619743083
@@ -265,14 +289,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1619743083}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 1.79, y: 0.42, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 85182406}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1845787126
+--- !u!1 &2127688242
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -280,24 +304,63 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1845787127}
+  - component: {fileID: 2127688244}
+  - component: {fileID: 2127688243}
   m_Layer: 0
-  m_Name: MonsterAttack
+  m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1845787127
+--- !u!114 &2127688243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2127688242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a540b08b553e77d47bc5b3ae73afb38d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MonsterPre: {fileID: 0}
+  _monster:
+  - MonsterIndex: 0
+    MonsterName: 
+    MonsterMaxHP: 0
+    MonsterSpeed: 0
+    ChaseDis: 0
+    FightDis: 0
+    _monsterState: 0
+    MonsterImage: {fileID: 21300000, guid: c4f0b673be4ee2a479b5f4b4f303019f, type: 3}
+    Idle_Anim: {fileID: 0}
+    Chase_Anim: {fileID: 0}
+    Fight_Anim: {fileID: 0}
+    Die_Anim: {fileID: 0}
+  - MonsterIndex: 0
+    MonsterName: 
+    MonsterMaxHP: 0
+    MonsterSpeed: 0
+    ChaseDis: 0
+    FightDis: 0
+    _monsterState: 0
+    MonsterImage: {fileID: 0}
+    Idle_Anim: {fileID: 0}
+    Chase_Anim: {fileID: 0}
+    Fight_Anim: {fileID: 0}
+    Die_Anim: {fileID: 0}
+--- !u!4 &2127688244
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1845787126}
+  m_GameObject: {fileID: 2127688242}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.362075, y: 0.5120995, z: -0.011690072}
+  m_LocalPosition: {x: 5.8337874, y: 1.86407, z: -0.05377825}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -311,21 +374,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4270511460093664285, guid: ec149af9dc279a24495c86000639b5c1, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4560469058827548633, guid: ec149af9dc279a24495c86000639b5c1, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6164059447464023352, guid: ec149af9dc279a24495c86000639b5c1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 5.58
       objectReference: {fileID: 0}
     - target: {fileID: 6164059447464023352, guid: ec149af9dc279a24495c86000639b5c1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1.72
       objectReference: {fileID: 0}
     - target: {fileID: 6164059447464023352, guid: ec149af9dc279a24495c86000639b5c1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -363,14 +418,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Monster
       objectReference: {fileID: 0}
-    - target: {fileID: 7958827064912128955, guid: ec149af9dc279a24495c86000639b5c1, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9075852654865523850, guid: ec149af9dc279a24495c86000639b5c1, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -380,7 +427,6 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 1619743086}
   - {fileID: 1466640159}
   - {fileID: 1378146797672813844}
-  - {fileID: 1845787127}
+  - {fileID: 2127688244}
