@@ -10534,6 +10534,7 @@ GameObject:
   - component: {fileID: 754950539}
   - component: {fileID: 754950538}
   - component: {fileID: 754950537}
+  - component: {fileID: 754950540}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -10615,6 +10616,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &754950540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 754950536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2eb95077cd284874e9ecf485824f2518, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 757580637}
+  minX: -4
+  maxX: 3
+  minY: -2
+  maxY: 13
+  smoothSpeed: 0.2
 --- !u!1 &757580635
 GameObject:
   m_ObjectHideFlags: 0
@@ -10626,6 +10645,7 @@ GameObject:
   - component: {fileID: 757580637}
   - component: {fileID: 757580636}
   - component: {fileID: 757580638}
+  - component: {fileID: 757580639}
   m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
@@ -10718,6 +10738,25 @@ MonoBehaviour:
   currenthp: 0
   nowHpText: {fileID: 0}
   damageRate: 1
+--- !u!114 &757580639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 757580635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cafa55913665e1141a897abe3cbfdb71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHp: 0
+  HP: 0
+  speed: 10
+  AttackDamage: 0
+  BulletPrefab: {fileID: 0}
+  GUN: {fileID: 0}
+  GunRate: 10
 --- !u!1 &1116502640
 GameObject:
   m_ObjectHideFlags: 0
