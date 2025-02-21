@@ -10,7 +10,7 @@ public enum SkillType
     HealthBoost,
     ProjectileUp,
 }
-public class SkillData : MonoBehaviour
+public class SkillData
 {
     public int skillId;
     public string skillName;

@@ -11,6 +11,9 @@ public class SkillHandler : MonoBehaviour
 
     public BasicSkills basicSkills;
 
+    private Dictionary<int, SkillData> basicSkillDict;
+
+
     private void Awake()
     {
         if (instance == null)
@@ -20,12 +23,12 @@ public class SkillHandler : MonoBehaviour
     }
     private void Start()
     {
-
+        basicSkillDict = basicSkills.basicSkillDict;
     }
 
     private void Update()
     {
-        Debug.Log(basicSkills.basicSkillDict[101].name);
+        Debug.Log(basicSkills.basicSkillDict[101].skillName);
     }
     public List<SkillData> RandomSkillDraw(int selection)
     {

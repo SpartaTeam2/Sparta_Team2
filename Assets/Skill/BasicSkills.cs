@@ -7,7 +7,7 @@ public class BasicSkills : MonoBehaviour
     public Dictionary<int, SkillData> basicSkillDict = new Dictionary<int, SkillData>();
 
 
-    private void Start()
+    private void Awake()
     {
         AddSkillsToDict();
     }
