@@ -29,14 +29,14 @@ public class PlayerCtrl : MonoBehaviour
         float yMove = Input.GetAxis("Vertical") * speed * Time.deltaTime; //y축 이동
         this.transform.Translate(new Vector2(xMove, yMove));  //이동
 
-        if (xMove != 0|| yMove!=0)
+        if (xMove != 0 || yMove != 0)
         {
             animator.SetBool("Player_Walk", true);
             if (xMove > 0)
             {
                 GetComponentInChildren<SpriteRenderer>().flipX = false;
             }
-            if (xMove <0)
+            if (xMove < 0)
             {
                 GetComponentInChildren<SpriteRenderer>().flipX = true;
             }
@@ -49,7 +49,7 @@ public class PlayerCtrl : MonoBehaviour
         {
             animator.SetBool("Player_Walk", false);
         }
-        
+
         GunTimer += Time.deltaTime;
         if (GunTimer >= GunRate)
         {
@@ -82,10 +82,9 @@ public class PlayerCtrl : MonoBehaviour
             }
             return closestMonster;
         }
-        // 씬에서 가장 가까운 적 찾기
         GameObject closestEnemy = FindClosestMonster();
-        if (closestEnemy == null) return; // 적이 없으면 종료
-                                          // 투사체 생성            
+        if (closestEnemy == null)
+            return;
         GameObject Bullet = Instantiate(BulletPrefab, GunPoint.position, Quaternion.identity);
 
         // Rigidbody2D 가져오기            
@@ -98,10 +97,10 @@ public class PlayerCtrl : MonoBehaviour
 
         // 투사체가 적을 향해 날아가도록 설정            
         Vector2 direction = (closestEnemy.transform.position - GunPoint.position).normalized;
-        rb.velocity = direction * 10f; // 투사체 속도
+        rb.velocity = direction * 10f;
     }
 
-    public  void GetDamage(float Damage)
+    public void GetDamage(float Damage)
     {
         HP -= Damage;
         if (HP <= 0)
