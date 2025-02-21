@@ -26,6 +26,4 @@ public class SkillData : MonoBehaviour
         skillType = type;
         skillValue = value;
     }
-
-
 }

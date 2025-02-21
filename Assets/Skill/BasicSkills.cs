@@ -34,23 +34,4 @@ public class BasicSkills : MonoBehaviour
         basicSkillDict.Add(108, new SkillData(108, "멀티샷", "투사체 1개 증가, 공격속도 15% 데미지 10% 하락", SkillType.ProjectileUp, 1));
 
     }
-
-    public void ApplySkill(SkillData skillData)
-    {
-        switch (skillData.skillType)
-        {
-            case SkillType.AttackBoost:
-                
-                break;
-            case SkillType.AttackSpeedBoost:
-                break;
-            case SkillType.CriticalBoost:
-                break;
-            case SkillType.HealthBoost:
-                break;
-            case SkillType.ProjectileUp:
-                break;
-        }
-    }
-
 }
