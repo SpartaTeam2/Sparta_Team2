@@ -29,7 +29,7 @@ public class PlayerCtrl : MonoBehaviour
         float yMove = Input.GetAxis("Vertical") * speed * Time.deltaTime; //y축 이동
         this.transform.Translate(new Vector2(xMove, yMove));  //이동
 
-        if (xMove != 0)
+        if (xMove != 0|| yMove!=0)
         {
             animator.SetBool("Player_Walk", true);
             if (xMove > 0)
