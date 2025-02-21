@@ -7,32 +7,66 @@ public abstract class BaseBoss : MonoBehaviour
     // FSM
     protected BossFSM bossFSM;
 
+    // handler
+    protected BossAttackHandler attackHandler;
+
     // Component
-    protected Animator animator;
-    protected Rigidbody2D rigidBody;
+    [SerializeField] protected Animator animator;
+    [SerializeField] protected Rigidbody2D rigidBody;
 
     // layerMask
     protected LayerMask playerLayer;
 
     // 보스 데이터
-    // 체력, 공격력, 이동속도, 공격속도/딜레이, 
+    protected int hp;               // 현재체력
+    protected int maxHP;            // 최대체력
+    protected int damage;           // 공격력
+    protected float moveSpeed;      // 이동 속도
+    protected float attackDelay;    // 공격 딜레이
 
+    // 범위
+    protected float trackingRange;
+    protected float attackRange;
     private void Start()
     {
-        bossFSM = new BossFSM(this);
+        InitBoss();        
+        InitComponent();
     }
 
     private void Update()
     {
         bossFSM.Execute();
+    }
 
-        //if(Input.GetKeyDown(KeyCode.Alpha1))
-        //    bossFSM.ChangeState(BossState.Idle);
-        //if (Input.GetKeyDown(KeyCode.Alpha2))
-        //    bossFSM.ChangeState(BossState.Tracking);
-        //if (Input.GetKeyDown(KeyCode.Alpha3))
-        //    bossFSM.ChangeState(BossState.Attack);
+    protected void InitComponent()
+    {
+        // fsm
+        bossFSM = new BossFSM(this);
+
+        // handler
+        attackHandler = new BossAttackHandler();
+
+        // component
+        animator  = GetComponentInChildren<Animator>();
+        rigidBody = GetComponentInChildren<Rigidbody2D>();
+
+        // layermask
+        playerLayer = LayerMask.GetMask("Player");
     }
 
     protected abstract void InitBoss();
+
+
+    private void OnDrawGizmos()
+    {
+#if UNITY_EDITOR
+        // 추적 범위
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, trackingRange);
+
+        // 공격 범위
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
+#endif
+    }
 }

@@ -9,7 +9,7 @@ public enum BossState
     Attack
 }
 
-public class BossFSM : MonoBehaviour
+public class BossFSM
 {
     BaseBoss owner;                                 // FSM을 사용하는 보스 객체
 
