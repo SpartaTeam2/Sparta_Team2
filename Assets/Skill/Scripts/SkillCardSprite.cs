@@ -7,14 +7,16 @@ public class SkillCardSprite : MonoBehaviour
 {
     public List<Sprite> skillCardSprite;
 
-    private SkillData selectedSkillData;
+    private SkillCard selectedSkillCard;
+    private SkillData selectedSkillSprite;
 
     private Image skillCardImage;
 
     private void Start()
     {
         skillCardImage = GetComponent<Image>();
-        selectedSkillData = GetComponentInParent<SkillData>();
+        selectedSkillCard = GetComponentInParent<SkillCard>();
+        selectedSkillSprite = selectedSkillCard.selectedSkillData;
         SetSprite();
     }
 
@@ -25,7 +27,7 @@ public class SkillCardSprite : MonoBehaviour
 
     private void SetSprite()
     {
-        int type = (int)selectedSkillData.skillType;
+        int type = (int)selectedSkillSprite.skillType;
         skillCardImage.sprite = skillCardSprite[type];
     }
 

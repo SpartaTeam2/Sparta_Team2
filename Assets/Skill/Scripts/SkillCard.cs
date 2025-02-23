@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class SkillCard : MonoBehaviour
 {
-    private SkillData selectedSkillData;
+    public SkillData selectedSkillData;
 
     public TextMeshProUGUI skillName;
     public TextMeshProUGUI skillDescription;
