@@ -1,18 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class SkillCard : MonoBehaviour
 {
-    public List<SkillData> selectedSkills;
+    private SkillData selectedSkillData;
+
+    public TextMeshProUGUI skillName;
+    public TextMeshProUGUI skillDescription;
 
     private void Start()
-    {
-    
+    {   
+        
     }
 
-    private void GetSelectedSkillList()
+    public void GetSelectedSkill(SkillData data)
     {
-        selectedSkills = SkillHandler.Instance.selectedSkillList;
+        selectedSkillData = data;
+        skillName.text = data.skillName;
+        skillDescription.text = data.skillDescription;
     }
 }

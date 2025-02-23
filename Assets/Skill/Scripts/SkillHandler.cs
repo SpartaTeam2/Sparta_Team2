@@ -5,6 +5,8 @@ using System.Linq;
 
 public class SkillHandler : MonoBehaviour
 {
+    public GameObject skillCardPrefab;
+
     private static SkillHandler instance;
 
     public static SkillHandler Instance { get {  return instance; } }
@@ -34,11 +36,21 @@ public class SkillHandler : MonoBehaviour
 
     }
 
-
+    public void CreateSkillCard(SkillData listedSkill)
+    {
+        GameObject card = Instantiate(skillCardPrefab);
+        SkillCard cardData = card.GetComponent<SkillCard>();
+        cardData.GetSelectedSkill(listedSkill);
+    }
 
     public void GetRandomSkill(int select)
     {
         selectedSkillList = RandomSkillDraw(select);
+
+        foreach(SkillData skill in selectedSkillList)
+        {
+            CreateSkillCard(skill);
+        }
     }
 
 
