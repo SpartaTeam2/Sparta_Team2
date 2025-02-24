@@ -28,7 +28,7 @@ public class SkillHandler : MonoBehaviour
     private void Start()
     {
         basicSkillDict = basicSkills.basicSkillDict;
-        GetRandomSkill(3); //test code
+        //GetRandomSkill(3); //test code
     }
 
     private void Update()
@@ -36,6 +36,7 @@ public class SkillHandler : MonoBehaviour
 
     }
 
+    //프리팹 스킬 카드 생성
     public void CreateSkillCard(List<SkillData> selectedSkillList)
     {
         foreach (SkillData skill in selectedSkillList)
@@ -58,7 +59,7 @@ public class SkillHandler : MonoBehaviour
         CreateSkillCard(selectedSkillList);
     }
 
-
+    // 스킬 목록에서 랜덤 선택(중복제외)
     public List<SkillData> RandomSkillDraw(int selection)
     {
         return basicSkillDict.Values.OrderBy(x => Random.Range(0, basicSkillDict.Count)).Take(selection).ToList();

@@ -4,11 +4,11 @@ using UnityEngine;
 
 public enum SkillType
 {
-    AttackBoost = 0,
-    AttackSpeedBoost = 1,
-    CriticalBoost = 2,
-    HealthBoost = 3,
-    ProjectileUp = 4,
+    AttackBoost = 0, //공격력 증가
+    AttackSpeedBoost = 1, //공격속도 증가
+    CriticalBoost = 2, //치명타 증가
+    HealthBoost = 3, //체력 증가
+    ProjectileUp = 4, //투사체 증가
 }
 public class SkillData
 {

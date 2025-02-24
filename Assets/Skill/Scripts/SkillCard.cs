@@ -19,6 +19,7 @@ public class SkillCard : MonoBehaviour
         selectButton = GetComponentInChildren<Button>();
     }
 
+    // 스킬 카드 위치 선정
     public void CardLocation()
     {
         int num = SkillHandler.Instance.selectedSkillNum;
