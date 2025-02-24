@@ -27,7 +27,6 @@ public class MonsterCtrl : MonoBehaviour
     public GameObject HitPrefabs;
     public GameObject Exps;
     public AudioSource _audioSource;
-    public AudioClip HitSound;
     public AudioClip DieSound;
 
     /// <summary>

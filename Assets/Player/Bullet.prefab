@@ -114,8 +114,6 @@ MonoBehaviour:
   lifetime: 1
   Damage: 0
   BulletSpeed: 20
-  _audioSource: {fileID: 7680290783558573317}
-  _bulletSound: {fileID: 8300000, guid: 4f41861152b609241bd1cf7e10188006, type: 3}
   Attacker: {fileID: 0}
 --- !u!82 &7680290783558573317
 AudioSource:
@@ -129,7 +127,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.259
+  m_Volume: 0.495
   m_Pitch: 1
   Loop: 0
   Mute: 0

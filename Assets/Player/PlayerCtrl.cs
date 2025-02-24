@@ -11,6 +11,10 @@ public class PlayerCtrl : MonoBehaviour
     public float speed = 10.0f; //스피드
     public float AttackDamage;
 
+    [Header("플레이어 장비 정보")]
+    //public 
+
+
     [Header("플레이어 공격 정보")]
     public GameObject BulletPrefab; // 투사체
     public GameObject GUN; // 발사 위치

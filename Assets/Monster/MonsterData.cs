@@ -11,6 +11,7 @@ public class MonsterData
     public float MonsterSpeed;
     public float ChaseDis;
     public float FightDis;
+
     public enum MonsterState
     {
         Idle,
@@ -27,7 +28,7 @@ public class MonsterData
     public AnimationClip Fight_Anim;
     public AnimationClip Die_Anim;
 
-    public MonsterData (int _monsterIndex, string _monsterName, float _monsterMaxHP)
+    public MonsterData (int _monsterIndex, string _monsterName, float _monsterMaxHP, float _monsterSpeed, float _chaseDis, float _fightDis)
     {
 
     }
