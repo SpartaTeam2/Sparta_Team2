@@ -22,16 +22,10 @@ public class SkillCard : MonoBehaviour
     // 스킬 카드 위치 선정
     public void CardLocation()
     {
-        int num = SkillHandler.Instance.selectedSkillNum;
-        switch (SkillHandler.Instance.randomSkillNum)
-        {
-            case 2:
-                skillCardBackGround.transform.position += new Vector3(-110 + (220 * num), 0, 0);
-                break;
-            case 3:
-                skillCardBackGround.transform.position += new Vector3(-220 + (220 * num), 0, 0);
-                break;
-        }
+        int locatecard = SkillHandler.Instance.selectedSkillNum;
+        int cardtotal = SkillHandler.Instance.randomSkillNum;
+
+        skillCardBackGround.transform.position += new Vector3(-110 * (cardtotal - 1) + (220 * locatecard), 0, 0);
     }
 
     public void OnClickSelect()

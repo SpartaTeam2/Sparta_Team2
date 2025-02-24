@@ -6,6 +6,19 @@ public class ApplyBasicSkills : MonoBehaviour
 {
     //[SerializeField] private GameObject player;
 
+    [SerializeField] private BasicSkills skill;
+
+    [SerializeField] private int projectileCount;
+
+    public void RemoveSkillFromDict(int skillID)
+    {
+        if(skillID > 300)
+            skill.legendSkillDict.Remove(skillID);
+        else if(skillID > 200)
+            skill.epicSkillDict.Remove(skillID);
+        else
+            skill.basicSkillDict.Remove(skillID);
+    }
     public void ApplySkill(SkillData skillData)
     {
         switch (skillData.skillType)
@@ -35,15 +48,19 @@ public class ApplyBasicSkills : MonoBehaviour
                 {
                     case 106:
                         //후방 투사체 추가
+                        RemoveSkillFromDict(skillData.skillId);
                         break;
                     case 107:
                         //좌우 투사체 추가
+                        RemoveSkillFromDict(skillData.skillId);
                         break;
                     case 206:
                         //전방 투사체 추가
+                        projectileCount--;
+                        if (projectileCount == 0)
+                            RemoveSkillFromDict(skillData.skillId);
                         break;
                 }
-                Debug.Log("projectile");
                 break;
         }
     }

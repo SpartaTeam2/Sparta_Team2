@@ -14,9 +14,9 @@ public class SkillHandler : MonoBehaviour
 
     public BasicSkills basicSkills;
 
-    private Dictionary<int, SkillData> basicSkillDict;
-    private Dictionary<int, SkillData> epicSkillDict;
-    private Dictionary<int, SkillData> legendSkillDict;
+    public Dictionary<int, SkillData> basicSkillDict;
+    public Dictionary<int, SkillData> epicSkillDict;
+    public Dictionary<int, SkillData> legendSkillDict;
 
 
     public int randomSkillNum = 0;

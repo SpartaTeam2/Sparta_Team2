@@ -214,7 +214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillCardPrefab: {fileID: 7737765013617366168, guid: 794aac39c014e4643bc499a63bc6e195, type: 3}
-  AaplyBasicSkills: {fileID: 2123416803}
+  ApplyBasicSkills: {fileID: 2123416803}
   basicSkills: {fileID: 32298804}
   randomSkillNum: 0
   selectedSkillNum: 0
@@ -407,6 +407,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13f1040875cea2a4d8b769b626139b20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skill: {fileID: 32298804}
+  projectileCount: 3
 --- !u!4 &2123416804
 Transform:
   m_ObjectHideFlags: 0
