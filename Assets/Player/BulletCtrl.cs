@@ -12,12 +12,20 @@ public class BulletCtrl : MonoBehaviour
     public float lifetime = 1.0f; // 투사체 유지 시간
     public float Damage;
     public float BulletSpeed;
+    //public AudioSource _audioSource;
+    //public AudioClip _bulletSound;
 
     public GameObject Attacker;
 
     // Start is called before the first frame update
     void Start()
     {
+        if (BulletImage != null)
+        {
+            GetComponentInChildren<SpriteRenderer>().sprite = BulletImage; //있으면 변경
+        }
+        //if (_audioSource == null)
+        //    _audioSource = GetComponent<AudioSource>();
         Damage = Attacker.GetComponent<PlayerCtrl>().AttackDamage;
         Destroy(gameObject, lifetime); // 투사체 삭제
     }
@@ -30,9 +38,9 @@ public class BulletCtrl : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag(Attacker.tag)) // If same gameobject
+        if (collision.CompareTag(Attacker.tag)) // 태그가 같으면
         {
-            // do nothing
+            // 아무것도 안하기
         }
         else
         {
