@@ -28,7 +28,7 @@ public class SkillHandler : MonoBehaviour
     private void Start()
     {
         basicSkillDict = basicSkills.basicSkillDict;
-        GetRandomSkill(2);
+        //GetRandomSkill(2); test code
     }
 
     private void Update()
