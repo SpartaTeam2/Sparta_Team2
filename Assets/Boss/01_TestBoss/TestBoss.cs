@@ -53,7 +53,7 @@ public class TestBoss : BaseBoss, IBossIdle, IBossAttack, IBossTracking
         if(attackHandler.CanAttack)
         {
             attackHandler.AttackDelay();
-            StartCoroutine(pattern.TestPattern_1(transform, target));
+            pattern.OnPattern(transform, target, PatternName.WINDMILL);
         }
         // 공격 쿨타임중 동작 XX
         else

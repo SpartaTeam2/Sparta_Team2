@@ -42,6 +42,14 @@ public class GuideLine : MonoBehaviour
         lines.Enqueue(newLine);
     }
 
+    private void InitLine(LineRenderer line)
+    {
+        line.gameObject.SetActive(true);
+        line.startWidth = 0.1f;
+        line.endWidth = 0.1f;
+        line.positionCount = 2;
+    }
+
     /// <summary>
     ///  대상의 움직임을 따라 가는 Line
     /// </summary>
@@ -54,13 +62,9 @@ public class GuideLine : MonoBehaviour
         if(lines.Count == 0)
             CreateLine();
 
-        LineRenderer line = lines.Dequeue();
-
         // Line 초기화
-        line.gameObject.SetActive(true);
-        line.startWidth = 0.1f;
-        line.endWidth = 0.1f;
-        line.positionCount = 2;
+        LineRenderer line = lines.Dequeue();
+        InitLine(line);
 
         StartCoroutine(UpdateLine(line, from, to));
         StartCoroutine(ReturnLine(line, lifeTime));
@@ -77,8 +81,9 @@ public class GuideLine : MonoBehaviour
             Vector2 direction = (to.position - from.position).normalized;
 
             // RayCast
-            RaycastHit2D ray = Physics2D.Raycast(from.position, direction, 50f, wallLayer);
-            Vector2 endPos = ray.collider != null ? ray.point : (Vector2)from.position + direction * 50f;
+            RaycastHit2D ray = Physics2D.Raycast(from.position, direction, maxDistance, wallLayer);
+            Vector2 endPos = ray.collider != null ? 
+                ray.point : (Vector2)from.position + direction * maxDistance;
 
             // 포지션 설정
             line.SetPosition(0, from.position);
@@ -88,6 +93,26 @@ public class GuideLine : MonoBehaviour
 
     public float OnTwoPointLine(Vector2 from, Vector2 to, float lifeTime = 1f)
     {
+        if (lines.Count == 0)
+            CreateLine();
+
+        // Line 초기화
+        LineRenderer line = lines.Dequeue();
+        InitLine(line);
+
+        Vector2 direction = (to - from).normalized;
+
+
+        // RayCast
+        RaycastHit2D ray = Physics2D.Raycast(from, direction, maxDistance, wallLayer);
+        Vector2 endPos = ray.collider != null ?
+            ray.point : from + direction * maxDistance;
+
+        // 포지션 설정
+        line.SetPosition(0, from);
+        line.SetPosition(1, endPos);
+
+        StartCoroutine(ReturnLine(line, lifeTime));
 
         return lifeTime;
     }

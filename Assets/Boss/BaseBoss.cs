@@ -8,15 +8,14 @@ public abstract class BaseBoss : MonoBehaviour
     protected BossFSM bossFSM;
 
     // handler
-    [SerializeField]
     protected BossAttackHandler attackHandler;
 
     // boss Pattern
     protected BossPattern pattern;
 
     // Component
-    [SerializeField] protected Animator animator;
-    [SerializeField] protected Rigidbody2D rigidBody;
+    protected Animator animator;
+    protected Rigidbody2D rigidBody;
 
     // layerMask
     protected LayerMask playerLayer;
