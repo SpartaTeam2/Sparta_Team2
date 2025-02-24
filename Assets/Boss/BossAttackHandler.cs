@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossAttackHandler
+public class BossAttackHandler : MonoBehaviour
 {
-    private bool canAttack;
-    private float attackDelay;
-    public bool CanAttack { get; private set; }
+    [SerializeField] private bool canAttack;
+    [SerializeField] private float attackDelay;
+
+    public bool CanAttack { get { return canAttack; } }
 
     public void InitHandler(float delay)
     {
@@ -16,6 +17,13 @@ public class BossAttackHandler
 
     public void AttackDelay()
     {
+        canAttack = false;
+        StartCoroutine(OnDelay());
+    }
 
+    IEnumerator OnDelay()
+    {
+        yield return new WaitForSeconds(attackDelay);
+        canAttack = true;
     }
 }

@@ -15,8 +15,8 @@ public class TestBoss : BaseBoss, IBossIdle, IBossAttack, IBossTracking
         moveSpeed = 5f;
         attackDelay = 2f;
 
-        trackingRange = 10f;
-        attackRange = 5f;
+        trackingRange = 30f;
+        attackRange = 15f;
 
         attackHandler.InitHandler(attackDelay);
     }
@@ -42,6 +42,10 @@ public class TestBoss : BaseBoss, IBossIdle, IBossAttack, IBossTracking
     {
         float distance = Vector2.Distance(transform.position, target.position);
 
+        // 현재 돌진중일때 
+        if (pattern.isDash)
+            return;
+
         // 범위를 벗어났을때
         if(distance > attackRange)
         {
@@ -49,13 +53,16 @@ public class TestBoss : BaseBoss, IBossIdle, IBossAttack, IBossTracking
             return;
         }
 
-        // ###TODO: 공격 패턴 만들어주기
-        // 공격 패턴을 클래스화 해서 공격패턴 호출하기
-        // 공격 할수 없는 상태
-        if(!attackHandler.CanAttack)
+        // 공격 가능
+        if(attackHandler.CanAttack)
         {
-            return;
+            attackHandler.AttackDelay();
+            PatternName pName = (PatternName)Random.Range(0, 4);
+            pattern.OnPattern(transform, target, pName);
         }
+        // 공격 쿨타임중 동작 XX
+        else
+            return;
     }
 
     public void TrackingExecute()
@@ -80,6 +87,7 @@ public class TestBoss : BaseBoss, IBossIdle, IBossAttack, IBossTracking
         // 공격 범위 내 있으면 공격 상태로 전이
         if (distance <= attackRange)
         {
+            rigidBody.velocity = Vector2.zero;
             bossFSM.ChangeState(BossState.Attack);
         }
 
