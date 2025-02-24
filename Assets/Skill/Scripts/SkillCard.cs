@@ -21,7 +21,6 @@ public class SkillCard : MonoBehaviour
 
     public void CardLocation()
     {
-        Debug.Log(SkillHandler.Instance.randomSkillNum);
         int num = SkillHandler.Instance.selectedSkillNum;
         switch (SkillHandler.Instance.randomSkillNum)
         {

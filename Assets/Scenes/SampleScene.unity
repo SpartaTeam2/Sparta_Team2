@@ -214,6 +214,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillCardPrefab: {fileID: 7737765013617366168, guid: 794aac39c014e4643bc499a63bc6e195, type: 3}
   basicSkills: {fileID: 32298804}
+  randomSkillNum: 0
+  selectedSkillNum: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
