@@ -15,7 +15,7 @@ public class EnemyProwlState : EnemyBaseState
 
     public override void Enter()
     {
-        Debug.Log("Tracking Enter");
+        owner.Animator.SetBool("Prowl", true);
     }
 
     public override void Execute()
@@ -25,6 +25,6 @@ public class EnemyProwlState : EnemyBaseState
 
     public override void Exit()
     {
-        Debug.Log("Tracking Exit");
+        owner.Animator.SetBool("Prowl", false);
     }
 }

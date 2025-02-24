@@ -15,7 +15,7 @@ public class EnemyIdleState : EnemyBaseState
 
     public override void Enter()
     {
-        Debug.Log("Idle Enter");
+        owner.Animator.SetBool("Idle", true);
     }
 
     public override void Execute()
@@ -25,6 +25,6 @@ public class EnemyIdleState : EnemyBaseState
 
     public override void Exit()
     {
-        Debug.Log("Idle Exit");
+        owner.Animator.SetBool("Idle", false);
     }
 }

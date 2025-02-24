@@ -13,6 +13,7 @@ public abstract class BaseEnemy : MonoBehaviour
     // Component
     protected Animator animator;
     protected Rigidbody2D rigidBody;
+    protected SpriteRenderer spriteRenderer;
 
     // layerMask
     protected LayerMask playerLayer;
@@ -27,6 +28,9 @@ public abstract class BaseEnemy : MonoBehaviour
     // ¹üÀ§
     protected float trackingRange;
     protected float attackRange;
+
+    // GET SET
+    public Animator Animator { get { return animator; } }
 
     private void Start()
     {
@@ -45,9 +49,10 @@ public abstract class BaseEnemy : MonoBehaviour
         fsm = new EnemyFSM(this);
 
         // component
-        attackHandler = GetComponentInChildren<EnemyAttackHandler>();
-        animator = GetComponentInChildren<Animator>();
-        rigidBody = GetComponentInChildren<Rigidbody2D>();
+        attackHandler   = GetComponentInChildren<EnemyAttackHandler>();
+        animator        = GetComponentInChildren<Animator>();
+        rigidBody       = GetComponentInChildren<Rigidbody2D>();
+        spriteRenderer  = GetComponentInChildren<SpriteRenderer>();
 
         // layermask
         playerLayer = LayerMask.GetMask("Player");
@@ -55,6 +60,11 @@ public abstract class BaseEnemy : MonoBehaviour
 
     protected abstract void InitEnemy();
 
+
+    public void GetDamage(float damage)
+    {
+        Debug.Log($"enemy Get Damage {damage}");
+    }
 
     private void OnDrawGizmos()
     {

@@ -10,7 +10,7 @@ public enum EnemyState
     Attack,     // 공격
 }
 
-public class EnemyFSM : MonoBehaviour
+public class EnemyFSM
 {
     BaseEnemy owner;        // 몬스터 / 보스 객체
 

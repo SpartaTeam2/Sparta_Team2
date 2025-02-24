@@ -15,7 +15,7 @@ public class EnemyTrackingState : EnemyBaseState
 
     public override void Enter()
     {
-        Debug.Log("Tracking Enter");
+        owner.Animator.SetBool("Tracking", true);
     }
 
     public override void Execute()
@@ -25,6 +25,6 @@ public class EnemyTrackingState : EnemyBaseState
 
     public override void Exit()
     {
-        Debug.Log("Tracking Exit");
+        owner.Animator.SetBool("Tracking", false);
     }
 }

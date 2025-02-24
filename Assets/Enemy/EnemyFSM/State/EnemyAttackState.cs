@@ -15,7 +15,7 @@ public class EnemyAttackState : EnemyBaseState
 
     public override void Enter()
     {
-        Debug.Log("Attack Enter");
+        owner.Animator.SetBool("Attack", true);
     }
 
     public override void Execute()
@@ -25,6 +25,6 @@ public class EnemyAttackState : EnemyBaseState
 
     public override void Exit()
     {
-        Debug.Log("Attack EXit");
+        owner.Animator.SetBool("Attack", false);
     }
 }
