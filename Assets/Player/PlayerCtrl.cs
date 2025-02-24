@@ -20,6 +20,8 @@ public class PlayerCtrl : MonoBehaviour
     public GameObject GUN; // 발사 위치
     public float GunRate = 10f; //  발사 시간
     private float GunTimer; // 발사 타이머
+    public float BulletSpace; //투사체 간극
+    public float BulletCount; //투사체 개수
 
     [Header("플레이어 피격 정보")]
     public GameObject HitEffect;
@@ -115,9 +117,29 @@ public class PlayerCtrl : MonoBehaviour
         }
     }
 
+    private void MultipleFire() //최대 투사체 4개, 중앙부터 대칭으로  -1.5 -0.5 0.5 1.5 의 위치
+    {
+        float bulletspace = BulletSpace / (BulletCount - 1); //투사체간 간극
+        Vector3 verticalDirection = new Vector3(-GUN.transform.position.y, GUN.transform.position.x, 0); //원의 접선 방향 벡터값
+
+        for(int i = 0; i < BulletCount; i++)
+        {
+            // 4개면 -1.5 -0.5 0.5 1.5   
+            // 3개 -1.5 0 1.5            
+            // 2개 -1.5 1.5               
+            float location = (i - ((BulletCount - 1) / 2.0f)) * bulletspace;  
+            Vector3 multiplePosition = GUN.transform.position + verticalDirection.normalized * location;
+
+            Instantiate(BulletPrefab, multiplePosition, GUN.transform.rotation).GetComponent<BulletCtrl>().Attacker = gameObject;
+        }
+    }
+
     void fire()
     {
-        Instantiate(BulletPrefab, GUN.transform.position, GUN.transform.rotation).GetComponent<BulletCtrl>().Attacker = gameObject;
+        if (BulletCount == 1)
+            Instantiate(BulletPrefab, GUN.transform.position, GUN.transform.rotation).GetComponent<BulletCtrl>().Attacker = gameObject;
+        else if (BulletCount > 1)
+            MultipleFire();
     }
     public void GetDamage(float Damage)
     {
