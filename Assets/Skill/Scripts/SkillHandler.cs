@@ -15,8 +15,8 @@ public class SkillHandler : MonoBehaviour
 
     private Dictionary<int, SkillData> basicSkillDict;
 
-    public List<SkillData> selectedSkillList;
-
+    public int randomSkillNum = 0;
+    public int selectedSkillNum = 0;
 
     private void Awake()
     {
@@ -28,7 +28,7 @@ public class SkillHandler : MonoBehaviour
     private void Start()
     {
         basicSkillDict = basicSkills.basicSkillDict;
-        //GetRandomSkill(2); //test code
+        GetRandomSkill(3); //test code
     }
 
     private void Update()
@@ -36,21 +36,26 @@ public class SkillHandler : MonoBehaviour
 
     }
 
-    public void CreateSkillCard(SkillData listedSkill)
+    public void CreateSkillCard(List<SkillData> selectedSkillList)
     {
-        GameObject card = Instantiate(skillCardPrefab);
-        SkillCard cardData = card.GetComponent<SkillCard>();
-        cardData.GetSelectedSkill(listedSkill);
+        foreach (SkillData skill in selectedSkillList)
+        {
+            GameObject card = Instantiate(skillCardPrefab);
+            SkillCard cardData = card.GetComponent<SkillCard>();
+            cardData.GetSelectedSkill(skill);
+            cardData.CardLocation();
+            selectedSkillNum++;
+        }
+        selectedSkillNum = 0;
+        randomSkillNum = 0;
     }
 
     public void GetRandomSkill(int select)
     {
-        selectedSkillList = RandomSkillDraw(select);
+        List<SkillData> selectedSkillList = RandomSkillDraw(select);
+        randomSkillNum = select;
 
-        foreach(SkillData skill in selectedSkillList)
-        {
-            CreateSkillCard(skill);
-        }
+        CreateSkillCard(selectedSkillList);
     }
 
 

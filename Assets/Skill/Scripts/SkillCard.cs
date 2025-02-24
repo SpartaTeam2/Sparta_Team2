@@ -12,10 +12,26 @@ public class SkillCard : MonoBehaviour
     public TextMeshProUGUI skillDescription;
 
     private Button selectButton;
+    [SerializeField] private Image skillCardBackGround;
 
     private void Start()
     {   
         selectButton = GetComponentInChildren<Button>();
+    }
+
+    public void CardLocation()
+    {
+        Debug.Log(SkillHandler.Instance.randomSkillNum);
+        int num = SkillHandler.Instance.selectedSkillNum;
+        switch (SkillHandler.Instance.randomSkillNum)
+        {
+            case 2:
+                skillCardBackGround.transform.position += new Vector3(-110 + (220 * num), 0, 0);
+                break;
+            case 3:
+                skillCardBackGround.transform.position += new Vector3(-220 + (220 * num), 0, 0);
+                break;
+        }
     }
 
     public void OnClickSelect()
