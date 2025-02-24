@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Monster
   - Wall
+  - Boss
   layers:
   - Default
   - TransparentFX
@@ -14,11 +15,11 @@ TagManager:
   - Water
   - UI
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - EnemyBullet
+  - Boss
+  - Enemy
+  - Wall
   - 
   - 
   - 
