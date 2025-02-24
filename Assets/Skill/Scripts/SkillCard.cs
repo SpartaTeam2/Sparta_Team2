@@ -36,7 +36,7 @@ public class SkillCard : MonoBehaviour
 
     public void OnClickSelect()
     {
-        SkillHandler.Instance.ApplySkill(selectedSkillData);
+        SkillHandler.Instance.ApplyBasicSkills.ApplySkill(selectedSkillData);
     }
 
     public void GetSelectedSkill(SkillData data)

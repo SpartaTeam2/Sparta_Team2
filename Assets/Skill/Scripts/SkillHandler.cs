@@ -7,6 +7,7 @@ public class SkillHandler : MonoBehaviour
 {
     public GameObject skillCardPrefab;
 
+    public ApplyBasicSkills ApplyBasicSkills;
     private static SkillHandler instance;
 
     public static SkillHandler Instance { get {  return instance; } }
@@ -14,6 +15,9 @@ public class SkillHandler : MonoBehaviour
     public BasicSkills basicSkills;
 
     private Dictionary<int, SkillData> basicSkillDict;
+    private Dictionary<int, SkillData> epicSkillDict;
+    private Dictionary<int, SkillData> legendSkillDict;
+
 
     public int randomSkillNum = 0;
     public int selectedSkillNum = 0;
@@ -28,12 +32,10 @@ public class SkillHandler : MonoBehaviour
     private void Start()
     {
         basicSkillDict = basicSkills.basicSkillDict;
-        //GetRandomSkill(3); //test code
-    }
+        epicSkillDict = basicSkills.epicSkillDict;
+        legendSkillDict = basicSkills.legendSkillDict;
 
-    private void Update()
-    {
-
+        RandomRarity(3); //test code
     }
 
     //프리팹 스킬 카드 생성
@@ -51,39 +53,68 @@ public class SkillHandler : MonoBehaviour
         randomSkillNum = 0;
     }
 
-    public void GetRandomSkill(int select)
+    public void GetRandomSkill(int basic, int epic, int legend)
     {
-        List<SkillData> selectedSkillList = RandomSkillDraw(select);
-        randomSkillNum = select;
+        List<SkillData> selectedBasicSkillList = BasicSkillDraw(basic);
+        List<SkillData> selectedEpicSkillList = EpicSkillDraw(epic);
+        List<SkillData> selectedLegendSkillList = LegendSkillDraw(legend);
+
+        List<SkillData> selectedSkillList = selectedBasicSkillList.Concat(selectedEpicSkillList.Concat(selectedLegendSkillList))
+                                            .OrderBy(x => Random.Range(0,basic+epic+legend)).ToList();
+
+        randomSkillNum = basic + epic + legend;
 
         CreateSkillCard(selectedSkillList);
     }
 
+    public void RandomRarity(int select)
+    {
+        int basic = 0;
+        int epic = 0;
+        int legend = 0;
+
+        for(int i = 0; i < select; i++)
+        {
+            int kingOfRare = RandomRareSet();
+            switch(kingOfRare)
+            {
+                case 1: legend++; break;
+                case 2: epic++; break;
+                case 3: basic++; break;
+            }
+        }
+
+        GetRandomSkill(basic, epic, legend);
+    }
+
+    public int RandomRareSet()
+    {
+        int[] percentage = { 2, 10, 88 }; //레전더리,에픽,노말 확률
+
+        int totalper = 0;
+        foreach (int i in percentage) // 배열 숫자 바꿔서 확률 변동 가능
+        {
+            totalper += i;
+        }
+
+        int random = Random.Range(0, totalper);
+
+        int kindOfRare = random < percentage[0] ? 1 : random < percentage[1] ? 2 : 3;
+
+        return kindOfRare;
+    }
+
     // 스킬 목록에서 랜덤 선택(중복제외)
-    public List<SkillData> RandomSkillDraw(int selection)
+    public List<SkillData> BasicSkillDraw(int selection)
     {
         return basicSkillDict.Values.OrderBy(x => Random.Range(0, basicSkillDict.Count)).Take(selection).ToList();
     }
-
-    public void ApplySkill(SkillData skillData)
+    public List<SkillData> EpicSkillDraw(int selection)
     {
-        switch (skillData.skillType)
-        {
-            case SkillType.AttackBoost:
-                Debug.Log("attack");
-                break;
-            case SkillType.AttackSpeedBoost:
-                Debug.Log("attackspeed");
-                break;
-            case SkillType.CriticalBoost:
-                Debug.Log("crit");
-                break;
-            case SkillType.HealthBoost:
-                Debug.Log("health");
-                break;
-            case SkillType.ProjectileUp:
-                Debug.Log("projectile");
-                break;
-        }
+        return epicSkillDict.Values.OrderBy(x => Random.Range(0, epicSkillDict.Count)).Take(selection).ToList();
+    }
+    public List<SkillData> LegendSkillDraw(int selection)
+    {
+        return legendSkillDict.Values.OrderBy(x => Random.Range(0, legendSkillDict.Count)).Take(selection).ToList();
     }
 }
