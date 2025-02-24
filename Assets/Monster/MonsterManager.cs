@@ -6,6 +6,8 @@ public class MonsterManager : MonoBehaviour
 {
     public GameObject MonsterPre;
     public MonsterData[] _monster;
+
+    public int MaxMonster;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +38,11 @@ public class MonsterManager : MonoBehaviour
 
     void SpawnMonster(int _monsterIndex)
     {
+
+        for (int i = 0; i>= MaxMonster;i++)
+        {
+            Instantiate(MonsterPre);
+        }
         //Monster Mondata = MonsterPre.GetComponent<MonsterData>
     }
 }

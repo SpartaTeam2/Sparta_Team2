@@ -1,6 +1,7 @@
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using TreeEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +10,7 @@ public class MonsterCtrl : MonoBehaviour
     [Header("몬스터 기본 스탯")]
     public float MaxHP;
     public float Speed;
+    public float AttackDamage;
     public float ChaseDis;
     public float FightDis;
 
@@ -21,6 +23,15 @@ public class MonsterCtrl : MonoBehaviour
     [Header("몬스터 공격 효과")]
     public GameObject AttackPrefabs;
 
+    [Header("몬스터 피격 효과")]
+    public GameObject HitPrefabs;
+    public GameObject Exps;
+    public AudioSource _audioSource;
+    public AudioClip DieSound;
+
+    /// <summary>
+    /// 나중에 슬라이더만 연결해주세요
+    /// </summary>
     [Header("HP Bar")]
     public GameObject HPBar;
 
@@ -103,14 +114,6 @@ public class MonsterCtrl : MonoBehaviour
             StartCoroutine("AttackTimer");
         }
     }
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if (collision.CompareTag("Player"))
-    //    {
-    //        _state = State.Chase;
-    //        ChaseThing = collision.gameObject;
-    //    }
-    //}
 
     void MoveTo()
     {
@@ -142,10 +145,11 @@ public class MonsterCtrl : MonoBehaviour
 
     public void GetDamage(float Damage)
     {
+        Destroy(Instantiate(HitPrefabs),0.5f);
         HP -= Damage;
         if (HP <= 0)
         {
-            Destroy(gameObject, 0.5f);
+            Die();
         }
     }
 
@@ -154,5 +158,12 @@ public class MonsterCtrl : MonoBehaviour
         yield return new WaitForSeconds(AttackTime);
         _state = State.Chase;
         CanAttack = true;
+    }
+    void Die ()
+    {
+        Destroy(GetComponent<Collider2D>());
+        Instantiate(Exps,transform.position,Quaternion.identity);
+        AudioSource.PlayClipAtPoint(DieSound, transform.position);
+        Destroy(gameObject, 0.5f);
     }
 }
