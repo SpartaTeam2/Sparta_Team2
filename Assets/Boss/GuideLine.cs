@@ -42,11 +42,11 @@ public class GuideLine : MonoBehaviour
         lines.Enqueue(newLine);
     }
 
-    private void InitLine(LineRenderer line)
+    private void InitLine(LineRenderer line, float lineWidth)
     {
         line.gameObject.SetActive(true);
-        line.startWidth = 0.1f;
-        line.endWidth = 0.1f;
+        line.startWidth = lineWidth;
+        line.endWidth = lineWidth;
         line.positionCount = 2;
     }
 
@@ -57,14 +57,14 @@ public class GuideLine : MonoBehaviour
     /// <param name="to">Line 도착 대상 ( transform )</param>
     /// <param name="lifeTime">Line 지속 시간</param>
     /// <returns></returns>
-    public float OnTrackingLine(Transform from, Transform to, float lifeTime = 1f)
+    public float OnTrackingLine(Transform from, Transform to, float lineWidth, float lifeTime = 1f)
     {
         if(lines.Count == 0)
             CreateLine();
 
         // Line 초기화
         LineRenderer line = lines.Dequeue();
-        InitLine(line);
+        InitLine(line, lineWidth);
 
         StartCoroutine(UpdateLine(line, from, to));
         StartCoroutine(ReturnLine(line, lifeTime));
@@ -91,14 +91,14 @@ public class GuideLine : MonoBehaviour
         }
     }
 
-    public float OnTwoPointLine(Vector2 from, Vector2 to, float lifeTime = 1f)
+    public float OnTwoPointLine(Vector2 from, Vector2 to, float lineWidth, float lifeTime = 1f)
     {
         if (lines.Count == 0)
             CreateLine();
 
         // Line 초기화
         LineRenderer line = lines.Dequeue();
-        InitLine(line);
+        InitLine(line, lineWidth);
 
         Vector2 direction = (to - from).normalized;
 

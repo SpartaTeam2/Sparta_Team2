@@ -42,6 +42,10 @@ public class TestBoss : BaseBoss, IBossIdle, IBossAttack, IBossTracking
     {
         float distance = Vector2.Distance(transform.position, target.position);
 
+        // 현재 돌진중일때 
+        if (pattern.isDash)
+            return;
+
         // 범위를 벗어났을때
         if(distance > attackRange)
         {
@@ -53,7 +57,8 @@ public class TestBoss : BaseBoss, IBossIdle, IBossAttack, IBossTracking
         if(attackHandler.CanAttack)
         {
             attackHandler.AttackDelay();
-            pattern.OnPattern(transform, target, PatternName.WINDMILL);
+            PatternName pName = (PatternName)Random.Range(0, 4);
+            pattern.OnPattern(transform, target, pName);
         }
         // 공격 쿨타임중 동작 XX
         else

@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public enum PatternName
@@ -16,22 +15,30 @@ public class BossPattern : MonoBehaviour
     [SerializeField]
     private GameObject bulletPrefab;
 
+    private Rigidbody2D rigidbody;
+
+    public bool isDash { get; private set; }
+    
     public void OnPattern(Transform from, Transform to, PatternName pattern)
     {
         switch(pattern)
         {
             case PatternName.TEST:
+                Debug.Log("test");
                 StartCoroutine(TestPattern(from, to));
                 break;
 
             case PatternName.BURST:
+                Debug.Log("burst");
                 StartCoroutine(ShootBurst(from, to));
                 break;
 
             case PatternName.DASH:
+                Debug.Log("dash");
                 StartCoroutine(Windmill(from, to)); 
                 break;
             case PatternName.WINDMILL:
+                Debug.Log("windmill");
                 StartCoroutine(Dash(from, to));
                 break;
         }
@@ -40,7 +47,7 @@ public class BossPattern : MonoBehaviour
     private IEnumerator TestPattern(Transform from, Transform to)
     {
         // 타겟을 추적하는 라인
-        float lineTime = GuideLine.Instance.OnTrackingLine(from, to);
+        float lineTime = GuideLine.Instance.OnTrackingLine(from, to, 0.1f);
 
         // 라인 지속시간만큼 대기
         yield return new WaitForSeconds(lineTime);
@@ -62,7 +69,7 @@ public class BossPattern : MonoBehaviour
         int bulletcount = Random.Range(5, 15);
 
         // 타겟을 추적하는 라인
-        float lineTime = GuideLine.Instance.OnTrackingLine(from, to);
+        float lineTime = GuideLine.Instance.OnTrackingLine(from, to, 0.1f);
 
         for (int i = 0; i < bulletcount; i++)
         {
@@ -93,6 +100,34 @@ public class BossPattern : MonoBehaviour
     // 돌진
     private IEnumerator Dash(Transform from, Transform to)
     {
+        if(rigidbody == null)
+            rigidbody = GetComponentInParent<Rigidbody2D>();
+
+        isDash = true;
+
+        // 경고선 , 대기
+        float lineTime = GuideLine.Instance.OnTrackingLine(from, to, 1 ,1.5f);
+        yield return new WaitForSeconds(lineTime);
+
+        // 돌진
+        Vector2 targetPosition = to.position;
+        Vector2 direction = (targetPosition - (Vector2)from.position).normalized;
+
+        float timeLimit = 0;
+        while(timeLimit <= 2f)
+        {
+            rigidbody.velocity = direction * 15f;
+            if (Vector2.Distance(transform.position, targetPosition) <= 0.1f)
+            {
+                rigidbody.velocity = Vector2.zero;
+            }
+
+            timeLimit += 0.01f;
+            yield return new WaitForSeconds(0.01f);
+        }
+
+        rigidbody.velocity = Vector2.zero;
+        isDash = false;
         yield return null;
     }
 }

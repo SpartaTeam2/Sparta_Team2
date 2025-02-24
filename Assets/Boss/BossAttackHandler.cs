@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class BossAttackHandler : MonoBehaviour
 {
-    [SerializeField]
-    private bool canAttack;
-    [SerializeField]
-    private float attackDelay;
+    [SerializeField] private bool canAttack;
+    [SerializeField] private float attackDelay;
+
     public bool CanAttack { get { return canAttack; } }
 
     public void InitHandler(float delay)
