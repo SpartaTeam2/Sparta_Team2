@@ -8,7 +8,11 @@ public abstract class BaseBoss : MonoBehaviour
     protected BossFSM bossFSM;
 
     // handler
+    [SerializeField]
     protected BossAttackHandler attackHandler;
+
+    // boss Pattern
+    protected BossPattern pattern;
 
     // Component
     [SerializeField] protected Animator animator;
@@ -29,8 +33,8 @@ public abstract class BaseBoss : MonoBehaviour
     protected float attackRange;
     private void Start()
     {
-        InitBoss();        
         InitComponent();
+        InitBoss();        
     }
 
     private void Update()
@@ -43,12 +47,11 @@ public abstract class BaseBoss : MonoBehaviour
         // fsm
         bossFSM = new BossFSM(this);
 
-        // handler
-        attackHandler = new BossAttackHandler();
-
         // component
-        animator  = GetComponentInChildren<Animator>();
-        rigidBody = GetComponentInChildren<Rigidbody2D>();
+        attackHandler   = GetComponentInChildren<BossAttackHandler>();
+        pattern         = GetComponentInChildren<BossPattern>();
+        animator        = GetComponentInChildren<Animator>();
+        rigidBody       = GetComponentInChildren<Rigidbody2D>();
 
         // layermask
         playerLayer = LayerMask.GetMask("Player");

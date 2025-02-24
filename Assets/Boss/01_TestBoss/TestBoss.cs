@@ -15,8 +15,8 @@ public class TestBoss : BaseBoss, IBossIdle, IBossAttack, IBossTracking
         moveSpeed = 5f;
         attackDelay = 2f;
 
-        trackingRange = 10f;
-        attackRange = 5f;
+        trackingRange = 30f;
+        attackRange = 15f;
 
         attackHandler.InitHandler(attackDelay);
     }
@@ -49,11 +49,16 @@ public class TestBoss : BaseBoss, IBossIdle, IBossAttack, IBossTracking
             return;
         }
 
-        // ###TODO: 공격 패턴 만들어주기
-        // 공격 패턴을 클래스화 해서 공격패턴 호출하기
-        // 공격 할수 없는 상태
-        if(!attackHandler.CanAttack)
+        // 공격 가능
+        if(attackHandler.CanAttack)
         {
+            attackHandler.AttackDelay();
+            pattern.TestPattern_1(transform, target);
+        }
+        // 공격 쿨타임
+        else
+        {
+            
             return;
         }
     }
@@ -80,6 +85,7 @@ public class TestBoss : BaseBoss, IBossIdle, IBossAttack, IBossTracking
         // 공격 범위 내 있으면 공격 상태로 전이
         if (distance <= attackRange)
         {
+            rigidBody.velocity = Vector2.zero;
             bossFSM.ChangeState(BossState.Attack);
         }
 
