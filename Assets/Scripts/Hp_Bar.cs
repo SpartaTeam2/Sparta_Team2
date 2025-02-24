@@ -10,7 +10,7 @@ public class Hp_Bar : MonoBehaviour
     public Slider hpbar;
     public float maxHp;
     public float currenthp;
-    public TextMeshProUGUI nowHpText;
+    public Text nowHpText;
     public float damageRate = 10f; 
 
     void Start()

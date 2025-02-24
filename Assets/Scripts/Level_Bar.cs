@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class Level_Bar : MonoBehaviour
 {
     public Slider experienceSlider; // 경험치 슬라이더
-    public TextMeshProUGUI levelText; // 레벨 텍스트 (선택 사항)
+    public Text levelText; // 레벨 텍스트 (선택 사항)
     public float currentExperience = 0f; // 현재 경험치
     public float maxExperience = 100f; // 최대 경험치 (레벨업 기준)
     public int currentLevel = 1; // 현재 레벨
