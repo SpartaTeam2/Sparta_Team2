@@ -28,7 +28,7 @@ public class SkillHandler : MonoBehaviour
     private void Start()
     {
         basicSkillDict = basicSkills.basicSkillDict;
-        //GetRandomSkill(2); test code
+        //GetRandomSkill(2); //test code
     }
 
     private void Update()
@@ -56,7 +56,7 @@ public class SkillHandler : MonoBehaviour
 
     public List<SkillData> RandomSkillDraw(int selection)
     {
-        return basicSkills.basicSkillDict.Values.OrderBy(x => Random.Range(0, basicSkills.basicSkillDict.Count)).Take(selection).ToList();
+        return basicSkillDict.Values.OrderBy(x => Random.Range(0, basicSkillDict.Count)).Take(selection).ToList();
     }
 
     public void ApplySkill(SkillData skillData)
@@ -64,19 +64,19 @@ public class SkillHandler : MonoBehaviour
         switch (skillData.skillType)
         {
             case SkillType.AttackBoost:
-
+                Debug.Log("attack");
                 break;
             case SkillType.AttackSpeedBoost:
-
+                Debug.Log("attackspeed");
                 break;
             case SkillType.CriticalBoost:
-
+                Debug.Log("crit");
                 break;
             case SkillType.HealthBoost:
-
+                Debug.Log("health");
                 break;
             case SkillType.ProjectileUp:
-
+                Debug.Log("projectile");
                 break;
         }
     }
