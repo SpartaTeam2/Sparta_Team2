@@ -45,9 +45,11 @@ public class GuideLine : MonoBehaviour
     private void InitLine(LineRenderer line, float lineWidth)
     {
         line.gameObject.SetActive(true);
+        line.positionCount = 2;
+
+        // º± ±Ê¿Ã
         line.startWidth = lineWidth;
         line.endWidth = lineWidth;
-        line.positionCount = 2;
     }
 
     /// <summary>

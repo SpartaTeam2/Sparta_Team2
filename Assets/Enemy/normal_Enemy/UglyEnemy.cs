@@ -53,10 +53,10 @@ public class UglyEnemy : BaseEnemy, IEnemyIdle, IEnemyTracking, IEnemyAttack
         // 추적 범위 내 ( 이동 )
         if(distance <= trackingRange)
         {
-            Vector2 dir = TargetDirection(target);
+            Vector2 dir = TargetDirection(target.position);
             rigidBody.velocity = dir * moveSpeed;
 
-            LookAtTarget(target);
+            LookAtTarget(target.position);
         }
         
         // 공격 범위 내 ( 공격 )
@@ -81,7 +81,7 @@ public class UglyEnemy : BaseEnemy, IEnemyIdle, IEnemyTracking, IEnemyAttack
 
         if(attackHandler.isAttacking)
         {
-            LookAtTarget(target);
+            LookAtTarget(target.position);
             return;
         }
 
@@ -112,7 +112,7 @@ public class UglyEnemy : BaseEnemy, IEnemyIdle, IEnemyTracking, IEnemyAttack
         bullet.transform.position = transform.position;
 
         //  총알 방향 / 이동
-        Vector2 dir = TargetDirection(target);
+        Vector2 dir = TargetDirection(target.position);
         bullet.Shot(dir);
         animator.SetTrigger("AttackTrigger");   // 공격 모션 
 

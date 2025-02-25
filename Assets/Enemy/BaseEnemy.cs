@@ -60,14 +60,14 @@ public abstract class BaseEnemy : MonoBehaviour
 
     protected abstract void InitEnemy();
 
-    protected Vector2 TargetDirection(Transform target)
+    protected Vector3 TargetDirection(Vector3 target)
     {
-        return (target.position - transform.position).normalized;
+        return (target - transform.position).normalized;
     }
 
-    protected void LookAtTarget(Transform target)
+    protected void LookAtTarget(Vector3 target)
     {
-        Vector2 dir = TargetDirection(target);
+        Vector3 dir = TargetDirection(target);
 
         spriteRenderer.flipX = dir.x > 0 ? true : false;
     }
