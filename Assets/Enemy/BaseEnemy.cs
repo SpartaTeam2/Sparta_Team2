@@ -60,6 +60,17 @@ public abstract class BaseEnemy : MonoBehaviour
 
     protected abstract void InitEnemy();
 
+    protected Vector2 TargetDirection(Transform target)
+    {
+        return (target.position - transform.position).normalized;
+    }
+
+    protected void LookAtTarget(Transform target)
+    {
+        Vector2 dir = TargetDirection(target);
+
+        spriteRenderer.flipX = dir.x > 0 ? true : false;
+    }
 
     public void GetDamage(float damage)
     {

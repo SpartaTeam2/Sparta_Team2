@@ -53,14 +53,10 @@ public class UglyEnemy : BaseEnemy, IEnemyIdle, IEnemyTracking, IEnemyAttack
         // 추적 범위 내 ( 이동 )
         if(distance <= trackingRange)
         {
-            Vector2 dir = (target.position - transform.position).normalized;
+            Vector2 dir = TargetDirection(target);
             rigidBody.velocity = dir * moveSpeed;
 
-            spriteRenderer.flipX = dir.x > 0;
-            if (dir.x < 0)
-                spriteRenderer.flipX = false;
-            else
-                spriteRenderer.flipX = true;
+            LookAtTarget(target);
         }
         
         // 공격 범위 내 ( 공격 )
@@ -84,7 +80,10 @@ public class UglyEnemy : BaseEnemy, IEnemyIdle, IEnemyTracking, IEnemyAttack
         }
 
         if(attackHandler.isAttacking)
+        {
+            LookAtTarget(target);
             return;
+        }
 
         float distance = Vector2.Distance(transform.position, target.position);
 
@@ -101,9 +100,6 @@ public class UglyEnemy : BaseEnemy, IEnemyIdle, IEnemyTracking, IEnemyAttack
             attackHandler.AttackDelay();
             StartCoroutine(Shoot());
         }
-
-        else
-            return;
     }
 
     private IEnumerator Shoot()
@@ -111,15 +107,13 @@ public class UglyEnemy : BaseEnemy, IEnemyIdle, IEnemyTracking, IEnemyAttack
         float lineTime = GuideLine.Instance.OnTrackingLine(transform, target, 0.1f);
         yield return new WaitForSeconds(lineTime);
 
-        // 방향
-        Vector2 direction = (target.position - transform.position).normalized;
-
         // 생성
         EnemyBullet bullet = Instantiate(bulletPrefab).GetComponent<EnemyBullet>();
         bullet.transform.position = transform.position;
 
-        // 이동
-        bullet.Shot(direction);
+        //  총알 방향 / 이동
+        Vector2 dir = TargetDirection(target);
+        bullet.Shot(dir);
         animator.SetTrigger("AttackTrigger");   // 공격 모션 
 
         // 잠시 대기 후 공격중 상태 끝

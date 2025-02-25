@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 3750640531423161927}
   - component: {fileID: 2105777000992595621}
   - component: {fileID: 6564881993644712598}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: 02_Enemy
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
