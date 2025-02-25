@@ -223,6 +223,7 @@ MonoBehaviour:
   skillCardPrefab: {fileID: 7737765013617366168, guid: 794aac39c014e4643bc499a63bc6e195, type: 3}
   ApplyBasicSkills: {fileID: 900264729}
   basicSkills: {fileID: 1058571607}
+  cardObjectList: []
   randomSkillNum: 0
   selectedSkillNum: 0
 --- !u!4 &224896726
@@ -602,8 +603,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13f1040875cea2a4d8b769b626139b20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   skill: {fileID: 1058571607}
-  projectileCount: 3
+  projectileLimit: 3
+  wideProjectileLimit: 2
 --- !u!4 &900264730
 Transform:
   m_ObjectHideFlags: 0

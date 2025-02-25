@@ -31,13 +31,6 @@ public class InventoryManager : MonoBehaviour
         AddItem(new Item("심장", 7, 1, Resources.Load<Sprite>("Icons/ui_heart_full"), Item.ItemType.Armor));
         AddItem(new Item("?", 12, 0, Resources.Load<Sprite>("Icons/wogol_idle_anim_f2"), Item.ItemType.Accessory));
         AddItem(new Item("방패", 2, 10, Resources.Load<Sprite>("Icons/wogol_idle_anim_f2"), Item.ItemType.Accessory));
-<<<<<<< HEAD
-=======
-        AddItem(new Item("단검", 10, 2, Resources.Load<Sprite>("Icons/weapon_anime_sword"), Item.ItemType.Weapon));
-        AddItem(new Item("심장", 7, 1, Resources.Load<Sprite>("Icons/ui_heart_full"), Item.ItemType.Armor));
-        AddItem(new Item("?", 12, 0, Resources.Load<Sprite>("Icons/wogol_idle_anim_f2"), Item.ItemType.Accessory));
-        AddItem(new Item("방패", 2, 10, Resources.Load<Sprite>("Icons/wogol_idle_anim_f2"), Item.ItemType.Accessory));
->>>>>>> Chunjihoon
     }
 
     public void AddItem(Item item)
@@ -56,26 +49,6 @@ public class InventoryManager : MonoBehaviour
 
         Item itemInfo = itemData[item];
 
-<<<<<<< HEAD
-        // 각 슬롯별로 장비할 수 있는 아이템 제한
-        switch (itemInfo.itemType)
-        {
-            case Item.ItemType.Weapon:
-                if (equippedWeapon != null) UnequipItem(equippedWeapon);
-                equippedWeapon = item;
-                item.transform.SetParent(weaponSlot);
-                break;
-
-            case Item.ItemType.Armor:
-                if (equippedArmor != null) UnequipItem(equippedArmor);
-                equippedArmor = item;
-                item.transform.SetParent(armorSlot);
-                break;
-        
-               
-        }
-        
-=======
         //무기 착용 (한 개만 가능)
         if (itemInfo.itemType == Item.ItemType.Weapon)
         {
@@ -115,43 +88,18 @@ public class InventoryManager : MonoBehaviour
         {
             return; // 장비가 아니면 착용 불가
         }
->>>>>>> Chunjihoon
 
         item.transform.SetAsLastSibling();
         item.GetComponent<Button>().onClick.RemoveAllListeners();
         item.GetComponent<Button>().onClick.AddListener(() => UnequipItem(item));
 
-<<<<<<< HEAD
-=======
         // 스탯 반영
->>>>>>> Chunjihoon
         playerAttack += itemInfo.attack;
         playerHp += itemInfo.Hp;
         UpdatePlayerStats();
     }
     public void UnequipItem(GameObject item)
     {
-<<<<<<< HEAD
-        if (!itemData.ContainsKey(item)) return;
-
-        Item itemInfo = itemData[item];
-
-        switch (itemInfo.itemType)
-        {
-            case Item.ItemType.Weapon: equippedWeapon = null; break;
-            case Item.ItemType.Armor: equippedArmor = null; break;
-            case Item.ItemType.Accessory: equippedAccessory = null; break;
-        }
-
-        item.transform.SetParent(inventoryGrid);
-        item.transform.SetAsLastSibling();
-        item.GetComponent<Button>().onClick.RemoveAllListeners();
-        item.GetComponent<Button>().onClick.AddListener(() => EquipItem(item));
-
-        playerAttack -= itemInfo.attack;
-        playerHp -= itemInfo.Hp;
-        UpdatePlayerStats();
-=======
         item.transform.SetParent(inventoryGrid);
         item.transform.SetAsLastSibling();
 
@@ -164,7 +112,6 @@ public class InventoryManager : MonoBehaviour
             playerHp -= itemData[item].Hp;
             UpdatePlayerStats();
         }
->>>>>>> Chunjihoon
     }
 
 
