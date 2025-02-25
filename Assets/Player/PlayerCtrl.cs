@@ -25,6 +25,7 @@ public class PlayerCtrl : MonoBehaviour
     public float BulletSpace; //투사체 간극
     public float BulletCount; //투사체 개수
     public bool IsWideShot; //와이드샷 on/off
+    public bool IsBackShot; //백샷 on/off
 
     [Header("플레이어 피격 정보")]
     public GameObject HitEffect;
@@ -65,7 +66,8 @@ public class PlayerCtrl : MonoBehaviour
             }
             else
             {
-                Debug.Log("The Input Value of xMove is 0");
+                //Debug.Log("The Input Value of xMove is 0");
+                Debug.Log(transform.position);
             }
         }
         else
@@ -122,13 +124,28 @@ public class PlayerCtrl : MonoBehaviour
         }
     }
 
+    private void BackShot()
+    {
+        if (!IsBackShot)
+            return;
+
+        Vector3 newPos3 = new Vector3 (newPos.x, newPos.y, 0);
+        Vector3 backShot = GUN.transform.position - (newPos3.normalized * 0.5f);
+        float backZ = Mathf.Atan2(-newPos.y, -newPos.x) * Mathf.Rad2Deg;
+        Quaternion backDirection = Quaternion.Euler(0, 0, backZ);
+
+        Instantiate(BulletPrefab, backShot, backDirection).GetComponent<BulletCtrl>().Attacker = gameObject;
+    }
+
     private void WideShot()
     {
         if (!IsWideShot)
             return;
 
-        Vector3 wideShotLeft = new Vector3(transform.position.x - GUN.transform.position.y, transform.position.y + GUN.transform.position.x, 0);
-        Vector3 wideShotRight = new Vector3(transform.position.x + GUN.transform.position.y, transform.position.y - GUN.transform.position.x, 0);
+        Vector3 newPos3 = new Vector3(newPos.x, newPos.y, 0);
+
+        Vector3 wideShotLeft = new Vector3(transform.position.x - (newPos3.normalized.y * 0.25f), transform.position.y + (newPos3.normalized.x * 0.25f), 0);
+        Vector3 wideShotRight = new Vector3(transform.position.x + (newPos3.normalized.y * 0.25f), transform.position.y - (newPos3.normalized.x * 0.25f), 0);
 
         float leftZ = Mathf.Atan2(-newPos.x, newPos.y) * Mathf.Rad2Deg;
         float rightZ = Mathf.Atan2(newPos.x, -newPos.y) * Mathf.Rad2Deg;
@@ -159,6 +176,7 @@ public class PlayerCtrl : MonoBehaviour
 
     void fire()
     {
+        BackShot();
         WideShot();
         if (BulletCount == 1)
             Instantiate(BulletPrefab, GUN.transform.position, GUN.transform.rotation).GetComponent<BulletCtrl>().Attacker = gameObject;
