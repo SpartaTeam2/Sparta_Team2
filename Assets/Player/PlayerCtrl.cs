@@ -23,9 +23,11 @@ public class PlayerCtrl : MonoBehaviour
     public float GunRate = 10f; //  발사 시간
     private float GunTimer; // 발사 타이머
     public float BulletSpace; //투사체 간극
-    public float BulletCount; //투사체 개수
-    public bool IsWideShot; //와이드샷 on/off
+    public int BulletCount; //투사체 개수
+    public bool IsSideShot; //측면샷 on/off
     public bool IsBackShot; //백샷 on/off
+    public bool IsWideShot; //와이드샷 on/off
+    public int WideCount;
 
     [Header("플레이어 피격 정보")]
     public GameObject HitEffect;
@@ -137,15 +139,15 @@ public class PlayerCtrl : MonoBehaviour
         Instantiate(BulletPrefab, backShot, backDirection).GetComponent<BulletCtrl>().Attacker = gameObject;
     }
 
-    private void WideShot()
+    private void SideShot()
     {
-        if (!IsWideShot)
+        if (!IsSideShot)
             return;
 
         Vector3 newPos3 = new Vector3(newPos.x, newPos.y, 0);
 
-        Vector3 wideShotLeft = new Vector3(transform.position.x - (newPos3.normalized.y * 0.25f), transform.position.y + (newPos3.normalized.x * 0.25f), 0);
-        Vector3 wideShotRight = new Vector3(transform.position.x + (newPos3.normalized.y * 0.25f), transform.position.y - (newPos3.normalized.x * 0.25f), 0);
+        Vector3 sideShotLeft = new Vector3(transform.position.x - (newPos3.normalized.y * 0.25f), transform.position.y + (newPos3.normalized.x * 0.25f), 0);
+        Vector3 sideShotRight = new Vector3(transform.position.x + (newPos3.normalized.y * 0.25f), transform.position.y - (newPos3.normalized.x * 0.25f), 0);
 
         float leftZ = Mathf.Atan2(-newPos.x, newPos.y) * Mathf.Rad2Deg;
         float rightZ = Mathf.Atan2(newPos.x, -newPos.y) * Mathf.Rad2Deg;
@@ -153,14 +155,41 @@ public class PlayerCtrl : MonoBehaviour
         Quaternion leftDirection = Quaternion.Euler(0, 0, leftZ);
         Quaternion rightDirection = Quaternion.Euler(0, 0, rightZ);
 
-        Instantiate(BulletPrefab, wideShotLeft, leftDirection).GetComponent<BulletCtrl>().Attacker = gameObject;
-        Instantiate(BulletPrefab, wideShotRight, rightDirection).GetComponent<BulletCtrl>().Attacker = gameObject;
+        Instantiate(BulletPrefab, sideShotLeft, leftDirection).GetComponent<BulletCtrl>().Attacker = gameObject;
+        Instantiate(BulletPrefab, sideShotRight, rightDirection).GetComponent<BulletCtrl>().Attacker = gameObject;
+    }
+
+    private void WideShot()
+    {
+        if (!IsWideShot)
+            return;
+
+        Vector3 newPos3 = new Vector3(newPos.x, newPos.y, 0);
+
+        if (WideCount > 0)
+        {
+            Quaternion deg30 = GUN.transform.rotation * Quaternion.Euler(0, 0, 30);
+            Quaternion degm30 = GUN.transform.rotation * Quaternion.Euler(0, 0, -30);
+            Instantiate(BulletPrefab, GUN.transform.position, deg30).GetComponent<BulletCtrl>().Attacker = gameObject;
+            Instantiate(BulletPrefab, GUN.transform.position, degm30).GetComponent<BulletCtrl>().Attacker = gameObject;
+
+            if(WideCount > 1)
+            {
+                Quaternion deg60 = GUN.transform.rotation * Quaternion.Euler(0, 0, 60);
+                Quaternion degm60 = GUN.transform.rotation * Quaternion.Euler(0, 0, -60);
+                Instantiate(BulletPrefab, GUN.transform.position, deg60).GetComponent<BulletCtrl>().Attacker = gameObject;
+                Instantiate(BulletPrefab, GUN.transform.position, degm60).GetComponent<BulletCtrl>().Attacker = gameObject;
+            }
+        }
+
+
     }
 
     private void MultipleFire() //최대 투사체 4개, 중앙부터 대칭으로  -1.5 -0.5 0.5 1.5 의 위치
     {
         float bulletspace = BulletSpace / (BulletCount - 1); //투사체간 간극
-        Vector3 verticalDirection = new Vector3(-GUN.transform.position.y, GUN.transform.position.x, 0); //원의 접선 방향 벡터값
+        Vector3 newPos3 = new Vector3(newPos.x, newPos.y, 0);
+        Vector3 verticalDirection = new Vector3(-newPos3.y, newPos3.x, 0); //원의 접선 방향 벡터값
 
         for (int i = 0; i < BulletCount; i++)
         {
@@ -168,7 +197,7 @@ public class PlayerCtrl : MonoBehaviour
             // 3개 -1.5 0 1.5            
             // 2개 -1.5 1.5               
             float location = (i - ((BulletCount - 1) / 2.0f)) * bulletspace;
-            Vector3 multiplePosition = GUN.transform.position + verticalDirection.normalized * location;
+            Vector3 multiplePosition = transform.position + (newPos3.normalized * 0.25f) + verticalDirection.normalized * location;
 
             Instantiate(BulletPrefab, multiplePosition, GUN.transform.rotation).GetComponent<BulletCtrl>().Attacker = gameObject;
         }
@@ -177,6 +206,7 @@ public class PlayerCtrl : MonoBehaviour
     void fire()
     {
         BackShot();
+        SideShot();
         WideShot();
         if (BulletCount == 1)
             Instantiate(BulletPrefab, GUN.transform.position, GUN.transform.rotation).GetComponent<BulletCtrl>().Attacker = gameObject;
