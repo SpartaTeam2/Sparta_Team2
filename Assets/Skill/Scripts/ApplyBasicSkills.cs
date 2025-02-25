@@ -8,7 +8,8 @@ public class ApplyBasicSkills : MonoBehaviour
 
     [SerializeField] private BasicSkills skill;
 
-    [SerializeField] private int projectileCount;
+    [SerializeField] private int projectileLimit = 3;
+    [SerializeField] private int wideProjectileLimit = 2;
 
     public void RemoveSkillFromDict(int skillID)
     {
@@ -56,8 +57,15 @@ public class ApplyBasicSkills : MonoBehaviour
                         break;
                     case 206:
                         //전방 투사체 추가
-                        projectileCount--;
-                        if (projectileCount == 0)
+                        //player.AttackDamage *= (1 - skillData.skillValue);
+                        projectileLimit--;
+                        if (projectileLimit == 0)
+                            RemoveSkillFromDict(skillData.skillId);
+                        break;
+                    case 207:
+                        //사선 투사체 추가
+                        wideProjectileLimit--;
+                        if (wideProjectileLimit == 0)
                             RemoveSkillFromDict(skillData.skillId);
                         break;
                 }

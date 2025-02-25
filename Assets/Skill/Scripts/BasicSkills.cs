@@ -32,7 +32,7 @@ public class BasicSkills : MonoBehaviour
         basicSkillDict.Add(104, new SkillData(104, "크리티컬 부스트", "크리티컬 데미지 : + 15%", SkillType.CriticalBoost, 0.15f));
         basicSkillDict.Add(105, new SkillData(105, "HP 부스트", "최대 체력 : + 10%", SkillType.HealthBoost, 0.1f));
         basicSkillDict.Add(106, new SkillData(106, "백샷", "후방 투사체 추가", SkillType.ProjectileUp, 1));
-        basicSkillDict.Add(107, new SkillData(107, "와이드샷", "좌우 투사체 추가", SkillType.ProjectileUp, 1));
+        basicSkillDict.Add(107, new SkillData(107, "사이드샷", "좌우 투사체 추가", SkillType.ProjectileUp, 1));
 
 
         epicSkillDict.Add(201, new SkillData(201, "공격부스트", "공격력 : + 20%", SkillType.AttackBoost, 0.2f));
@@ -40,7 +40,8 @@ public class BasicSkills : MonoBehaviour
         epicSkillDict.Add(203, new SkillData(203, "크리티컬 마스터", "크리티컬 확률 : + 20%", SkillType.CriticalMaster, 0.2f));
         epicSkillDict.Add(204, new SkillData(204, "크리티컬 부스트", "크리티컬 데미지 : + 30%", SkillType.CriticalBoost, 0.3f));
         epicSkillDict.Add(205, new SkillData(205, "HP 부스트", "최대 체력 : + 20%", SkillType.HealthBoost, 0.2f));
-        epicSkillDict.Add(206, new SkillData(206, "멀티샷", "투사체 1개 증가, 공격속도 15% 데미지 10% 하락", SkillType.ProjectileUp, 1));
+        epicSkillDict.Add(206, new SkillData(206, "멀티샷", "투사체 1개 증가, 데미지 10% 하락", SkillType.ProjectileUp, 0.1f));
+        epicSkillDict.Add(207, new SkillData(207, "와이드샷", "사선 투사체 추가", SkillType.ProjectileUp, 1));
 
 
         legendSkillDict.Add(301, new SkillData(301, "공격부스트", "공격력 : + 30%", SkillType.AttackBoost, 0.3f));
