@@ -25,7 +25,7 @@ public class SkillCard : MonoBehaviour
         int locatecard = SkillHandler.Instance.selectedSkillNum;
         int cardtotal = SkillHandler.Instance.randomSkillNum;
 
-        skillCardBackGround.transform.position += new Vector3(-220 * (cardtotal - 1) + (220 * locatecard), 0, 0);
+        skillCardBackGround.transform.position += new Vector3(-220 * (cardtotal - 1) + (440 * locatecard), 0, 0);
     }
 
     public void OnClickSelect()

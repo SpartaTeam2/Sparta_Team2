@@ -11,15 +11,16 @@ public class ApplyBasicSkills : MonoBehaviour
     [SerializeField] private int projectileLimit = 3;
     [SerializeField] private int wideProjectileLimit = 2;
 
-    public void RemoveSkillFromDict(int skillID)
+    public void RemoveSkillFromRandom(int skillID)
     {
         if(skillID > 300)
-            skill.legendSkillDict.Remove(skillID);
+            skill.legendSkillDict[skillID].SetActive(false);
         else if(skillID > 200)
-            skill.epicSkillDict.Remove(skillID);
+            skill.epicSkillDict[skillID].SetActive(false);
         else
-            skill.basicSkillDict.Remove(skillID);
+            skill.basicSkillDict[skillID].SetActive(false);
     }
+
     public void ApplySkill(SkillData skillData)
     {
         switch (skillData.skillType)
@@ -49,28 +50,32 @@ public class ApplyBasicSkills : MonoBehaviour
                 {
                     case 106:
                         //후방 투사체 추가
-                        RemoveSkillFromDict(skillData.skillId);
+                        //player.IsBackShot = true;
+                        RemoveSkillFromRandom(skillData.skillId);
                         break;
                     case 107:
                         //좌우 투사체 추가
-                        RemoveSkillFromDict(skillData.skillId);
+                        //player.IsSideShot = true;
+                        RemoveSkillFromRandom(skillData.skillId);
                         break;
                     case 206:
                         //전방 투사체 추가
+                        //player.BulletCount++;
                         //player.AttackDamage *= (1 - skillData.skillValue);
                         projectileLimit--;
                         if (projectileLimit == 0)
-                            RemoveSkillFromDict(skillData.skillId);
+                            RemoveSkillFromRandom(skillData.skillId);
                         break;
                     case 207:
                         //사선 투사체 추가
+                        //player.IsWideShot = true;
+                        //player.WideCount++;
                         wideProjectileLimit--;
                         if (wideProjectileLimit == 0)
-                            RemoveSkillFromDict(skillData.skillId);
+                            RemoveSkillFromRandom(skillData.skillId);
                         break;
                 }
                 break;
         }
     }
-
 }

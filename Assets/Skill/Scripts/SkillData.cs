@@ -18,13 +18,20 @@ public class SkillData
     public string skillDescription;
     public SkillType skillType;
     public float skillValue;
+    public bool canPick;
 
-    public SkillData(int id, string name, string description, SkillType type, float value1)
+    public SkillData(int id, string name, string description, SkillType type, float value1, bool pick)
     {
         skillId = id;
         skillName = name;
         skillDescription = description;
         skillType = type;
         skillValue = value1;
+        canPick = pick;
+    }
+
+    public void SetActive(bool active)
+    {
+        canPick = active;
     }
 }
