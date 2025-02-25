@@ -7,5 +7,4 @@ public class MonsterManager : MonoBehaviour
 {
     public List<GameObject> MonsterArr;
     public List<GameObject> _boss;
-    public MonsterData[] _monsterData;
 }

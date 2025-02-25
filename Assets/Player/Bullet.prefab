@@ -112,9 +112,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BulletImage: {fileID: 0}
   lifetime: 1
-  Damage: 0
+  Damage: 10
   BulletSpeed: 20
   Attacker: {fileID: 0}
+  _audioClip: {fileID: 8300000, guid: 4f41861152b609241bd1cf7e10188006, type: 3}
 --- !u!82 &7680290783558573317
 AudioSource:
   m_ObjectHideFlags: 0
@@ -127,7 +128,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.495
+  m_Volume: 0.248
   m_Pitch: 1
   Loop: 0
   Mute: 0

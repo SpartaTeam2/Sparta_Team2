@@ -31,10 +31,13 @@ public class PlayerCtrl : MonoBehaviour
     public float CritChance = 0;
     public float CritDamage = 0;
 
+    public AudioClip FireSoundClip;
+
     [Header("플레이어 피격 정보")]
     public GameObject HitEffect;
 
     public AudioSource _audioSource;
+    public AudioClip HitSoundClip;
     public AudioClip DieSoundClip;
 
     Vector2 newPos;
@@ -214,6 +217,7 @@ public class PlayerCtrl : MonoBehaviour
             Instantiate(BulletPrefab, GUN.transform.position, GUN.transform.rotation).GetComponent<BulletCtrl>().Attacker = gameObject;
         else if (BulletCount > 1)
             MultipleFire();
+        AudioSource.PlayClipAtPoint(FireSoundClip, transform.position);
     }
     public void GetDamage(float Damage)
     {
@@ -224,6 +228,10 @@ public class PlayerCtrl : MonoBehaviour
             Destroy(gameObject, 1.0f); //삭제처리 아니고 나중에 부활처리로 할겁니다요
             return;
         }
-        Destroy(Instantiate(HitEffect, transform.position, Quaternion.identity), 0.5f);
+        else
+        {
+            AudioSource.PlayClipAtPoint(HitSoundClip, transform.position);
+        }
+            Destroy(Instantiate(HitEffect, transform.position, Quaternion.identity), 0.5f);
     }
 }

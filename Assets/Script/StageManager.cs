@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,8 +10,11 @@ public class StageManager : MonoBehaviour
     public int StageLevel;
     public int MaxMonster;
 
-    public GameObject[] Maps;
+    public GameObject Map;
+    public Sprite[] MapSprite;
     public GameObject[] Monsters;
+
+    public GameObject Portal;
 
     public enum SpawnType
     {
@@ -24,13 +28,9 @@ public class StageManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Portal.SetActive(false);
         InsMap();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        SpawnMonster();
     }
 
     private void LateUpdate()
@@ -40,8 +40,7 @@ public class StageManager : MonoBehaviour
         {
             if (StageLevel <= 10)
             {
-                StageLevel++;
-                SpawnMonster();
+                EndGame();
             }
             else
             {
@@ -49,32 +48,26 @@ public class StageManager : MonoBehaviour
             }
         }
     }
-
     void InsMap()
     {
-        if (GameObject.Find("Field") != null)
-        {
-            Destroy(GameObject.Find("Field"));
-        }
         switch(DungeonLevel)
         {
             case 1:
-                Instantiate(Maps[Random.Range(0, 4)]).name =("Field");
+                Map.GetComponent<SpriteRenderer>().sprite = MapSprite[Random.Range(0, 3)];
                 break;
 
             case 2:
-
+                Map.GetComponent<SpriteRenderer>().sprite = MapSprite[Random.Range(0, 3)];
                 break;
 
             case 3:
-
+                Map.GetComponent<SpriteRenderer>().sprite = MapSprite[Random.Range(0, 3)];
                 break;
 
             default:
                 break;
         }
     }
-
     void SpawnMonster()
     {
         switch (_spawnType)
@@ -98,13 +91,12 @@ public class StageManager : MonoBehaviour
     }
     void InsCleanType()
     {
-        for (int i =0; i<= MaxMonster; i++)
+        for (int i =0; i< MaxMonster; i++)
         {
             GameObject _insMons = Instantiate(GetComponent<MonsterManager>().MonsterArr[Random.Range(0, 3)], new Vector2(Random.Range(-3, 3), Random.Range(-3, 3)), Quaternion.identity);
             //_insMons.GetComponent<UglyEnemy>().maxHP = maxHP * 10;
         }
     }
-
     void InsWaveType()
     {
         //RandomSpawnMonster((StageLevel - 1) * 3, (StageLevel * 3));
@@ -112,16 +104,13 @@ public class StageManager : MonoBehaviour
             GameObject _insMons = Instantiate(GetComponent<MonsterManager>().MonsterArr[Random.Range(0, 3)], new Vector2(Random.Range(-3, 3), Random.Range(-3, 3)), Quaternion.identity);
             //_insMons.GetComponent<UglyEnemy>().maxHP = maxHP * 10;
         }
-
     }
-
     void InsBossType()
     {
         GameObject _insMons = Instantiate(GetComponent<MonsterManager>().MonsterArr[Random.Range(0, 3)], new Vector2(Random.Range(-3, 3), Random.Range(-3, 3)), Quaternion.identity);
 
         //Instantiate(_boss[0]);
     }
-
     public void RandomSpawnMonster(int _minNum, int _maxNum)
     {
         //for (int i = 0; i >= MaxMonster; i++)
@@ -131,9 +120,13 @@ public class StageManager : MonoBehaviour
         //}
         ////Monster Mondata = MonsterPre.GetComponent<MonsterData>
     }
-
     void EndGame()
     {
-        SceneManager.LoadScene("Lobby");
+        Portal.SetActive(true);
+    }
+    public void Upstage()
+    {
+        StageLevel++;
+        SpawnMonster();
     }
 }
