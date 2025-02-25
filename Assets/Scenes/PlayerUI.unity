@@ -2900,7 +2900,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9b376d642d4f24789b3eb7634c223b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeScene: Lobby
+  changeScene: BattleStart
   button: {fileID: 585822884}
 --- !u!114 &585822884
 MonoBehaviour:
@@ -8895,6 +8895,9 @@ MonoBehaviour:
   BulletPrefab: {fileID: 0}
   GUN: {fileID: 0}
   GunRate: 10
+  HitEffect: {fileID: 0}
+  _audioSource: {fileID: 0}
+  DieSoundClip: {fileID: 0}
 --- !u!61 &757580640
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9019,7 +9022,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9b376d642d4f24789b3eb7634c223b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeScene: Lobby
+  changeScene: BattleStart
   button: {fileID: 821675845}
 --- !u!114 &821675845
 MonoBehaviour:

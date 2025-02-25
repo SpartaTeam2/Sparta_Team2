@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class UIManager : MonoBehaviour
+public class PanelUI : MonoBehaviour
 {
     public GameObject losePanel; 
     public GameObject winPanel;
