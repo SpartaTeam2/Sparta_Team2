@@ -128,6 +128,6 @@ public class PlayerCtrl : MonoBehaviour
             Destroy(gameObject, 1.0f); //삭제처리 아니고 나중에 부활처리로 할겁니다요
             return;
         }
-        Destroy(Instantiate(HitEffect, transform.position, Quaternion.identity),0.5f);
+        Destroy(Instantiate(HitEffect, transform.position, Quaternion.identity), 0.5f);
     }
 }

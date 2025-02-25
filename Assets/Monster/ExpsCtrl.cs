@@ -20,7 +20,6 @@ public class ExpsCtrl : MonoBehaviour
     {
         transform.position = Vector2.Lerp(transform.position, Player.transform.position, Speed * Time.deltaTime);
         Speed+= Time.deltaTime;
-        //transform.position = Vector2.MoveTowards(transform.position, Player.transform.position, Speed);
     }
     private void LateUpdate()
     {

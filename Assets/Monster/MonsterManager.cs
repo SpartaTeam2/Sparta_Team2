@@ -1,47 +1,84 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class MonsterManager : MonoBehaviour
 {
-    public GameObject MonsterPre;
-    public MonsterData[] _monster;
+    public List<GameObject> MonsterArr;
+    public List<GameObject> _boss;
+
+    public int DungeonLevel;
+    public int StageLevel;
 
     public int MaxMonster;
+
+    public enum SpawnType
+    {
+        Clean,
+        Wave,
+        Boss
+    }
+    SpawnType _spawnType;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        SetMonsterStat(MonsterArr,StageLevel);
+        switch (_spawnType)
+        {
+            case SpawnType.Clean:
+                InsCleanType();
+                break;
+
+            case SpawnType.Wave:
+                InsWaveType();
+                break;
+
+            case SpawnType.Boss:
+                InsBossType();
+                break;
+
+            default:
+                Debug.Log("Null SpawnType");
+                break;
+        }
+        RandomSpawnMonster(1, 3);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    /// <summary>
-    /// MinNum과 MaxNum을포함합니다.
-    /// </summary>
-    /// <param name="MinNum"></param>
-    /// <param name="MaxNum"></param>
-    /// <returns></returns>
-    int RandomMonster(int _minNum, int _maxNum, int _maxMonster)
+    void InsCleanType ()
     {
-        for (int MN = 0; MN >= _maxMonster; MN++)
-        {
-            SpawnMonster(MN);
-        }
-        int i = Random.Range(_minNum, _maxNum);
-        return i ;
+        //Instantiate(MonsterArr[]);
+        //RandomSpawnMonster();
     }
 
-    void SpawnMonster(int _monsterIndex)
+    void InsWaveType()
+    {
+        RandomSpawnMonster((StageLevel-1)*3, (StageLevel* 3));
+    }
+
+    void InsBossType()
+    {
+        Instantiate(_boss[0]);
+    }
+
+    public void SetMonsterStat(List<GameObject> _monster, int Level)
     {
 
-        for (int i = 0; i>= MaxMonster;i++)
+    }
+
+    public void RandomSpawnMonster(int _minNum, int _maxNum)
+    {
+        for (int i = 0; i>= MaxMonster; i++)
         {
-            Instantiate(MonsterPre);
+            int j = UnityEngine.Random.Range(_minNum, _maxNum);
+            Instantiate(MonsterArr[j]);
         }
         //Monster Mondata = MonsterPre.GetComponent<MonsterData>
     }
