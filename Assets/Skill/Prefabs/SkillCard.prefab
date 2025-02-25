@@ -546,6 +546,8 @@ GameObject:
   - component: {fileID: 323469030491854140}
   - component: {fileID: 2541095774493842214}
   - component: {fileID: 3416461797310870083}
+  - component: {fileID: 7832869308167004923}
+  - component: {fileID: 838778107977570324}
   m_Layer: 5
   m_Name: BackGround
   m_TagString: Untagged
@@ -614,3 +616,43 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!95 &7832869308167004923
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9145098507142197101}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b34385356c809ae43b3db5d7b9b92ec7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &838778107977570324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9145098507142197101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdd7bf1f48d81354c83040d05ceca61d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rectTransform: {fileID: 0}
+  image: {fileID: 0}
+  skillImage: {fileID: 2590658172975850762}
+  nameText: {fileID: 1098213345944021498}
+  descriptionText: {fileID: 8281525729284528860}
+  time: 3
+  delayTime: 3
