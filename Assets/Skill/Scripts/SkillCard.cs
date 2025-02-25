@@ -11,6 +11,8 @@ public class SkillCard : MonoBehaviour
     public Text skillName;
     public Text skillDescription;
 
+    private int selectedIndex;
+
     private Button selectButton;
     [SerializeField] private Image skillCardBackGround;
 
@@ -33,10 +35,19 @@ public class SkillCard : MonoBehaviour
         SkillHandler.Instance.ApplyBasicSkills.ApplySkill(selectedSkillData);
     }
 
+    public void DestroyObject()
+    {
+
+    }
+
     public void GetSelectedSkill(SkillData data)
     {
+        selectedIndex = SkillHandler.Instance.selectedSkillNum;
         selectedSkillData = data;
         skillName.text = data.skillName;
         skillDescription.text = data.skillDescription;
+
     }
+
+
 }

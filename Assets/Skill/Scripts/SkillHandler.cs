@@ -18,6 +18,7 @@ public class SkillHandler : MonoBehaviour
     public Dictionary<int, SkillData> epicSkillDict;
     public Dictionary<int, SkillData> legendSkillDict;
 
+    public List<GameObject> cardObjectList;
 
     public int randomSkillNum = 0;
     public int selectedSkillNum = 0;
@@ -44,6 +45,7 @@ public class SkillHandler : MonoBehaviour
         foreach (SkillData skill in selectedSkillList)
         {
             GameObject card = Instantiate(skillCardPrefab);
+            cardObjectList.Add(card);
             SkillCard cardData = card.GetComponent<SkillCard>();
             cardData.GetSelectedSkill(skill);
             cardData.CardLocation();
