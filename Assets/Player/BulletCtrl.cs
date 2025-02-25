@@ -50,7 +50,7 @@ public class BulletCtrl : MonoBehaviour
 
                     break;
                 case "Monster":
-                    collision.GetComponent<MonsterCtrl>().GetDamage(Damage);
+                    collision.GetComponent<BaseEnemy>().GetDamage(Damage);
                     Destroy(gameObject);
                     break;
                 default:
