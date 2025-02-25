@@ -502,8 +502,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13f1040875cea2a4d8b769b626139b20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 2472636660383753890, guid: de358acb2123b6f488943ee2c6f26c14, type: 3}
   skill: {fileID: 1058571607}
-  projectileCount: 3
+  projectileLimit: 3
+  wideProjectileLimit: 2
 --- !u!4 &900264730
 Transform:
   m_ObjectHideFlags: 0

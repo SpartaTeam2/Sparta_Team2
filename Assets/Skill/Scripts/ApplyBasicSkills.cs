@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ApplyBasicSkills : MonoBehaviour
 {
-    //[SerializeField] private GameObject player;
+    [SerializeField] private PlayerCtrl player;
 
     [SerializeField] private BasicSkills skill;
 
@@ -27,49 +27,49 @@ public class ApplyBasicSkills : MonoBehaviour
         {
             case SkillType.AttackBoost:
                 Debug.Log("attack");
-                //player.AttackDamage *= (1 + skillData.skillValue);
+                player.AttackDamage *= (1 + skillData.skillValue);
                 break;
             case SkillType.AttackSpeedBoost:
                 Debug.Log("attackspeed");
-                //player.GunRate *= (1 - skillData.skillValue);
+                player.GunRate *= (1 - skillData.skillValue);
                 break;
             case SkillType.CriticalMaster:
                 Debug.Log("critChance");
-                //player.critChance += skillData.skillValue;
+                player.CritChance += skillData.skillValue;
                 break;
             case SkillType.CriticalBoost:
                 Debug.Log("crit");
-                //player.critDamage += skillData.skillValue;
+                player.CritDamage += skillData.skillValue;
                 break;
             case SkillType.HealthBoost:
                 Debug.Log("health");
-                //player.MaxHp *= (1 + skillData.skillValue);
+                player.MaxHp *= (1 + skillData.skillValue);
                 break;
             case SkillType.ProjectileUp:
                 switch (skillData.skillId)
                 {
                     case 106:
-                        //후방 투사체 추가
-                        //player.IsBackShot = true;
+                        player.IsBackShot = true;
+                        Debug.Log("back");
                         RemoveSkillFromRandom(skillData.skillId);
                         break;
                     case 107:
-                        //좌우 투사체 추가
-                        //player.IsSideShot = true;
+                        player.IsSideShot = true;
+                        Debug.Log("side");
                         RemoveSkillFromRandom(skillData.skillId);
                         break;
                     case 206:
-                        //전방 투사체 추가
-                        //player.BulletCount++;
-                        //player.AttackDamage *= (1 - skillData.skillValue);
+                        player.BulletCount++;
+                        player.AttackDamage *= (1 - skillData.skillValue);
+                        Debug.Log("double");
                         projectileLimit--;
                         if (projectileLimit == 0)
                             RemoveSkillFromRandom(skillData.skillId);
                         break;
                     case 207:
-                        //사선 투사체 추가
-                        //player.IsWideShot = true;
-                        //player.WideCount++;
+                        player.IsWideShot = true;
+                        player.WideCount++;
+                        Debug.Log("wide");
                         wideProjectileLimit--;
                         if (wideProjectileLimit == 0)
                             RemoveSkillFromRandom(skillData.skillId);
