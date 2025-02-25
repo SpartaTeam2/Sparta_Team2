@@ -39,6 +39,26 @@ public class SkillHandler : MonoBehaviour
         RandomRarity(3); //test code
     }
 
+    public void DestroyCard()
+    {
+        foreach(GameObject card in cardObjectList)
+        {
+            SkillCardUI skillUI = card.GetComponentInChildren<SkillCardUI>();
+            if (cardObjectList.IndexOf(card) == selectedSkillNum)
+            {
+                //가운데로 이동 애니메이션
+                skillUI.Selected();
+                // 이후 파괴
+            }
+            else
+            {
+                //파괴 애니메이션
+                skillUI.Destroy();
+                // 이후 파괴
+            }
+        }
+    }
+
     //프리팹 스킬 카드 생성
     public void CreateSkillCard(List<SkillData> selectedSkillList)
     {

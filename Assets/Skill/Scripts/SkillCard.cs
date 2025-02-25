@@ -33,11 +33,8 @@ public class SkillCard : MonoBehaviour
     public void OnClickSelect()
     {
         SkillHandler.Instance.ApplyBasicSkills.ApplySkill(selectedSkillData);
-    }
 
-    public void DestroyObject()
-    {
-
+        SkillHandler.Instance.DestroyCard();
     }
 
     public void GetSelectedSkill(SkillData data)
