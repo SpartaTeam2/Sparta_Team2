@@ -27,9 +27,4 @@ public class MonsterData
     public AnimationClip Chase_Anim;
     public AnimationClip Fight_Anim;
     public AnimationClip Die_Anim;
-
-    public MonsterData (int _monsterIndex, string _monsterName, float _monsterMaxHP, float _monsterSpeed, float _chaseDis, float _fightDis)
-    {
-
-    }
 }
