@@ -2,12 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum PatternName
-{
-    TEST,
-    BURST
-}
-
 public class BossPattern : MonoBehaviour
 {
     [SerializeField]
@@ -26,7 +20,7 @@ public class BossPattern : MonoBehaviour
     {
         switch(pattern)
         {
-            case PatternName.TEST:
+            case PatternName.Shoot:
                 Debug.Log("test");
                 StartCoroutine(TestPattern(from, to));
                 break;
@@ -50,7 +44,7 @@ public class BossPattern : MonoBehaviour
         Vector2 direction = (to.position - from.position).normalized;
 
         // ÃÑ¾Ë »ý¼º
-        BossBullet bullet = Instantiate(bulletPrefab).GetComponent<BossBullet>();
+        EnemyBullet bullet = Instantiate(bulletPrefab).GetComponent<EnemyBullet>();
         bullet.transform.position = transform.position;
 
         // ÃÑ¾Ë ÀÌµ¿
@@ -74,7 +68,7 @@ public class BossPattern : MonoBehaviour
             Vector2 direction = (to.position - from.position).normalized;
 
             // ÃÑ¾Ë »ý¼º
-            BossBullet bullet = Instantiate(bulletPrefab).GetComponent<BossBullet>();
+            EnemyBullet bullet = Instantiate(bulletPrefab).GetComponent<EnemyBullet>();
             bullet.transform.position = transform.position;
 
             // ÃÑ¾Ë ÀÌµ¿

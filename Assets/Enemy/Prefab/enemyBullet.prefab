@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 5979908317867920487}
   - component: {fileID: -4936439892466649538}
   - component: {fileID: 3763237120253891600}
-  m_Layer: 9
-  m_Name: bossBuillet
+  m_Layer: 8
+  m_Name: enemyBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

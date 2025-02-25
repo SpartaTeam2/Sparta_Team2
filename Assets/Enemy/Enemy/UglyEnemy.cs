@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class UglyEnemy : BaseEnemy, IEnemyIdle, IEnemyTracking, IEnemyAttack
 {
-    [SerializeField]
+    [SerializeField] private GameObject bulletPrefab;
+
     private Transform target;
     private bool nullTarget => target == null;
 
@@ -19,7 +20,7 @@ public class UglyEnemy : BaseEnemy, IEnemyIdle, IEnemyTracking, IEnemyAttack
         attackDelay = 2f;
 
         trackingRange = 10f;
-        attackRange = 5f;
+        attackRange = 8f;
 
         attackHandler.InitHandler(attackDelay);
     }
@@ -81,6 +82,9 @@ public class UglyEnemy : BaseEnemy, IEnemyIdle, IEnemyTracking, IEnemyAttack
             return;
         }
 
+        if(attackHandler.isAttacking)
+            return;
+
         float distance = Vector2.Distance(transform.position, target.position);
 
         // 범위를 벗어났을때
@@ -91,15 +95,33 @@ public class UglyEnemy : BaseEnemy, IEnemyIdle, IEnemyTracking, IEnemyAttack
         }
 
         // 공격 가능
-        if (attackHandler.CanAttack)
+        if (attackHandler.canAttack)
         {
             attackHandler.AttackDelay();
-            animator.SetTrigger("AttackTrigger");   // 공격 모션 
-
-            // 공격 
+            StartCoroutine(Shoot());
         }
 
         else
             return;
+    }
+
+    private IEnumerator Shoot()
+    {
+        float lineTime = GuideLine.Instance.OnTrackingLine(transform, target, 0.1f);
+        yield return new WaitForSeconds(lineTime);
+
+        // 방향
+        Vector2 direction = (target.position - transform.position).normalized;
+
+        // 생성
+        EnemyBullet bullet = Instantiate(bulletPrefab).GetComponent<EnemyBullet>();
+        bullet.transform.position = transform.position;
+
+        // 이동
+        bullet.Shot(direction);
+        animator.SetTrigger("AttackTrigger");   // 공격 모션 
+
+        yield return new WaitForSeconds(0.4f);
+        attackHandler.EndAttack();
     }
 }

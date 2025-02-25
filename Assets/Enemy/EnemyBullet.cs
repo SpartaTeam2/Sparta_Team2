@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossBullet : MonoBehaviour
+public class EnemyBullet : MonoBehaviour
 {
     [SerializeField]
     private Rigidbody2D rigidbody;
