@@ -23,11 +23,13 @@ public class PlayerCtrl : MonoBehaviour
     public float GunRate = 10f; //  발사 시간
     private float GunTimer; // 발사 타이머
     public float BulletSpace; //투사체 간극
-    public int BulletCount; //투사체 개수
-    public bool IsSideShot; //측면샷 on/off
-    public bool IsBackShot; //백샷 on/off
-    public bool IsWideShot; //와이드샷 on/off
-    public int WideCount;
+    public int BulletCount = 1; //투사체 개수
+    public bool IsSideShot = false; //측면샷 on/off
+    public bool IsBackShot = false; //백샷 on/off
+    public bool IsWideShot = false; //와이드샷 on/off
+    public int WideCount = 0;
+    public float CritChance = 0;
+    public float CritDamage = 0;
 
     [Header("플레이어 피격 정보")]
     public GameObject HitEffect;
