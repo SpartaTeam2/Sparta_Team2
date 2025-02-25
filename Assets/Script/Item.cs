@@ -1,24 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Item
 {
-    
-        public string itemName;
-        public int attack;
-        public int Hp;
-        public Sprite itemIcon;
+    public enum ItemType { Weapon, Armor, Accessory }
 
+    public string itemName;
+    public int attack;
+    public int Hp;
+    public Sprite itemIcon;
+    public ItemType itemType;
 
-    public Item(string name, int atk, int hp, Sprite icon)
-        {
-            itemName = name;
-            attack = atk;
-            Hp = hp;
-            this.itemIcon = icon;
-
+    public Item(string name, int atk, int hp, Sprite icon, ItemType type)
+    {
+        itemName = name;
+        attack = atk;
+        Hp = hp;
+        itemIcon = icon;
+        itemType = type;
     }
-        
-
 }
