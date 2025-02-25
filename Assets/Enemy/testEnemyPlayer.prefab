@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 3083332813814525178}
   - component: {fileID: 8314822037427389538}
   m_Layer: 7
-  m_Name: testPlayer
-  m_TagString: Untagged
+  m_Name: testEnemyPlayer
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 5098687829983060109}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 22.13, y: 0.46, z: 0}
+  m_LocalPosition: {x: 6.92, y: -3.13, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

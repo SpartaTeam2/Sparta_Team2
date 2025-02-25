@@ -56,7 +56,8 @@ public class UglyEnemy : BaseEnemy, IEnemyIdle, IEnemyTracking, IEnemyAttack
             Vector2 dir = (target.position - transform.position).normalized;
             rigidBody.velocity = dir * moveSpeed;
 
-            if(dir.x < 0)
+            spriteRenderer.flipX = dir.x > 0;
+            if (dir.x < 0)
                 spriteRenderer.flipX = false;
             else
                 spriteRenderer.flipX = true;
@@ -121,6 +122,7 @@ public class UglyEnemy : BaseEnemy, IEnemyIdle, IEnemyTracking, IEnemyAttack
         bullet.Shot(direction);
         animator.SetTrigger("AttackTrigger");   // 공격 모션 
 
+        // 잠시 대기 후 공격중 상태 끝
         yield return new WaitForSeconds(0.4f);
         attackHandler.EndAttack();
     }
