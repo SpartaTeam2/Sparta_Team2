@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
@@ -22,12 +24,15 @@ public class PlayerCtrl : MonoBehaviour
     private float GunTimer; // 발사 타이머
     public float BulletSpace; //투사체 간극
     public float BulletCount; //투사체 개수
+    public bool IsWideShot; //와이드샷 on/off
 
     [Header("플레이어 피격 정보")]
     public GameObject HitEffect;
 
     public AudioSource _audioSource;
     public AudioClip DieSoundClip;
+
+    Vector2 newPos;
 
     Animator animator; // 애니메이터
 
@@ -92,7 +97,7 @@ public class PlayerCtrl : MonoBehaviour
         GameObject closestEnemy = FindClosestMonster();
         if (closestEnemy != null)
         {
-            Vector2 newPos = closestEnemy.transform.position - transform.position;
+            newPos = closestEnemy.transform.position - transform.position;
             float rotZ = Mathf.Atan2(newPos.y, newPos.x) * Mathf.Rad2Deg;
             GUN.transform.rotation = Quaternion.Euler(0, 0, rotZ);
 
@@ -117,17 +122,35 @@ public class PlayerCtrl : MonoBehaviour
         }
     }
 
+    private void WideShot()
+    {
+        if (!IsWideShot)
+            return;
+
+        Vector3 wideShotLeft = new Vector3(transform.position.x - GUN.transform.position.y, transform.position.y + GUN.transform.position.x, 0);
+        Vector3 wideShotRight = new Vector3(transform.position.x + GUN.transform.position.y, transform.position.y - GUN.transform.position.x, 0);
+
+        float leftZ = Mathf.Atan2(-newPos.x, newPos.y) * Mathf.Rad2Deg;
+        float rightZ = Mathf.Atan2(newPos.x, -newPos.y) * Mathf.Rad2Deg;
+
+        Quaternion leftDirection = Quaternion.Euler(0, 0, leftZ);
+        Quaternion rightDirection = Quaternion.Euler(0, 0, rightZ);
+
+        Instantiate(BulletPrefab, wideShotLeft, leftDirection).GetComponent<BulletCtrl>().Attacker = gameObject;
+        Instantiate(BulletPrefab, wideShotRight, rightDirection).GetComponent<BulletCtrl>().Attacker = gameObject;
+    }
+
     private void MultipleFire() //최대 투사체 4개, 중앙부터 대칭으로  -1.5 -0.5 0.5 1.5 의 위치
     {
         float bulletspace = BulletSpace / (BulletCount - 1); //투사체간 간극
         Vector3 verticalDirection = new Vector3(-GUN.transform.position.y, GUN.transform.position.x, 0); //원의 접선 방향 벡터값
 
-        for(int i = 0; i < BulletCount; i++)
+        for (int i = 0; i < BulletCount; i++)
         {
             // 4개면 -1.5 -0.5 0.5 1.5   
             // 3개 -1.5 0 1.5            
             // 2개 -1.5 1.5               
-            float location = (i - ((BulletCount - 1) / 2.0f)) * bulletspace;  
+            float location = (i - ((BulletCount - 1) / 2.0f)) * bulletspace;
             Vector3 multiplePosition = GUN.transform.position + verticalDirection.normalized * location;
 
             Instantiate(BulletPrefab, multiplePosition, GUN.transform.rotation).GetComponent<BulletCtrl>().Attacker = gameObject;
@@ -136,6 +159,7 @@ public class PlayerCtrl : MonoBehaviour
 
     void fire()
     {
+        WideShot();
         if (BulletCount == 1)
             Instantiate(BulletPrefab, GUN.transform.position, GUN.transform.rotation).GetComponent<BulletCtrl>().Attacker = gameObject;
         else if (BulletCount > 1)
@@ -150,6 +174,6 @@ public class PlayerCtrl : MonoBehaviour
             Destroy(gameObject, 1.0f); //삭제처리 아니고 나중에 부활처리로 할겁니다요
             return;
         }
-        Destroy(Instantiate(HitEffect, transform.position, Quaternion.identity),0.5f);
+        Destroy(Instantiate(HitEffect, transform.position, Quaternion.identity), 0.5f);
     }
 }
