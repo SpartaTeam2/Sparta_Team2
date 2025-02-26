@@ -60,7 +60,7 @@ public class UglyBoss : BaseEnemy, IEnemyIdle, IEnemyTracking, IEnemyAttack
         if (distance <= trackingRange)
         {
             Vector2 dir = TargetDirection(target.position);
-            rigidBody.velocity = dir * (moveSpeed / 2.5f);
+            rigidBody.velocity = dir * moveSpeed;
 
             LookAtTarget(target.position);
         }
