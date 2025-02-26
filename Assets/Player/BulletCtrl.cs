@@ -51,7 +51,17 @@ public class BulletCtrl : MonoBehaviour
 
                     break;
                 case "Monster":
-                    collision.GetComponent<UglyEnemy>().GetDamage(Damage);
+                    float i = Random.Range(0, 100);
+                    if (i<= Attacker.GetComponent<PlayerCtrl>().CritChance) //크리티컬 처리
+                    {
+                        collision.GetComponent<UglyEnemy>().GetDamage(Damage* Attacker.GetComponent<PlayerCtrl>().CritDamage);
+                        Debug.Log("크리 터짐");
+                    }
+                    else //노크리 처리
+                    {
+                        collision.GetComponent<UglyEnemy>().GetDamage(Damage);
+                    }
+
                     GetComponent<AudioSource>().clip = _audioClip;
                     GetComponent<AudioSource>().Play();
                     Destroy(gameObject);

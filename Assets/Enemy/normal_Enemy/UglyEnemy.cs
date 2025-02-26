@@ -23,6 +23,7 @@ public class UglyEnemy : BaseEnemy, IEnemyIdle, IEnemyTracking, IEnemyAttack
         attackRange = 8f;
 
         attackHandler.InitHandler(attackDelay);
+        hpbar.InitHPbar(this);
     }
     public void IdleExecute()
     {

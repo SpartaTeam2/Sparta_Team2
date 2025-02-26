@@ -14,6 +14,7 @@ public abstract class BaseEnemy : MonoBehaviour
     protected Animator animator;
     protected Rigidbody2D rigidBody;
     protected SpriteRenderer spriteRenderer;
+    protected EnemyHPbar hpbar;
 
     // layerMask
     protected LayerMask playerLayer;
@@ -32,6 +33,8 @@ public abstract class BaseEnemy : MonoBehaviour
     // GET SET
     public Animator Animator { get { return animator; } }
     public int Damage {  get { return damage; } }
+    public int MaxHP {  get { return maxHP; } }
+    public int HP {  get { return hp; } }
 
     private void Start()
     {
@@ -54,6 +57,7 @@ public abstract class BaseEnemy : MonoBehaviour
         animator        = GetComponentInChildren<Animator>();
         rigidBody       = GetComponentInChildren<Rigidbody2D>();
         spriteRenderer  = GetComponentInChildren<SpriteRenderer>();
+        hpbar           = GetComponentInChildren<EnemyHPbar>();
 
         // layermask
         playerLayer = LayerMask.GetMask("Player");
@@ -76,6 +80,7 @@ public abstract class BaseEnemy : MonoBehaviour
     public void GetDamage(float damage)
     {
         hp -= (int)damage;
+        hpbar.UpdateHPBar();
         if(hp <= 0)
         {
             hp = 0;
