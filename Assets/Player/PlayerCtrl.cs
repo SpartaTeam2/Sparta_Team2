@@ -33,7 +33,7 @@ public class PlayerCtrl : MonoBehaviour
     public bool IsWideShot = false; //와이드샷 on/off
     public int WideCount = 0;
     public float CritChance = 0;
-    public float CritDamage = 0;
+    public float CritDamage = 1;
 
     public AudioClip FireSoundClip;
 

@@ -36,10 +36,12 @@ public class ApplyBasicSkills : MonoBehaviour
             case SkillType.CriticalMaster:
                 Debug.Log("critChance");
                 player.CritChance += skillData.skillValue * 100;
+                if (player.CritChance >= 100)
+                    RemoveSkillFromRandom(skillData.skillId);
                 break;
             case SkillType.CriticalBoost:
                 Debug.Log("crit");
-                player.CritDamage += skillData.skillValue * 100;
+                player.CritDamage += skillData.skillValue;
                 break;
             case SkillType.HealthBoost:
                 Debug.Log("health");
