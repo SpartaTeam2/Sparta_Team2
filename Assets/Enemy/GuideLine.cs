@@ -84,15 +84,20 @@ public class GuideLine : MonoBehaviour
         {
             yield return null;
 
-            Vector2 direction = (to.position - from.position).normalized;
+            if (from == null || to == null)
+                break;
+            Vector2 fromPosition = from.position;
+            Vector2 toPosition = to.position;
+
+            Vector2 direction = (toPosition - fromPosition).normalized;
 
             // RayCast
-            RaycastHit2D ray = Physics2D.Raycast(from.position, direction, maxDistance, wallLayer);
+            RaycastHit2D ray = Physics2D.Raycast(fromPosition, direction, maxDistance, wallLayer);
             Vector2 endPos = ray.collider != null ? 
-                ray.point : (Vector2)from.position + direction * maxDistance;
+                ray.point : fromPosition + direction * maxDistance;
 
             // 포지션 설정
-            line.SetPosition(0, from.position);
+            line.SetPosition(0, fromPosition);
             line.SetPosition(1, endPos);
         }
     }
