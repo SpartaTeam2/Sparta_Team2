@@ -12,7 +12,7 @@ public class UglyEnemy : BaseEnemy, IEnemyIdle, IEnemyTracking, IEnemyAttack
     protected override void InitEnemy()
     {
         // 임시 데이터
-        maxHP = 100;
+        maxHP = 2;
         hp = maxHP;
 
         damage = 10;
