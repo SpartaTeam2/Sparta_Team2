@@ -37,6 +37,15 @@ public class SkillCard : MonoBehaviour
         int a = SkillHandler.Instance.cardObjectList.IndexOf(this.gameObject);
         SkillHandler.Instance.applySkillNum = a;
         SkillHandler.Instance.DestroyCard();
+        StartCoroutine(DelayLvlUp());
+    }
+
+    public IEnumerator DelayLvlUp()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        SkillHandler.Instance.ApplyBasicSkills.player.canLvlUp = true;
+
     }
 
     public void GetSelectedSkill(SkillData data)

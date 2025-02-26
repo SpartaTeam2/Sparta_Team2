@@ -15,7 +15,7 @@ public class PlayerCtrl : MonoBehaviour
     public float AttackDamage;
 
     public int level;
-    public float MaxExp; 
+    public float MaxExp;
     public float Exp;
 
     [Header("플레이어 장비 정보")]
@@ -44,6 +44,8 @@ public class PlayerCtrl : MonoBehaviour
     public AudioSource _audioSource;
     public AudioClip HitSoundClip;
     public AudioClip DieSoundClip;
+
+    public bool canLvlUp = true;
 
     Vector2 newPos;
 
@@ -233,25 +235,30 @@ public class PlayerCtrl : MonoBehaviour
 
     public void GetExp()
     {
+        canLvlUp = false;
         if (Exp >= MaxExp)
         {
+
             LevelUp();
             Exp -= MaxExp; // 남은 경험치만 남김
 
             MaxExp++; //경험치통 1증가
+
         }
         else
         {
-
+            return;
         }
     }
 
     public void LevelUp()
     {
+
         level++;
 
         _CardManager.GetComponent<SkillHandler>().RandomRarity(3);
-            // 여기에 스킬 패널 키는거 추가
+        // 여기에 스킬 패널 키는거 추가
+
     }
     public void GetDamage(float Damage)
     {
