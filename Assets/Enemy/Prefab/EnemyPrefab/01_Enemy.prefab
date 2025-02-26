@@ -514,7 +514,7 @@ MonoBehaviour:
   damage: 1
   moveSpeed: 3
   trackingRange: 10
-  attackRange: 1.5
+  attackRange: 1.2
   expPrefab: {fileID: 9034968390482128985, guid: 00190666374105f43a6e7bd7181d4aaf, type: 3}
 --- !u!1 &6331083092955457276
 GameObject:
