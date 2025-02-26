@@ -44,7 +44,7 @@ public class StageManager : MonoBehaviour
     private void LateUpdate()
     {
         GameObject[] _monsterList = GameObject.FindGameObjectsWithTag("Monster");
-        if ((_monsterList.Length <= 0)||(!Player))
+        if ((_monsterList.Length <= 0)||(Player))
         {
             if (StageLevel < 10)
             {
@@ -52,8 +52,12 @@ public class StageManager : MonoBehaviour
             }
             else
             {
-                ExitDungeon();
+                SuccessDungeon();
             }
+        }
+        if (!Player)
+        {
+            FailedDungeon();
         }
     }
     void InsMap()
@@ -149,15 +153,15 @@ public class StageManager : MonoBehaviour
         StageLevel++;
         SpawnMonster();
     }
-    void ExitDungeon()
+
+    void SuccessDungeon()
     {
-        if (StageLevel >10&&(Player))
-        {
             _canvas.GetComponent<PanelUI>().GameClear();
-        }
-        else
-        {
+
+    }
+    void FailedDungeon()
+    {
             _canvas.GetComponent<PanelUI>().GameOver();
-        }
+
     }
 }
