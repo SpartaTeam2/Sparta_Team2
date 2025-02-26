@@ -78,7 +78,7 @@ public class PlayerCtrl : MonoBehaviour
             else
             {
                 //Debug.Log("The Input Value of xMove is 0");
-                Debug.Log(transform.position);
+                //Debug.Log(transform.position);
             }
         }
         else

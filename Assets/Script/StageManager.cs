@@ -19,6 +19,9 @@ public class StageManager : MonoBehaviour
     GameObject Player;
     SpriteRenderer MapSpriteRenderer;
 
+    [SerializeField]
+    GameObject _canvas;
+
     public enum SpawnType
     {
         Clean,
@@ -43,13 +46,13 @@ public class StageManager : MonoBehaviour
         GameObject[] _monsterList = GameObject.FindGameObjectsWithTag("Monster");
         if (_monsterList.Length <= 0)
         {
-            if (StageLevel <= 10)
+            if (StageLevel < 10)
             {
                 EndGame();
             }
             else
             {
-                EndGame();
+                ExitDungeon();
             }
         }
     }
@@ -75,7 +78,6 @@ public class StageManager : MonoBehaviour
     }
     void SpawnMonster()
     {
-
         if (StageLevel %5 ==0)
         {
             _spawnType = SpawnType.Boss;
@@ -127,7 +129,7 @@ public class StageManager : MonoBehaviour
     }
     void InsWaveType()
     {
-        //RandomSpawnMonster((StageLevel - 1) * 3, (StageLevel * 3));
+        for (int i = 0; i < MaxMonster; i++)
         {
             GameObject _insMons = Instantiate(GetComponent<MonsterManager>().MonsterArr[Random.Range(0, 3)], new Vector2(Random.Range(-3, 3), Random.Range(-3, 3)), Quaternion.identity);
             //_insMons.GetComponent<UglyEnemy>().maxHP = maxHP * 10;
@@ -162,11 +164,11 @@ public class StageManager : MonoBehaviour
     {
         if (StageLevel >10)
         {
-            //게임 승리 처리, 승리 패널 켜기
+            _canvas.GetComponent<PanelUI>().GameClear();
         }
         else
         {
-            //게임 패배 처리, 패배 패널 켜기
+            _canvas.GetComponent<PanelUI>().GameOver();
         }
     }
 }

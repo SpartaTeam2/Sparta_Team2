@@ -135,6 +135,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: WinPanel
       objectReference: {fileID: 0}
+    - target: {fileID: 3408375239531968465, guid: ef4f8b2de105d35409a28fa0f2e4a407, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267826200042346650, guid: ef4f8b2de105d35409a28fa0f2e4a407, type: 3}
+      propertyPath: changeScene
+      value: 01_Lobby
+      objectReference: {fileID: 0}
     - target: {fileID: 8859431885507429444, guid: ef4f8b2de105d35409a28fa0f2e4a407, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -215,6 +223,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8892478730670336687, guid: ef4f8b2de105d35409a28fa0f2e4a407, type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8892478730670336687, guid: ef4f8b2de105d35409a28fa0f2e4a407, type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 0.53
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -223,6 +239,11 @@ PrefabInstance:
 --- !u!224 &34782540 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8859431885507429444, guid: ef4f8b2de105d35409a28fa0f2e4a407, type: 3}
+  m_PrefabInstance: {fileID: 34782539}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &34782541 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3408375239531968465, guid: ef4f8b2de105d35409a28fa0f2e4a407, type: 3}
   m_PrefabInstance: {fileID: 34782539}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &246411014 stripped
@@ -956,6 +977,7 @@ GameObject:
   - component: {fileID: 892552890}
   - component: {fileID: 892552889}
   - component: {fileID: 892552888}
+  - component: {fileID: 892552892}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1049,6 +1071,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &892552892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 892552887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f7831ce8a767a949b741dad6c06c7cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  losePanel: {fileID: 1751734804}
+  winPanel: {fileID: 34782541}
 --- !u!1 &922543506
 GameObject:
   m_ObjectHideFlags: 0
@@ -1433,6 +1469,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LosePanel
       objectReference: {fileID: 0}
+    - target: {fileID: 1832599219637778621, guid: 0f27691384b0c264da152ca77d38e625, type: 3}
+      propertyPath: changeScene
+      value: 01_Lobby
+      objectReference: {fileID: 0}
     - target: {fileID: 5826407644367333839, guid: 0f27691384b0c264da152ca77d38e625, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1521,6 +1561,11 @@ PrefabInstance:
 --- !u!224 &1751734803 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5826407644367333839, guid: 0f27691384b0c264da152ca77d38e625, type: 3}
+  m_PrefabInstance: {fileID: 1751734802}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1751734804 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1542648779242309874, guid: 0f27691384b0c264da152ca77d38e625, type: 3}
   m_PrefabInstance: {fileID: 1751734802}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2011720912
@@ -1667,7 +1712,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DungeonLevel: 1
-  StageLevel: 5
+  StageLevel: 10
   MaxMonster: 10
   Map: {fileID: 246411014}
   MapSprite:
@@ -1678,6 +1723,7 @@ MonoBehaviour:
   - {fileID: 7438749161625797410, guid: ec149af9dc279a24495c86000639b5c1, type: 3}
   - {fileID: 7438749161625797410, guid: b3d1a094f7d9948478fe27083037c359, type: 3}
   Portal: {fileID: 730545002}
+  _canvas: {fileID: 892552887}
   _spawnType: 0
 --- !u!114 &2013891535
 MonoBehaviour:
