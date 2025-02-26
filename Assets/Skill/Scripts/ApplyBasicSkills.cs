@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ApplyBasicSkills : MonoBehaviour
 {
-    [SerializeField] private PlayerCtrl player;
+    [SerializeField] public PlayerCtrl player;
 
     [SerializeField] private BasicSkills skill;
 
