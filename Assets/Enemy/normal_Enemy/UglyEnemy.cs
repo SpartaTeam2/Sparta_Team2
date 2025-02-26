@@ -13,7 +13,7 @@ public class UglyEnemy : BaseEnemy, IEnemyIdle, IEnemyTracking, IEnemyAttack
     {
         //// 임시 데이터
         //maxHP = 2;
-        //hp = maxHP;
+        hp = maxHP;
 
         //damage = 10;
         //moveSpeed = 5f;

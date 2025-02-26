@@ -12,18 +12,19 @@ public class UglyBoss : BaseEnemy, IEnemyIdle, IEnemyTracking, IEnemyAttack
     private BossPattern pattern;
     protected override void InitEnemy()
     {
-        // 임시 데이터
-        maxHP = 100;
+        //// 임시 데이터
+        //maxHP = 100;
         hp = maxHP;
 
-        damage = 10;
-        moveSpeed = 5f;
-        attackDelay = 2f;
+        //damage = 10;
+        //moveSpeed = 5f;
+        attackDelay = 1.5f;
 
-        trackingRange = 10f;
-        attackRange = 8f;
+        //trackingRange = 10f;
+        //attackRange = 8f;
 
         attackHandler.InitHandler(attackDelay);
+        hpbar.InitHPbar(this);
 
         pattern = GetComponentInChildren<BossPattern>();
         pattern.InitPattern(attackHandler, this);
