@@ -930,6 +930,7 @@ GameObject:
   - component: {fileID: 2013891532}
   - component: {fileID: 2013891533}
   - component: {fileID: 2013891534}
+  - component: {fileID: 2013891535}
   m_Layer: 0
   m_Name: GM
   m_TagString: Untagged
@@ -995,6 +996,19 @@ MonoBehaviour:
   - {fileID: 7438749161625797410, guid: b3d1a094f7d9948478fe27083037c359, type: 3}
   Portal: {fileID: 730545002}
   _spawnType: 0
+--- !u!114 &2013891535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2013891531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae8f5a872083223469affbf156e00565, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  linePrefab: {fileID: 6862949046861021928, guid: 29e2a8dfb1393134d95e2c8e6985bf61, type: 3}
 --- !u!1001 &6562524406637380558
 PrefabInstance:
   m_ObjectHideFlags: 0
