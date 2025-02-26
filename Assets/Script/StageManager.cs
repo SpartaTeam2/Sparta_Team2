@@ -44,7 +44,7 @@ public class StageManager : MonoBehaviour
     private void LateUpdate()
     {
         GameObject[] _monsterList = GameObject.FindGameObjectsWithTag("Monster");
-        if ((_monsterList.Length <= 0)||(Player))
+        if (_monsterList.Length <= 0)
         {
             if (StageLevel < 10)
             {
@@ -52,17 +52,17 @@ public class StageManager : MonoBehaviour
             }
             else
             {
-                SuccessDungeon();
+                _canvas.GetComponent<PanelUI>().GameClear();
             }
         }
         if (!Player)
         {
-            FailedDungeon();
+            _canvas.GetComponent<PanelUI>().GameOver();
         }
     }
     void InsMap()
     {
-        switch(DungeonLevel)
+        switch (DungeonLevel)
         {
             case 1:
                 MapSpriteRenderer.sprite = MapSprite[Random.Range(0, 3)];
@@ -83,7 +83,7 @@ public class StageManager : MonoBehaviour
     }
     void SpawnMonster()
     {
-        if (StageLevel %5 ==0)
+        if (StageLevel % 5 == 0)
         {
             _spawnType = SpawnType.Boss;
         }
@@ -105,28 +105,28 @@ public class StageManager : MonoBehaviour
                     break;
             }
         }
-            switch (_spawnType)
-            {
-                case SpawnType.Clean:
-                    InsCleanType();
-                    break;
+        switch (_spawnType)
+        {
+            case SpawnType.Clean:
+                InsCleanType();
+                break;
 
-                case SpawnType.Wave:
-                    InsWaveType();
-                    break;
+            case SpawnType.Wave:
+                InsWaveType();
+                break;
 
-                case SpawnType.Boss:
-                    InsBossType();
-                    break;
+            case SpawnType.Boss:
+                InsBossType();
+                break;
 
-                default:
-                    Debug.Log("Null SpawnType");
-                    break;
-            }
+            default:
+                Debug.Log("Null SpawnType");
+                break;
+        }
     }
     void InsCleanType()
     {
-        for (int i =0; i< MaxMonster; i++)
+        for (int i = 0; i < MaxMonster; i++)
         {
             GameObject _insMons = Instantiate(GetComponent<MonsterManager>().MonsterArr[Random.Range(0, 3)], new Vector2(Random.Range(-3, 3), Random.Range(-3, 3)), Quaternion.identity);
         }
@@ -140,28 +140,17 @@ public class StageManager : MonoBehaviour
     }
     void InsBossType()
     {
-        GameObject _insMons = Instantiate(GetComponent<MonsterManager>()._boss[Random.Range(0, 3)], Vector2.zero , Quaternion.identity);
+        GameObject _insMons = Instantiate(GetComponent<MonsterManager>()._boss[Random.Range(0, 3)], Vector2.zero, Quaternion.identity);
     }
     void EndGame()
     {
-        if(Player.GetComponent<PlayerCtrl>().canLvlUp)
-            Player.GetComponent<PlayerCtrl>().GetExp();
+        //if(Player.GetComponent<PlayerCtrl>().canLvlUp)
+        Player.GetComponent<PlayerCtrl>().GetExp();
         Portal.SetActive(true);
     }
     public void Upstage()
     {
         StageLevel++;
         SpawnMonster();
-    }
-
-    void SuccessDungeon()
-    {
-            _canvas.GetComponent<PanelUI>().GameClear();
-
-    }
-    void FailedDungeon()
-    {
-            _canvas.GetComponent<PanelUI>().GameOver();
-
     }
 }
