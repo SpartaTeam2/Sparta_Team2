@@ -110,7 +110,10 @@ public class UglyMeleeEnemy : BaseEnemy, IEnemyIdle, IEnemyTracking, IEnemyAttac
 
             if(hitObject != null)
             {
-                hitObject.GetComponent<PlayerCtrl>().GetDamage(Damage);
+                PlayerCtrl player = hitObject.GetComponent<PlayerCtrl>();
+                if(player != null)
+                    player.GetDamage(Damage);
+
                 yield return new WaitForSeconds(0.4f);
             }
         }

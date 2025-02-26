@@ -8,8 +8,7 @@ public class EnemyBullet : MonoBehaviour
     private const string playerTag = "Player";
     private const string WallTag = "Wall";
 
-    [SerializeField]
-    private Rigidbody2D rigidbody;
+    [SerializeField] private Rigidbody2D rigidbody;
     public float damage { get; set; }
 
     private void Start()
@@ -20,7 +19,7 @@ public class EnemyBullet : MonoBehaviour
     {
         if (collision.CompareTag(playerTag))
         {
-            collision.GetComponent<PlayerCtrl>().GetDamage(damage);
+            collision.GetComponent<PlayerCtrl>()?.GetDamage(damage);
             Destroy(gameObject);
         }
 
@@ -31,7 +30,6 @@ public class EnemyBullet : MonoBehaviour
 
         else
         {
-            Debug.Log($"어디에 박은거죠? >> {collision.name}");
             Destroy(gameObject);
         }
     }
