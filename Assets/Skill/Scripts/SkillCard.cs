@@ -8,6 +8,7 @@ public class SkillCard : MonoBehaviour
 {
     public SkillData selectedSkillData;
 
+    public int skillID;
     public Text skillName;
     public Text skillDescription;
 
@@ -33,7 +34,8 @@ public class SkillCard : MonoBehaviour
     public void OnClickSelect()
     {
         SkillHandler.Instance.ApplyBasicSkills.ApplySkill(selectedSkillData);
-
+        int a = SkillHandler.Instance.cardObjectList.IndexOf(this.gameObject);
+        SkillHandler.Instance.applySkillNum = a;
         SkillHandler.Instance.DestroyCard();
     }
 
@@ -43,6 +45,7 @@ public class SkillCard : MonoBehaviour
         selectedSkillData = data;
         skillName.text = data.skillName;
         skillDescription.text = data.skillDescription;
+        skillID = data.skillId;
 
     }
 

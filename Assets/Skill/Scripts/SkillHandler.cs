@@ -22,6 +22,8 @@ public class SkillHandler : MonoBehaviour
 
     public int randomSkillNum = 0;
     public int selectedSkillNum = 0;
+    public float destroyDelayTime;
+    public int applySkillNum = 0;
 
     private void Awake()
     {
@@ -44,18 +46,29 @@ public class SkillHandler : MonoBehaviour
         foreach(GameObject card in cardObjectList)
         {
             SkillCardUI skillUI = card.GetComponentInChildren<SkillCardUI>();
-            if (cardObjectList.IndexOf(card) == selectedSkillNum)
+            if (cardObjectList.IndexOf(card) == applySkillNum)
             {
                 //가운데로 이동 애니메이션
                 skillUI.Selected();
-                // 이후 파괴
             }
             else
             {
                 //파괴 애니메이션
                 skillUI.Destroy();
-                // 이후 파괴
             }
+
+        }
+        //이후 파괴
+        StartCoroutine(DestroyObject());
+    }
+
+    private IEnumerator DestroyObject()
+    {
+        yield return new WaitForSeconds(destroyDelayTime);
+        
+        foreach (GameObject card in cardObjectList)
+        {
+            Destroy(card);
         }
     }
 
