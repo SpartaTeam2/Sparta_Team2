@@ -54,7 +54,7 @@ public class BulletCtrl : MonoBehaviour
                     float i = Random.Range(0, 100);
                     if (i<= Attacker.GetComponent<PlayerCtrl>().CritChance) //크리티컬 처리
                     {
-                        collision.GetComponent<BaseEnemy>().GetDamage(Damage* Attacker.GetComponent<PlayerCtrl>().CritDamage);
+                        collision.GetComponent<BaseEnemy>().GetDamage(Damage + (Damage * Attacker.GetComponent<PlayerCtrl>().CritDamage));
                         Debug.Log("크리 터짐");
                     }
                     else //노크리 처리
