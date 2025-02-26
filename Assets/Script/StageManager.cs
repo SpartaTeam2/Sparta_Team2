@@ -75,24 +75,47 @@ public class StageManager : MonoBehaviour
     }
     void SpawnMonster()
     {
-        switch (_spawnType)
+
+        if (StageLevel %5 ==0)
         {
-            case SpawnType.Clean:
-                InsCleanType();
-                break;
-
-            case SpawnType.Wave:
-                InsWaveType();
-                break;
-
-            case SpawnType.Boss:
-                InsBossType();
-                break;
-
-            default:
-                Debug.Log("Null SpawnType");
-                break;
+            _spawnType = SpawnType.Boss;
         }
+        else
+        {
+            int SpawnTypeIndex = Random.Range(0, 2);
+            switch (SpawnTypeIndex)
+            {
+                case 0:
+                    _spawnType = SpawnType.Clean;
+                    break;
+
+                case 1:
+                    _spawnType = SpawnType.Wave;
+                    break;
+
+                default:
+                    Debug.Log("NoCase");
+                    break;
+            }
+        }
+            switch (_spawnType)
+            {
+                case SpawnType.Clean:
+                    InsCleanType();
+                    break;
+
+                case SpawnType.Wave:
+                    InsWaveType();
+                    break;
+
+                case SpawnType.Boss:
+                    InsBossType();
+                    break;
+
+                default:
+                    Debug.Log("Null SpawnType");
+                    break;
+            }
     }
     void InsCleanType()
     {
@@ -112,7 +135,7 @@ public class StageManager : MonoBehaviour
     }
     void InsBossType()
     {
-        GameObject _insMons = Instantiate(GetComponent<MonsterManager>().MonsterArr[Random.Range(0, 3)], new Vector2(Random.Range(-3, 3), Random.Range(-3, 3)), Quaternion.identity);
+        GameObject _insMons = Instantiate(GetComponent<MonsterManager>()._boss[Random.Range(0, 3)], Vector2.zero , Quaternion.identity);
 
         //Instantiate(_boss[0]);
     }

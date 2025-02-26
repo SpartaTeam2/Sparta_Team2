@@ -1652,6 +1652,8 @@ MonoBehaviour:
   - {fileID: 7764495332639610303, guid: 28a71007552e2274a88237a2ca7a1c2c, type: 3}
   _boss:
   - {fileID: 8561543546340959112, guid: f9e420b2d88591d40a36f392d0194e73, type: 3}
+  - {fileID: 8561543546340959112, guid: f9e420b2d88591d40a36f392d0194e73, type: 3}
+  - {fileID: 8561543546340959112, guid: f9e420b2d88591d40a36f392d0194e73, type: 3}
 --- !u!114 &2013891534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1664,8 +1666,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 483fcb3871811154781fa31507e99398, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DungeonLevel: 3
-  StageLevel: 0
+  DungeonLevel: 1
+  StageLevel: 5
   MaxMonster: 10
   Map: {fileID: 246411014}
   MapSprite:
