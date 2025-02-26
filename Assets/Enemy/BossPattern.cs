@@ -45,6 +45,10 @@ public class BossPattern : MonoBehaviour
 
         for(int i = 0; i < bulletCount; i++)
         {
+            // 대상이 사라지면 ( 플레이어 사망했을때 )
+            if (to == null)
+                break;
+
             // 발사 방향
             Vector2 direction = (to.position - from.position).normalized;
 

@@ -435,18 +435,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: 01_Enemy
       objectReference: {fileID: 0}
-    - target: {fileID: 5535060253339384243, guid: 51ec9121621a18948bc89c96bacfbed0, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7780343166822005062, guid: 51ec9121621a18948bc89c96bacfbed0, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0.615
-      objectReference: {fileID: 0}
-    - target: {fileID: 7780343166822005062, guid: 51ec9121621a18948bc89c96bacfbed0, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -962,18 +950,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: 02_Enemy
       objectReference: {fileID: 0}
-    - target: {fileID: 1374443996821056107, guid: d9b1dcd0555862a4c991e02d7ae719f7, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2506553574834305881, guid: d9b1dcd0555862a4c991e02d7ae719f7, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0.615
-      objectReference: {fileID: 0}
-    - target: {fileID: 2506553574834305881, guid: d9b1dcd0555862a4c991e02d7ae719f7, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2881565007787075687, guid: d9b1dcd0555862a4c991e02d7ae719f7, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2
@@ -1067,21 +1043,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1590417974319071336, guid: 28a71007552e2274a88237a2ca7a1c2c, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0.615
-      objectReference: {fileID: 0}
-    - target: {fileID: 1590417974319071336, guid: 28a71007552e2274a88237a2ca7a1c2c, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7764495332639610303, guid: 28a71007552e2274a88237a2ca7a1c2c, type: 3}
       propertyPath: m_Name
       value: 03_Enemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 7764495332639610303, guid: 28a71007552e2274a88237a2ca7a1c2c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
