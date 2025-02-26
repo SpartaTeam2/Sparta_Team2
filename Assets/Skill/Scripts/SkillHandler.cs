@@ -38,7 +38,7 @@ public class SkillHandler : MonoBehaviour
         epicSkillDict = basicSkills.epicSkillDict;
         legendSkillDict = basicSkills.legendSkillDict;
 
-        RandomRarity(3); //test code
+        //RandomRarity(3); //test code
     }
 
     public void DestroyCard()
