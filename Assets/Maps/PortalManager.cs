@@ -11,7 +11,6 @@ public class PortalManager : MonoBehaviour
     {
         if (!GM)
         {
-            Debug.Log("NullGM");
             GM = GameObject.Find("GM");
         }
         if (!Player)

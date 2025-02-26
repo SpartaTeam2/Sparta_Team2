@@ -225,6 +225,8 @@ public class PlayerCtrl : MonoBehaviour
             Instantiate(BulletPrefab, GUN.transform.position, GUN.transform.rotation).GetComponent<BulletCtrl>().Attacker = gameObject;
         else if (BulletCount > 1)
             MultipleFire();
+
+
         AudioSource.PlayClipAtPoint(FireSoundClip, transform.position);
     }
 
