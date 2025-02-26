@@ -13,6 +13,10 @@ public class PlayerCtrl : MonoBehaviour
     public float speed = 10.0f; //스피드
     public float AttackDamage;
 
+    public int level;
+    public float MaxExp;
+    float Exp;
+
     [Header("플레이어 장비 정보")]
     //public 
 
@@ -218,6 +222,17 @@ public class PlayerCtrl : MonoBehaviour
         else if (BulletCount > 1)
             MultipleFire();
         AudioSource.PlayClipAtPoint(FireSoundClip, transform.position);
+    }
+
+    public void GetExps ()
+    {
+        if (MaxExp>=Exp)
+        {
+            level++;
+            MaxExp -= Exp;
+
+            //levelup;
+        }
     }
     public void GetDamage(float Damage)
     {

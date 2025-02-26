@@ -28,6 +28,7 @@ public class ExpsCtrl : MonoBehaviour
     {
         if (Vector2.Distance(transform.position, Player.transform.position) <= 0.1)
         {
+            Player.GetComponent<PlayerCtrl>().GetExps();
             Destroy(gameObject);
         }
     }
