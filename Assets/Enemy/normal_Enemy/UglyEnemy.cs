@@ -11,16 +11,16 @@ public class UglyEnemy : BaseEnemy, IEnemyIdle, IEnemyTracking, IEnemyAttack
 
     protected override void InitEnemy()
     {
-        // 임시 데이터
-        maxHP = 2;
-        hp = maxHP;
+        //// 임시 데이터
+        //maxHP = 2;
+        //hp = maxHP;
 
-        damage = 10;
-        moveSpeed = 5f;
-        attackDelay = 2f;
+        //damage = 10;
+        //moveSpeed = 5f;
 
-        trackingRange = 10f;
-        attackRange = 8f;
+        attackDelay = Random.Range(1f, 3f);
+        //trackingRange = 10f;
+        //attackRange = 8f;
 
         attackHandler.InitHandler(attackDelay);
         hpbar.InitHPbar(this);

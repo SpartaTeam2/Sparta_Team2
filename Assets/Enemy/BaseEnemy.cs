@@ -20,15 +20,14 @@ public abstract class BaseEnemy : MonoBehaviour
     protected LayerMask playerLayer;
 
     // 몬스터 데이터
+    [Header("몬스터 데이터 추가해주세요")]
     protected int hp;               // 현재체력
-    protected int maxHP;            // 최대체력
-    protected int damage;           // 공격력
-    protected float moveSpeed;      // 이동 속도
     protected float attackDelay;    // 공격 딜레이
-
-    // 범위
-    protected float trackingRange;
-    protected float attackRange;
+    [SerializeField] protected int maxHP;           // 최대체력
+    [SerializeField] protected int damage;          // 공격력
+    [SerializeField] protected float moveSpeed;     // 이동 속도
+    [SerializeField] protected float trackingRange; // 추적 범위
+    [SerializeField] protected float attackRange;   // 공격 범위
 
     // GET SET
     public Animator Animator { get { return animator; } }

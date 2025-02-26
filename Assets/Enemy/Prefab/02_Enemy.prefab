@@ -122,6 +122,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 682b0c51c53155747ae6e6bc957603d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHP: 4
+  damage: 1
+  moveSpeed: 2
+  trackingRange: 9
+  attackRange: 6
   bulletPrefab: {fileID: 7125082019843310167, guid: e71f4b6a62446f34f8da9cf4ca3a077f, type: 3}
 --- !u!114 &6564881993644712598
 MonoBehaviour:
