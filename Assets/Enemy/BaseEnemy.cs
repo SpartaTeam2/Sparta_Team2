@@ -42,13 +42,6 @@ public abstract class BaseEnemy : MonoBehaviour
     {
         InitComponent();
         InitEnemy();
-
-        Debug.Log($"maxHP {MaxHP}");
-        Debug.Log($"hp {hp}");
-        Debug.Log($"damage {damage}");
-        Debug.Log($"moveSpeed {moveSpeed}");
-        Debug.Log($"trackingRange {trackingRange}");
-        Debug.Log($"attackRange {attackRange}");
     }
 
     private void Update()
