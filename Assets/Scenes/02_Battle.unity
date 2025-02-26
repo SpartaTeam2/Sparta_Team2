@@ -1336,6 +1336,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -3370623417837262171, guid: de358acb2123b6f488943ee2c6f26c14, type: 3}
+      propertyPath: _CardManager
+      value: 
+      objectReference: {fileID: 2083542638}
     - target: {fileID: 2472636660383753890, guid: de358acb2123b6f488943ee2c6f26c14, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1456,6 +1460,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1658186128}
+    - target: {fileID: 6591000014186307005, guid: 437f481c02393444d9e522c53426d59b, type: 3}
+      propertyPath: destroyDelayTime
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1716,13 +1724,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DungeonLevel: 1
-  StageLevel: 10
+  StageLevel: 9
   MaxMonster: 10
   Map: {fileID: 246411014}
   MapSprite:
   - {fileID: 21300000, guid: 5f846a91bbbedcd46bc601d469a6d7d9, type: 3}
   - {fileID: 21300000, guid: afc76a4aebacd1c459ec800c071a894d, type: 3}
   - {fileID: 21300000, guid: 9a0efcbca2da11c4886ca8607822bf11, type: 3}
+  - {fileID: 21300000, guid: 4aa5feb75dd9db849a8da03986a72f52, type: 3}
+  - {fileID: 21300000, guid: bd95464c96580d1409d62955f608ae1c, type: 3}
+  - {fileID: 21300000, guid: 8f4e89ceca7825449b47734c0fed1d44, type: 3}
+  - {fileID: 21300000, guid: 855d4951695c0ca47b90cb6f82d301c2, type: 3}
+  - {fileID: 21300000, guid: 57dbc44d283bc0b43ba45ba6240df4f5, type: 3}
+  - {fileID: 21300000, guid: b8e3a46fda9b86a4197c9e9171b1905a, type: 3}
+  - {fileID: 21300000, guid: 32be70614ccb0584e80a40b99ed96b8f, type: 3}
   Monsters:
   - {fileID: 7438749161625797410, guid: ec149af9dc279a24495c86000639b5c1, type: 3}
   - {fileID: 7438749161625797410, guid: b3d1a094f7d9948478fe27083037c359, type: 3}
@@ -1742,6 +1757,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   linePrefab: {fileID: 6862949046861021928, guid: 29e2a8dfb1393134d95e2c8e6985bf61, type: 3}
+--- !u!1 &2083542638 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2372513981263105626, guid: 437f481c02393444d9e522c53426d59b, type: 3}
+  m_PrefabInstance: {fileID: 1718109059}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6562524406637380558
 PrefabInstance:
   m_ObjectHideFlags: 0
