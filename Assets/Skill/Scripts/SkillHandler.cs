@@ -18,9 +18,12 @@ public class SkillHandler : MonoBehaviour
     public Dictionary<int, SkillData> epicSkillDict;
     public Dictionary<int, SkillData> legendSkillDict;
 
+    public List<GameObject> cardObjectList;
 
     public int randomSkillNum = 0;
     public int selectedSkillNum = 0;
+    public float destroyDelayTime;
+    public int applySkillNum = 0;
 
     private void Awake()
     {
@@ -38,12 +41,44 @@ public class SkillHandler : MonoBehaviour
         RandomRarity(3); //test code
     }
 
+    public void DestroyCard()
+    {
+        foreach(GameObject card in cardObjectList)
+        {
+            SkillCardUI skillUI = card.GetComponentInChildren<SkillCardUI>();
+            if (cardObjectList.IndexOf(card) == applySkillNum)
+            {
+                //가운데로 이동 애니메이션
+                skillUI.Selected();
+            }
+            else
+            {
+                //파괴 애니메이션
+                skillUI.Destroy();
+            }
+
+        }
+        //이후 파괴
+        StartCoroutine(DestroyObject());
+    }
+
+    private IEnumerator DestroyObject()
+    {
+        yield return new WaitForSeconds(destroyDelayTime);
+        
+        foreach (GameObject card in cardObjectList)
+        {
+            Destroy(card);
+        }
+    }
+
     //프리팹 스킬 카드 생성
     public void CreateSkillCard(List<SkillData> selectedSkillList)
     {
         foreach (SkillData skill in selectedSkillList)
         {
             GameObject card = Instantiate(skillCardPrefab);
+            cardObjectList.Add(card);
             SkillCard cardData = card.GetComponent<SkillCard>();
             cardData.GetSelectedSkill(skill);
             cardData.CardLocation();
@@ -75,8 +110,8 @@ public class SkillHandler : MonoBehaviour
 
         for(int i = 0; i < select; i++)
         {
-            int kingOfRare = RandomRareSet();
-            switch(kingOfRare)
+            int kindOfRare = RandomRareSet();
+            switch(kindOfRare)
             {
                 case 1: legend++; break;
                 case 2: epic++; break;
@@ -117,4 +152,22 @@ public class SkillHandler : MonoBehaviour
     {
         return legendSkillDict.Values.OrderBy(x => Random.Range(0, legendSkillDict.Count)).Take(selection).ToList();
     }
+
+    public void ResetRandomDict()
+    {
+        foreach (KeyValuePair<int, SkillData> skills in basicSkillDict)
+        {
+            skills.Value.SetActive(true);
+        }
+        foreach (KeyValuePair<int, SkillData> skills in epicSkillDict)
+        {
+            skills.Value.SetActive(true);
+        }
+        foreach (KeyValuePair<int, SkillData> skills in legendSkillDict)
+        {
+            skills.Value.SetActive(true);
+        }
+    }
+
+
 }

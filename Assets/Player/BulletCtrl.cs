@@ -16,6 +16,7 @@ public class BulletCtrl : MonoBehaviour
     //public AudioClip _bulletSound;
 
     public GameObject Attacker;
+    public AudioClip _audioClip;
 
     // Start is called before the first frame update
     void Start()
@@ -50,7 +51,19 @@ public class BulletCtrl : MonoBehaviour
 
                     break;
                 case "Monster":
-                    collision.GetComponent<MonsterCtrl>().GetDamage(Damage);
+                    float i = Random.Range(0, 100);
+                    if (i<= Attacker.GetComponent<PlayerCtrl>().CritChance) //크리티컬 처리
+                    {
+                        collision.GetComponent<BaseEnemy>().GetDamage(Damage* Attacker.GetComponent<PlayerCtrl>().CritDamage);
+                        Debug.Log("크리 터짐");
+                    }
+                    else //노크리 처리
+                    {
+                        collision.GetComponent<BaseEnemy>().GetDamage(Damage);
+                    }
+
+                    GetComponent<AudioSource>().clip = _audioClip;
+                    GetComponent<AudioSource>().Play();
                     Destroy(gameObject);
                     break;
                 default:

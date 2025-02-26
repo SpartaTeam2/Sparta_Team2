@@ -8,8 +8,11 @@ public class SkillCard : MonoBehaviour
 {
     public SkillData selectedSkillData;
 
-    public TextMeshProUGUI skillName;
-    public TextMeshProUGUI skillDescription;
+    public int skillID;
+    public Text skillName;
+    public Text skillDescription;
+
+    private int selectedIndex;
 
     private Button selectButton;
     [SerializeField] private Image skillCardBackGround;
@@ -25,18 +28,26 @@ public class SkillCard : MonoBehaviour
         int locatecard = SkillHandler.Instance.selectedSkillNum;
         int cardtotal = SkillHandler.Instance.randomSkillNum;
 
-        skillCardBackGround.transform.position += new Vector3(-110 * (cardtotal - 1) + (220 * locatecard), 0, 0);
+        skillCardBackGround.transform.position += new Vector3(-220 * (cardtotal - 1) + (440 * locatecard), 0, 0);
     }
 
     public void OnClickSelect()
     {
         SkillHandler.Instance.ApplyBasicSkills.ApplySkill(selectedSkillData);
+        int a = SkillHandler.Instance.cardObjectList.IndexOf(this.gameObject);
+        SkillHandler.Instance.applySkillNum = a;
+        SkillHandler.Instance.DestroyCard();
     }
 
     public void GetSelectedSkill(SkillData data)
     {
+        selectedIndex = SkillHandler.Instance.selectedSkillNum;
         selectedSkillData = data;
         skillName.text = data.skillName;
         skillDescription.text = data.skillDescription;
+        skillID = data.skillId;
+
     }
+
+
 }

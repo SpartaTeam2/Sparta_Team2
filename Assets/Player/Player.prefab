@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 8923494476306431592}
   - component: {fileID: 1978680749978569718}
   - component: {fileID: 3632396237188727380}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -133,16 +133,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cafa55913665e1141a897abe3cbfdb71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHp: 10
+  MaxHp: 100
   HP: 0
   speed: 10
   AttackDamage: 1
   BulletPrefab: {fileID: 5090293934867599194, guid: 8a8741543e4ffde4ca53488c3fd5ac8d, type: 3}
   GUN: {fileID: 109397673359166040}
   GunRate: 1
+  BulletSpace: 0
+  BulletCount: 1
+  IsSideShot: 0
+  IsBackShot: 0
+  IsWideShot: 0
+  WideCount: 0
+  CritChance: 0
+  CritDamage: 0
+  FireSoundClip: {fileID: 8300000, guid: 07bc9fc7a7a73f54ab826c14d299332d, type: 3}
   HitEffect: {fileID: 654734865543445110, guid: 6ff4bb113f2c87a45a2c8564e6852276, type: 3}
   _audioSource: {fileID: 3632396237188727380}
-  DieSoundClip: {fileID: 0}
+  HitSoundClip: {fileID: 8300000, guid: 4f41861152b609241bd1cf7e10188006, type: 3}
+  DieSoundClip: {fileID: 8300000, guid: 478865717502e3841938426c1ac523ea, type: 3}
 --- !u!50 &8923494476306431592
 Rigidbody2D:
   serializedVersion: 4
@@ -151,7 +161,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2472636660383753890}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -202,7 +212,7 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.25}
+  m_Offset: {x: 0, y: 0.125}
   serializedVersion: 2
   m_Radius: 0.25
 --- !u!82 &3632396237188727380
@@ -217,7 +227,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.417
   m_Pitch: 1
   Loop: 0
   Mute: 0

@@ -4,65 +4,78 @@ using UnityEngine;
 
 public class ApplyBasicSkills : MonoBehaviour
 {
-    //[SerializeField] private GameObject player;
+    [SerializeField] private PlayerCtrl player;
 
     [SerializeField] private BasicSkills skill;
 
-    [SerializeField] private int projectileCount;
+    [SerializeField] private int projectileLimit = 3;
+    [SerializeField] private int wideProjectileLimit = 2;
 
-    public void RemoveSkillFromDict(int skillID)
+    public void RemoveSkillFromRandom(int skillID)
     {
         if(skillID > 300)
-            skill.legendSkillDict.Remove(skillID);
+            skill.legendSkillDict[skillID].SetActive(false);
         else if(skillID > 200)
-            skill.epicSkillDict.Remove(skillID);
+            skill.epicSkillDict[skillID].SetActive(false);
         else
-            skill.basicSkillDict.Remove(skillID);
+            skill.basicSkillDict[skillID].SetActive(false);
     }
+
     public void ApplySkill(SkillData skillData)
     {
         switch (skillData.skillType)
         {
             case SkillType.AttackBoost:
                 Debug.Log("attack");
-                //player.AttackDamage *= (1 + skillData.skillValue);
+                player.AttackDamage *= (1 + skillData.skillValue);
                 break;
             case SkillType.AttackSpeedBoost:
                 Debug.Log("attackspeed");
-                //player.GunRate *= (1 - skillData.skillValue);
+                player.GunRate *= (1 - skillData.skillValue);
                 break;
             case SkillType.CriticalMaster:
                 Debug.Log("critChance");
-                //player.critChance += skillData.skillValue;
+                player.CritChance += skillData.skillValue;
                 break;
             case SkillType.CriticalBoost:
                 Debug.Log("crit");
-                //player.critDamage += skillData.skillValue;
+                player.CritDamage += skillData.skillValue;
                 break;
             case SkillType.HealthBoost:
                 Debug.Log("health");
-                //player.MaxHp *= (1 + skillData.skillValue);
+                player.MaxHp *= (1 + skillData.skillValue);
                 break;
             case SkillType.ProjectileUp:
                 switch (skillData.skillId)
                 {
                     case 106:
-                        //후방 투사체 추가
-                        RemoveSkillFromDict(skillData.skillId);
+                        player.IsBackShot = true;
+                        Debug.Log("back");
+                        RemoveSkillFromRandom(skillData.skillId);
                         break;
                     case 107:
-                        //좌우 투사체 추가
-                        RemoveSkillFromDict(skillData.skillId);
+                        player.IsSideShot = true;
+                        Debug.Log("side");
+                        RemoveSkillFromRandom(skillData.skillId);
                         break;
                     case 206:
-                        //전방 투사체 추가
-                        projectileCount--;
-                        if (projectileCount == 0)
-                            RemoveSkillFromDict(skillData.skillId);
+                        player.BulletCount++;
+                        player.AttackDamage *= (1 - skillData.skillValue);
+                        Debug.Log("double");
+                        projectileLimit--;
+                        if (projectileLimit == 0)
+                            RemoveSkillFromRandom(skillData.skillId);
+                        break;
+                    case 207:
+                        player.IsWideShot = true;
+                        player.WideCount++;
+                        Debug.Log("wide");
+                        wideProjectileLimit--;
+                        if (wideProjectileLimit == 0)
+                            RemoveSkillFromRandom(skillData.skillId);
                         break;
                 }
                 break;
         }
     }
-
 }

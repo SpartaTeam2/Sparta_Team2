@@ -31,10 +31,6 @@ public class InventoryManager : MonoBehaviour
         AddItem(new Item("심장", 7, 1, Resources.Load<Sprite>("Icons/ui_heart_full"), Item.ItemType.Armor));
         AddItem(new Item("?", 12, 0, Resources.Load<Sprite>("Icons/wogol_idle_anim_f2"), Item.ItemType.Accessory));
         AddItem(new Item("방패", 2, 10, Resources.Load<Sprite>("Icons/wogol_idle_anim_f2"), Item.ItemType.Accessory));
-        AddItem(new Item("단검", 10, 2, Resources.Load<Sprite>("Icons/weapon_anime_sword"), Item.ItemType.Weapon));
-        AddItem(new Item("심장", 7, 1, Resources.Load<Sprite>("Icons/ui_heart_full"), Item.ItemType.Armor));
-        AddItem(new Item("?", 12, 0, Resources.Load<Sprite>("Icons/wogol_idle_anim_f2"), Item.ItemType.Accessory));
-        AddItem(new Item("방패", 2, 10, Resources.Load<Sprite>("Icons/wogol_idle_anim_f2"), Item.ItemType.Accessory));
     }
 
     public void AddItem(Item item)
