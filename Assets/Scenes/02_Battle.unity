@@ -1337,6 +1337,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -3370623417837262171, guid: de358acb2123b6f488943ee2c6f26c14, type: 3}
+      propertyPath: CritChance
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: -3370623417837262171, guid: de358acb2123b6f488943ee2c6f26c14, type: 3}
+      propertyPath: CritDamage
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: -3370623417837262171, guid: de358acb2123b6f488943ee2c6f26c14, type: 3}
+      propertyPath: BulletSpace
+      value: 2.4
+      objectReference: {fileID: 0}
+    - target: {fileID: -3370623417837262171, guid: de358acb2123b6f488943ee2c6f26c14, type: 3}
       propertyPath: _CardManager
       value: 
       objectReference: {fileID: 2083542638}
