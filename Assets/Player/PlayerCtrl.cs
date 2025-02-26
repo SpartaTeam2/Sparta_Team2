@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
@@ -47,6 +48,9 @@ public class PlayerCtrl : MonoBehaviour
     Vector2 newPos;
 
     Animator animator; // 애니메이터
+
+    [SerializeField]
+    GameObject _CardManager;
 
     // Start is called before the first frame update
     void Start()
@@ -229,10 +233,10 @@ public class PlayerCtrl : MonoBehaviour
 
     public void GetExp()
     {
-        if (MaxExp >= Exp)
+        if (Exp >= MaxExp)
         {
             LevelUp();
-            MaxExp -= Exp; // 남은 경험치만 남김
+            Exp -= MaxExp; // 남은 경험치만 남김
 
             MaxExp++; //경험치통 1증가
         }
@@ -245,7 +249,9 @@ public class PlayerCtrl : MonoBehaviour
     public void LevelUp()
     {
         level++;
-        // 여기에 스킬 패널 키는거 추가
+
+        _CardManager.GetComponent<SkillHandler>().RandomRarity(3);
+            // 여기에 스킬 패널 키는거 추가
     }
     public void GetDamage(float Damage)
     {

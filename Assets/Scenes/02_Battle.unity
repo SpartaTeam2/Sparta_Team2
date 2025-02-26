@@ -1336,6 +1336,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -3370623417837262171, guid: de358acb2123b6f488943ee2c6f26c14, type: 3}
+      propertyPath: _CardManager
+      value: 
+      objectReference: {fileID: 2083542638}
     - target: {fileID: 2472636660383753890, guid: de358acb2123b6f488943ee2c6f26c14, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1456,6 +1460,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1658186128}
+    - target: {fileID: 6591000014186307005, guid: 437f481c02393444d9e522c53426d59b, type: 3}
+      propertyPath: destroyDelayTime
+      value: 2.64
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1716,7 +1724,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DungeonLevel: 1
-  StageLevel: 10
+  StageLevel: 9
   MaxMonster: 10
   Map: {fileID: 246411014}
   MapSprite:
@@ -1742,6 +1750,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   linePrefab: {fileID: 6862949046861021928, guid: 29e2a8dfb1393134d95e2c8e6985bf61, type: 3}
+--- !u!1 &2083542638 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2372513981263105626, guid: 437f481c02393444d9e522c53426d59b, type: 3}
+  m_PrefabInstance: {fileID: 1718109059}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6562524406637380558
 PrefabInstance:
   m_ObjectHideFlags: 0

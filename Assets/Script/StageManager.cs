@@ -65,14 +65,15 @@ public class StageManager : MonoBehaviour
                 break;
 
             case 2:
-                MapSpriteRenderer.sprite = MapSprite[Random.Range(0, 3)];
+                MapSpriteRenderer.sprite = MapSprite[Random.Range(3, 6)];
                 break;
 
             case 3:
-                MapSpriteRenderer.sprite = MapSprite[Random.Range(0, 3)];
+                MapSpriteRenderer.sprite = MapSprite[Random.Range(6, 9)];
                 break;
 
             default:
+                MapSpriteRenderer.sprite = MapSprite[Random.Range(0, MapSprite.Length)];
                 break;
         }
     }
@@ -124,7 +125,6 @@ public class StageManager : MonoBehaviour
         for (int i =0; i< MaxMonster; i++)
         {
             GameObject _insMons = Instantiate(GetComponent<MonsterManager>().MonsterArr[Random.Range(0, 3)], new Vector2(Random.Range(-3, 3), Random.Range(-3, 3)), Quaternion.identity);
-            //_insMons.GetComponent<UglyEnemy>().maxHP = maxHP * 10;
         }
     }
     void InsWaveType()
@@ -132,23 +132,11 @@ public class StageManager : MonoBehaviour
         for (int i = 0; i < MaxMonster; i++)
         {
             GameObject _insMons = Instantiate(GetComponent<MonsterManager>().MonsterArr[Random.Range(0, 3)], new Vector2(Random.Range(-3, 3), Random.Range(-3, 3)), Quaternion.identity);
-            //_insMons.GetComponent<UglyEnemy>().maxHP = maxHP * 10;
         }
     }
     void InsBossType()
     {
         GameObject _insMons = Instantiate(GetComponent<MonsterManager>()._boss[Random.Range(0, 3)], Vector2.zero , Quaternion.identity);
-
-        //Instantiate(_boss[0]);
-    }
-    public void RandomSpawnMonster(int _minNum, int _maxNum)
-    {
-        //for (int i = 0; i >= MaxMonster; i++)
-        //{
-        //    int j = UnityEngine.Random.Range(_minNum, _maxNum);
-        //    Instantiate(MonsterArr[j]);
-        //}
-        ////Monster Mondata = MonsterPre.GetComponent<MonsterData>
     }
     void EndGame()
     {

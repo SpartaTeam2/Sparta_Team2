@@ -60,6 +60,7 @@ public class SkillHandler : MonoBehaviour
         }
         //ÀÌÈÄ ÆÄ±«
         StartCoroutine(DestroyObject());
+        cardObjectList.Clear();
     }
 
     private IEnumerator DestroyObject()
