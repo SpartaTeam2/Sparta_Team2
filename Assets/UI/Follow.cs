@@ -15,6 +15,9 @@ public class Follow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (target == null)
+            return;
+
         Vector3 worldPosition = target.position + offset;  // 대상 위치 + 오프셋
         Vector3 viewportPosition = Camera.main.WorldToViewportPoint(worldPosition); // 씬 카메라
 
