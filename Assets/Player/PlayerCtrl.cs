@@ -140,7 +140,7 @@ public class PlayerCtrl : MonoBehaviour
         if (!IsBackShot)
             return;
 
-        Vector3 newPos3 = new Vector3 (newPos.x, newPos.y, 0);
+        Vector3 newPos3 = new Vector3(newPos.x, newPos.y, 0);
         Vector3 backShot = GUN.transform.position - (newPos3.normalized * 0.5f);
         float backZ = Mathf.Atan2(-newPos.y, -newPos.x) * Mathf.Rad2Deg;
         Quaternion backDirection = Quaternion.Euler(0, 0, backZ);
@@ -182,7 +182,7 @@ public class PlayerCtrl : MonoBehaviour
             Instantiate(BulletPrefab, GUN.transform.position, deg30).GetComponent<BulletCtrl>().Attacker = gameObject;
             Instantiate(BulletPrefab, GUN.transform.position, degm30).GetComponent<BulletCtrl>().Attacker = gameObject;
 
-            if(WideCount > 1)
+            if (WideCount > 1)
             {
                 Quaternion deg60 = GUN.transform.rotation * Quaternion.Euler(0, 0, 60);
                 Quaternion degm60 = GUN.transform.rotation * Quaternion.Euler(0, 0, -60);
@@ -190,8 +190,6 @@ public class PlayerCtrl : MonoBehaviour
                 Instantiate(BulletPrefab, GUN.transform.position, degm60).GetComponent<BulletCtrl>().Attacker = gameObject;
             }
         }
-
-
     }
 
     private void MultipleFire() //최대 투사체 4개, 중앙부터 대칭으로  -1.5 -0.5 0.5 1.5 의 위치
@@ -224,15 +222,30 @@ public class PlayerCtrl : MonoBehaviour
         AudioSource.PlayClipAtPoint(FireSoundClip, transform.position);
     }
 
-    public void GetExps ()
+    public void GetExps()
     {
-        if (MaxExp>=Exp)
-        {
-            level++;
-            MaxExp -= Exp;
+        Exp++;
+    }
 
-            //levelup;
+    public void GetExp()
+    {
+        if (MaxExp >= Exp)
+        {
+            LevelUp();
+            MaxExp -= Exp; // 남은 경험치만 남김
+
+            MaxExp++; //경험치통 1증가
         }
+        else
+        {
+            MaxExp += Exp;
+        }
+    }
+
+    public void LevelUp()
+    {
+        level++;
+        // 여기에 스킬 패널 키는거 추가
     }
     public void GetDamage(float Damage)
     {
@@ -247,6 +260,6 @@ public class PlayerCtrl : MonoBehaviour
         {
             AudioSource.PlayClipAtPoint(HitSoundClip, transform.position);
         }
-            Destroy(Instantiate(HitEffect, transform.position, Quaternion.identity), 0.5f);
+        Destroy(Instantiate(HitEffect, transform.position, Quaternion.identity), 0.5f);
     }
 }

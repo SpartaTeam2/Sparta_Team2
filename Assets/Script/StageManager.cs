@@ -16,6 +16,9 @@ public class StageManager : MonoBehaviour
 
     public GameObject Portal;
 
+    GameObject Player;
+    SpriteRenderer MapSpriteRenderer;
+
     public enum SpawnType
     {
         Clean,
@@ -28,6 +31,8 @@ public class StageManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        MapSpriteRenderer = Map.GetComponent<SpriteRenderer>();
+        Player = GameObject.FindWithTag("Player");
         Portal.SetActive(false);
         InsMap();
         SpawnMonster();
@@ -53,15 +58,15 @@ public class StageManager : MonoBehaviour
         switch(DungeonLevel)
         {
             case 1:
-                Map.GetComponent<SpriteRenderer>().sprite = MapSprite[Random.Range(0, 3)];
+                MapSpriteRenderer.sprite = MapSprite[Random.Range(0, 3)];
                 break;
 
             case 2:
-                Map.GetComponent<SpriteRenderer>().sprite = MapSprite[Random.Range(0, 3)];
+                MapSpriteRenderer.sprite = MapSprite[Random.Range(0, 3)];
                 break;
 
             case 3:
-                Map.GetComponent<SpriteRenderer>().sprite = MapSprite[Random.Range(0, 3)];
+                MapSpriteRenderer.sprite = MapSprite[Random.Range(0, 3)];
                 break;
 
             default:
@@ -122,11 +127,23 @@ public class StageManager : MonoBehaviour
     }
     void EndGame()
     {
+        Player.GetComponent<PlayerCtrl>().GetExp();
         Portal.SetActive(true);
     }
     public void Upstage()
     {
         StageLevel++;
         SpawnMonster();
+    }
+    void ExitDungeon()
+    {
+        if (StageLevel >10)
+        {
+            //게임 승리 처리, 승리 패널 켜기
+        }
+        else
+        {
+            //게임 패배 처리, 패배 패널 켜기
+        }
     }
 }
