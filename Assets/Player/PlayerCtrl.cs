@@ -15,8 +15,7 @@ public class PlayerCtrl : MonoBehaviour
     public float AttackDamage;
 
     public int level;
-    public float MaxExp;
-    
+    public float MaxExp; 
     public float Exp;
 
     [Header("플레이어 장비 정보")]
