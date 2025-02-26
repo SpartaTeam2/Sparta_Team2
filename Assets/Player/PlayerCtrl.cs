@@ -242,7 +242,7 @@ public class PlayerCtrl : MonoBehaviour
         }
         else
         {
-            MaxExp += Exp;
+
         }
     }
 

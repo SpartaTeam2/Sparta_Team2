@@ -60,7 +60,10 @@ public class SkillHandler : MonoBehaviour
         }
         //이후 파괴
         StartCoroutine(DestroyObject());
-        cardObjectList.Clear();
+    }
+    private void CreateList()
+    {
+        cardObjectList = new List<GameObject>();
     }
 
     private IEnumerator DestroyObject()
@@ -76,6 +79,7 @@ public class SkillHandler : MonoBehaviour
     //프리팹 스킬 카드 생성
     public void CreateSkillCard(List<SkillData> selectedSkillList)
     {
+        CreateList();
         foreach (SkillData skill in selectedSkillList)
         {
             GameObject card = Instantiate(skillCardPrefab);
