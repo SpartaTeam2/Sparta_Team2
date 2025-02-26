@@ -61,8 +61,7 @@ public class BulletCtrl : MonoBehaviour
                         collision.GetComponent<BaseEnemy>().GetDamage(Damage);
                     }
 
-                    GetComponent<AudioSource>().clip = _audioClip;
-                    GetComponent<AudioSource>().Play();
+                    AudioManager.Instance.PlaySfx(_audioClip);
                     Destroy(gameObject);
                     break;
                 default:

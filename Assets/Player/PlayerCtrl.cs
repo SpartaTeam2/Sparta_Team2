@@ -227,7 +227,8 @@ public class PlayerCtrl : MonoBehaviour
             MultipleFire();
 
 
-        AudioSource.PlayClipAtPoint(FireSoundClip, transform.position);
+        AudioManager.Instance.PlaySfx(FireSoundClip);
+
     }
 
     public void GetExps()
@@ -265,13 +266,13 @@ public class PlayerCtrl : MonoBehaviour
         HP -= Damage;
         if (HP <= 0)
         {
-            AudioSource.PlayClipAtPoint(DieSoundClip, transform.position);
+            AudioManager.Instance.PlaySfx(DieSoundClip);
             Destroy(gameObject, 0.2f); //삭제처리 아니고 나중에 부활처리로 할겁니다요
             return;
         }
         else
         {
-            AudioSource.PlayClipAtPoint(HitSoundClip, transform.position);
+            AudioManager.Instance.PlaySfx(HitSoundClip);
         }
         Destroy(Instantiate(HitEffect, transform.position, Quaternion.identity), 0.5f);
     }

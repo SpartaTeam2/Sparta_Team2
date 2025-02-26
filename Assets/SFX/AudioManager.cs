@@ -9,7 +9,8 @@ public class AudioManager : MonoBehaviour
 
     [Header("Audio Source")]
     private AudioSource bgmSource;
-    private List<AudioSource> sfxSources = new List<AudioSource>();
+    
+    [SerializeField] private List<AudioSource> sfxSources = new List<AudioSource>();
 
     public int sfxMax = 20;
     public float defalutBgmVolume = 1.0f;
@@ -64,12 +65,12 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySfx(AudioClip clip)
     {
-        AudioSource empytSource = sfxSources.Find(source => !source.isPlaying);
-        if (empytSource = null)
+        AudioSource empytsource = sfxSources.Find(source => !source.isPlaying);
+        if (empytsource == null)
             return;
 
-        empytSource.clip = clip;
-        empytSource.PlayOneShot(clip);
+        empytsource.clip = clip;
+        empytsource.PlayOneShot(clip);
     }
 
     public void SetBgmVolume(float volume)

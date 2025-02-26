@@ -16,7 +16,8 @@ public class ExpsCtrl : MonoBehaviour
     {
         Player = GameObject.Find("Player");
         Player.GetComponent<PlayerCtrl>().GetExps();
-        AudioSource.PlayClipAtPoint(ExpSound, transform.position);
+
+        AudioManager.Instance.PlaySfx(ExpSound);
     }
 
     // Update is called once per frame
@@ -27,6 +28,13 @@ public class ExpsCtrl : MonoBehaviour
     }
     private void LateUpdate()
     {
+        // 예외처리
+        if (Player == null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         if (Vector2.Distance(transform.position, Player.transform.position) <= 0.1)
         {
             Destroy(gameObject);
