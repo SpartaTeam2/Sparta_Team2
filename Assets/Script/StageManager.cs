@@ -162,7 +162,7 @@ public class StageManager : MonoBehaviour
     }
     void ExitDungeon()
     {
-        if (StageLevel >10)
+        if (StageLevel >10&&(Player))
         {
             _canvas.GetComponent<PanelUI>().GameClear();
         }
