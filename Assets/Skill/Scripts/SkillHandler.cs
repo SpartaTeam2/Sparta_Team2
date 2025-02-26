@@ -151,15 +151,18 @@ public class SkillHandler : MonoBehaviour
     // 스킬 목록에서 랜덤 선택(중복제외)
     public List<SkillData> BasicSkillDraw(int selection)
     {
-        return basicSkillDict.Values.OrderBy(x => Random.Range(0, basicSkillDict.Count)).Take(selection).ToList();
+        int selectable = basicSkillDict.Values.Count(x => x.canPick);
+        return basicSkillDict.Values.Where(x => x.canPick).OrderBy(x => Random.Range(0, selectable)).Take(selection).ToList();
     }
     public List<SkillData> EpicSkillDraw(int selection)
     {
-        return epicSkillDict.Values.OrderBy(x => Random.Range(0, epicSkillDict.Count)).Take(selection).ToList();
+        int selectable = epicSkillDict.Values.Count(x => x.canPick);
+        return epicSkillDict.Values.Where(x => x.canPick).OrderBy(x => Random.Range(0, epicSkillDict.Count)).Take(selection).ToList();
     }
     public List<SkillData> LegendSkillDraw(int selection)
     {
-        return legendSkillDict.Values.OrderBy(x => Random.Range(0, legendSkillDict.Count)).Take(selection).ToList();
+        int selectable = legendSkillDict.Values.Count(x => x.canPick);
+        return legendSkillDict.Values.Where(x => x.canPick).OrderBy(x => Random.Range(0, legendSkillDict.Count)).Take(selection).ToList();
     }
 
     public void ResetRandomDict()
