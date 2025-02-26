@@ -131,17 +131,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 892552891}
     m_Modifications:
+    - target: {fileID: 1357809310595278557, guid: ef4f8b2de105d35409a28fa0f2e4a407, type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1357809310595278557, guid: ef4f8b2de105d35409a28fa0f2e4a407, type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 3408375239531968465, guid: ef4f8b2de105d35409a28fa0f2e4a407, type: 3}
       propertyPath: m_Name
       value: WinPanel
       objectReference: {fileID: 0}
     - target: {fileID: 3408375239531968465, guid: ef4f8b2de105d35409a28fa0f2e4a407, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5267826200042346650, guid: ef4f8b2de105d35409a28fa0f2e4a407, type: 3}
       propertyPath: changeScene
       value: 01_Lobby
+      objectReference: {fileID: 0}
+    - target: {fileID: 6191678256944834471, guid: ef4f8b2de105d35409a28fa0f2e4a407, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8859431885507429444, guid: ef4f8b2de105d35409a28fa0f2e4a407, type: 3}
       propertyPath: m_Pivot.x
@@ -535,6 +547,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 892552891}
     m_Modifications:
+    - target: {fileID: 3248953838476504494, guid: d4288361a37c00146b0120da529ffa68, type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3248953838476504494, guid: d4288361a37c00146b0120da529ffa68, type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4288160654917115374, guid: d4288361a37c00146b0120da529ffa68, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -615,6 +635,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5511073935173680007, guid: d4288361a37c00146b0120da529ffa68, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1658186128}
     - target: {fileID: 7145292139889472440, guid: d4288361a37c00146b0120da529ffa68, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -893,10 +917,10 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 34782540}
-  - {fileID: 1751734803}
   - {fileID: 695636188}
   - {fileID: 979505303}
+  - {fileID: 34782540}
+  - {fileID: 1751734803}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1058,10 +1082,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -3370623417837262171, guid: de358acb2123b6f488943ee2c6f26c14, type: 3}
-      propertyPath: MaxExp
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: -3370623417837262171, guid: de358acb2123b6f488943ee2c6f26c14, type: 3}
       propertyPath: CritChance
       value: 20
       objectReference: {fileID: 0}
@@ -1218,9 +1238,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: LosePanel
       objectReference: {fileID: 0}
+    - target: {fileID: 1542648779242309874, guid: 0f27691384b0c264da152ca77d38e625, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1832599219637778621, guid: 0f27691384b0c264da152ca77d38e625, type: 3}
       propertyPath: changeScene
       value: 01_Lobby
+      objectReference: {fileID: 0}
+    - target: {fileID: 4045025291878198767, guid: 0f27691384b0c264da152ca77d38e625, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5826407644367333839, guid: 0f27691384b0c264da152ca77d38e625, type: 3}
       propertyPath: m_Pivot.x
@@ -1301,6 +1329,14 @@ PrefabInstance:
     - target: {fileID: 5826407644367333839, guid: 0f27691384b0c264da152ca77d38e625, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6588994388283829028, guid: 0f27691384b0c264da152ca77d38e625, type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6588994388283829028, guid: 0f27691384b0c264da152ca77d38e625, type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1384,7 +1420,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DungeonLevel: 1
-  StageLevel: 10
+  StageLevel: 1
   MaxMonster: 10
   Map: {fileID: 246411014}
   MapSprite:
