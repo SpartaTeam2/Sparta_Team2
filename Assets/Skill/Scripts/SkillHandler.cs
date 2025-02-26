@@ -74,7 +74,11 @@ public class SkillHandler : MonoBehaviour
         {
             Destroy(card);
         }
-    }
+        cardObjectList.Clear();
+
+        ApplyBasicSkills.player.canLvlUp = true;
+
+}
 
     //프리팹 스킬 카드 생성
     public void CreateSkillCard(List<SkillData> selectedSkillList)

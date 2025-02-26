@@ -235,7 +235,6 @@ public class PlayerCtrl : MonoBehaviour
 
     public void GetExp()
     {
-        canLvlUp = false;
         if (Exp >= MaxExp)
         {
 
@@ -255,8 +254,10 @@ public class PlayerCtrl : MonoBehaviour
     {
 
         level++;
+        canLvlUp = false;
 
         _CardManager.GetComponent<SkillHandler>().RandomRarity(3);
+
         // 여기에 스킬 패널 키는거 추가
 
     }
