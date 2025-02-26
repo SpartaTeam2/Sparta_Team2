@@ -237,24 +237,21 @@ public class PlayerCtrl : MonoBehaviour
     {
         if (Exp >= MaxExp)
         {
-
             LevelUp();
-            Exp -= MaxExp; // 남은 경험치만 남김
-
-            MaxExp++; //경험치통 1증가
-
-        }
-        else
-        {
-            return;
         }
     }
 
     public void LevelUp()
     {
+        if (!canLvlUp)
+            return;
+
+        canLvlUp = false;
 
         level++;
-        canLvlUp = false;
+        Exp -= MaxExp; // 남은 경험치만 남김
+        MaxExp++; //경험치통 1증가
+
 
         _CardManager.GetComponent<SkillHandler>().RandomRarity(3);
 

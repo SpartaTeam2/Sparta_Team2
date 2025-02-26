@@ -44,7 +44,7 @@ public class StageManager : MonoBehaviour
     private void LateUpdate()
     {
         GameObject[] _monsterList = GameObject.FindGameObjectsWithTag("Monster");
-        if ((_monsterList.Length <= 0)||(Player))
+        if ((_monsterList.Length <= 0)&&(Player))
         {
             if (StageLevel < 10)
             {
