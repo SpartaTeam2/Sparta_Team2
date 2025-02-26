@@ -227,6 +227,7 @@ MonoBehaviour:
   randomSkillNum: 0
   selectedSkillNum: 0
   destroyDelayTime: 6
+  applySkillNum: 0
 --- !u!4 &224896726
 Transform:
   m_ObjectHideFlags: 0
@@ -279,7 +280,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 414, y: 401}
+  m_AnchoredPosition: {x: 399, y: 401}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &301061215
@@ -658,6 +659,8 @@ MonoBehaviour:
   armorSlot: {fileID: 1389160978}
   accessorySlot1: {fileID: 1848868715}
   accessorySlot2: {fileID: 1346068959}
+  accessorySlot3: {fileID: 1242550638}
+  accessorySlot4: {fileID: 301061214}
   playerStatsText: {fileID: 517112620}
 --- !u!4 &991186928
 Transform:
@@ -753,7 +756,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 405, y: 564}
+  m_AnchoredPosition: {x: 399, y: 564}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1242550639
@@ -845,7 +848,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1346068958}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1046}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -853,7 +856,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -359, y: 569}
+  m_AnchoredPosition: {x: -346, y: 325}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1346068960
@@ -1267,7 +1270,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -369, y: 408}
+  m_AnchoredPosition: {x: -346, y: 524}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1848868716

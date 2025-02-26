@@ -13,6 +13,8 @@ public class InventoryManager : MonoBehaviour
     public Transform armorSlot;         // 방어구 슬롯
     public Transform accessorySlot1;    // 장신구 슬롯 1
     public Transform accessorySlot2;    // 장신구 슬롯 2
+    public Transform accessorySlot3;    // 장신구 슬롯 1
+    public Transform accessorySlot4;
 
 
     private GameObject equippedWeapon;
@@ -76,6 +78,14 @@ public class InventoryManager : MonoBehaviour
 
             }
             else if (accessorySlot2.childCount == 0)
+            {
+                item.transform.SetParent(accessorySlot2);
+            }
+            else if (accessorySlot3.childCount == 0)
+            {
+                item.transform.SetParent(accessorySlot2);
+            }
+            else if (accessorySlot4.childCount == 0)
             {
                 item.transform.SetParent(accessorySlot2);
             }
