@@ -74,7 +74,17 @@ public abstract class BaseEnemy : MonoBehaviour
 
     public void GetDamage(float damage)
     {
-        Debug.Log($"enemy Get Damage {damage}");
+        hp -= (int)damage;
+        if(hp <= 0)
+        {
+            hp = 0;
+            Dead();
+        }
+    }
+
+    public void Dead()
+    {
+        Destroy(gameObject);
     }
 
     private void OnDrawGizmos()
