@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyBullet : MonoBehaviour
 {
+    private const string playerTag = "Player";
+    private const string WallTag = "Wall";
+
     [SerializeField]
     private Rigidbody2D rigidbody;
     public float damage { get; set; }
@@ -14,18 +18,21 @@ public class EnemyBullet : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        switch (collision.gameObject.tag)
+        if (collision.CompareTag(playerTag))
         {
-            case "Player":
-                collision.GetComponent<PlayerCtrl>().GetDamage(damage);
-                break;
+            collision.GetComponent<PlayerCtrl>().GetDamage(damage);
+            Destroy(gameObject);
+        }
 
-            case "Wall":
-                Destroy(gameObject);
-                break;
-            default:
-                Debug.Log("이걸 어캐 띄웠음");
-                break;
+        else if (collision.CompareTag(WallTag))
+        {
+            Destroy(gameObject);
+        }
+
+        else
+        {
+            Debug.Log($"어디에 박은거죠? >> {collision.name}");
+            Destroy(gameObject);
         }
     }
 
