@@ -5,6 +5,7 @@ public enum PatternName
 {
     BURST,
     ROTATION,
+    IDLE,
 }
 
 public class BossPattern : MonoBehaviour
@@ -29,6 +30,9 @@ public class BossPattern : MonoBehaviour
 
             case PatternName.ROTATION:
                 StartCoroutine(RotationBurst(from, to));
+                break;
+            case PatternName.IDLE:
+                StartCoroutine(IdleBurst());
                 break;
         }
     }
@@ -121,8 +125,32 @@ public class BossPattern : MonoBehaviour
         ownerHandler?.EndAttack();
     }
 
-    private void IdleBurst()
+    private IEnumerator IdleBurst()
     {
+        yield return null;
+        float baseAngle = Mathf.Atan2(0, 1) * Mathf.Rad2Deg; // 기준 각도
+        int bulletCount = Random.Range(8, 16);
+        int ratationCount = Random.Range(2, 4);
+        ownerHandler?.EndAttack();
+        for (int c = 0; c < ratationCount; c++)
+            for(int i = 0; i < bulletCount; i++)
+            {
+                Quaternion rotation = Quaternion.Euler(0, 0, baseAngle + (360f / bulletCount) * i);
+                Vector2 dir = rotation * Vector2.right;
 
+                Vector3 targetPos = transform.position + (Vector3)(dir * 10f);
+
+                // 발사 방향
+                Vector2 direction = (targetPos - transform.position).normalized;
+
+                // 총알 생성
+                EnemyBullet bullet = Instantiate(bulletPrefab).GetComponent<EnemyBullet>();
+                bullet.transform.position = transform.position;
+                bullet.damage = owner.Damage;
+
+                // 총알 이동
+                bullet.Shot(direction);
+                yield return new WaitForSeconds(0.1f);
+            }
     }
 }
