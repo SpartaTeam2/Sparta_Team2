@@ -226,6 +226,7 @@ MonoBehaviour:
   cardObjectList: []
   randomSkillNum: 0
   selectedSkillNum: 0
+  destroyDelayTime: 6
 --- !u!4 &224896726
 Transform:
   m_ObjectHideFlags: 0
@@ -603,7 +604,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13f1040875cea2a4d8b769b626139b20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: -3370623417837262171, guid: de358acb2123b6f488943ee2c6f26c14, type: 3}
   skill: {fileID: 1058571607}
   projectileLimit: 3
   wideProjectileLimit: 2

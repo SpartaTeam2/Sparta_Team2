@@ -6,7 +6,7 @@ public class EnemyBullet : MonoBehaviour
 {
     [SerializeField]
     private Rigidbody2D rigidbody;
-    public float Damage;
+    public float damage { get; set; }
 
     private void Start()
     {
@@ -17,7 +17,7 @@ public class EnemyBullet : MonoBehaviour
         switch (collision.gameObject.tag)
         {
             case "Player":
-                collision.gameObject.GetComponent<PlayerCtrl>().GetDamage(Damage);
+                collision.GetComponent<PlayerCtrl>().GetDamage(damage);
                 break;
 
             case "Wall":
@@ -27,10 +27,6 @@ public class EnemyBullet : MonoBehaviour
                 Debug.Log("이걸 어캐 띄웠음");
                 break;
         }
-        // 플레이어 충돌
-
-        // *충돌 레이어 설정하기
-        // 총알끼리 충돌 / 몬스터 충돌 ( 충돌 X )
     }
 
 

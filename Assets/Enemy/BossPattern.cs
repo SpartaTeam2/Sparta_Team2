@@ -10,11 +10,13 @@ public enum PatternName
 public class BossPattern : MonoBehaviour
 {
     [SerializeField] private GameObject bulletPrefab;
+    private BaseEnemy owner;
     private EnemyAttackHandler ownerHandler;
 
-    public void InitPattern(EnemyAttackHandler ownerHandler)
+    public void InitPattern(EnemyAttackHandler ownerHandler, BaseEnemy owner)
     {
         this.ownerHandler = ownerHandler;
+        this.owner = owner;
     }
 
     public void OnPattern(Transform from, Transform to, PatternName pattern)
@@ -49,6 +51,7 @@ public class BossPattern : MonoBehaviour
             // ÃÑ¾Ë »ý¼º
             EnemyBullet bullet = Instantiate(bulletPrefab).GetComponent<EnemyBullet>();
             bullet.transform.position = transform.position;
+            bullet.damage = owner.Damage;
 
             // ÃÑ¾Ë ÀÌµ¿
             bullet.Shot(direction);
@@ -103,6 +106,7 @@ public class BossPattern : MonoBehaviour
                 // ÃÑ¾Ë »ý¼º
                 EnemyBullet bullet = Instantiate(bulletPrefab).GetComponent<EnemyBullet>();
                 bullet.transform.position = transform.position;
+                bullet.damage = owner.Damage;
 
                 // ÃÑ¾Ë ÀÌµ¿
                 bullet.Shot(direction);

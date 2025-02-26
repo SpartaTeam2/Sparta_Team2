@@ -26,7 +26,7 @@ public class UglyBoss : BaseEnemy, IEnemyIdle, IEnemyTracking, IEnemyAttack
         attackHandler.InitHandler(attackDelay);
 
         pattern = GetComponentInChildren<BossPattern>();
-        pattern.InitPattern(attackHandler);
+        pattern.InitPattern(attackHandler, this);
     }
 
     public void IdleExecute()
