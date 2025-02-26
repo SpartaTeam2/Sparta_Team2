@@ -253,7 +253,7 @@ public class PlayerCtrl : MonoBehaviour
         if (HP <= 0)
         {
             AudioSource.PlayClipAtPoint(DieSoundClip, transform.position);
-            Destroy(gameObject, 1.0f); //삭제처리 아니고 나중에 부활처리로 할겁니다요
+            Destroy(gameObject, 0.2f); //삭제처리 아니고 나중에 부활처리로 할겁니다요
             return;
         }
         else

@@ -6,20 +6,20 @@ using TMPro;
 
 public class Hp_Bar : MonoBehaviour
 {
-    public Transform player;
+    public PlayerCtrl player;
     public Slider hpbar;
     public float maxHp;
     public float currenthp;
     public Text nowHpText;
-    public float damageRate = 10f; 
+    public float damageRate = 0f; 
 
     void Start()
     {
-        currenthp = maxHp;  
+        player.HP = player.MaxHp;  
 
         if (hpbar != null)  
         {
-            hpbar.value = currenthp; 
+            hpbar.value = player.HP; 
         }
 
        
@@ -31,7 +31,7 @@ public class Hp_Bar : MonoBehaviour
         
         if (hpbar != null)
         {
-            hpbar.value = currenthp; 
+            hpbar.value = player.HP; 
         }
         TakeDamage(damageRate * Time.deltaTime);
 
@@ -39,10 +39,10 @@ public class Hp_Bar : MonoBehaviour
     }
     public void TakeDamage(float damage)
     {
-        currenthp -= damage;
-        if (currenthp < 0)
+        player.HP -= damage;
+        if (player.HP < 0)
         {
-            currenthp = 0;
+            player.HP = 0;
         }
         UpdateHpText();
     }
@@ -52,7 +52,7 @@ public class Hp_Bar : MonoBehaviour
        
         if (nowHpText != null)
         {
-            nowHpText.text = currenthp.ToString("N0"); 
+            nowHpText.text = player.HP.ToString("N0"); 
         }
     }
 }

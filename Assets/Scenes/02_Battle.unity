@@ -1143,7 +1143,11 @@ PrefabInstance:
     - target: {fileID: 2225620834107360244, guid: f76156a533c7c804f81ff63e3b0951de, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 1006485361}
+      objectReference: {fileID: 1658186128}
+    - target: {fileID: 2225620834107360244, guid: f76156a533c7c804f81ff63e3b0951de, type: 3}
+      propertyPath: damageRate
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2701924055372804617, guid: f76156a533c7c804f81ff63e3b0951de, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
