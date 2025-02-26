@@ -104,15 +104,18 @@ public class UglyEnemy : BaseEnemy, IEnemyIdle, IEnemyTracking, IEnemyAttack
 
     private IEnumerator Shoot()
     {
-        //float lineTime = GuideLine.Instance.OnTrackingLine(transform, target, 0.1f);
-        //yield return new WaitForSeconds(lineTime);
+        float lineTime = GuideLine.Instance.OnTrackingLine(transform, target, 0.1f);
+        yield return new WaitForSeconds(lineTime);
+
+        Vector3 targetPos = target.position;
 
         // 생성
         EnemyBullet bullet = Instantiate(bulletPrefab).GetComponent<EnemyBullet>();
         bullet.transform.position = transform.position;
-        bullet.GetComponent<EnemyBullet>().Damage = damage;
+        bullet.damage = damage;
+
         //  총알 방향 / 이동
-        Vector2 dir = TargetDirection(target.position);
+        Vector2 dir = TargetDirection(targetPos);
         bullet.Shot(dir);
         animator.SetTrigger("AttackTrigger");   // 공격 모션 
 

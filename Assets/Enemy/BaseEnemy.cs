@@ -31,6 +31,7 @@ public abstract class BaseEnemy : MonoBehaviour
 
     // GET SET
     public Animator Animator { get { return animator; } }
+    public int Damage {  get { return damage; } }
 
     private void Start()
     {
