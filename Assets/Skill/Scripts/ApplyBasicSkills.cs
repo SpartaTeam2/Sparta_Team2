@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ApplyBasicSkills : MonoBehaviour
 {
-    [SerializeField] private PlayerCtrl player;
+    [SerializeField] public PlayerCtrl player;
 
     [SerializeField] private BasicSkills skill;
 
@@ -35,7 +35,9 @@ public class ApplyBasicSkills : MonoBehaviour
                 break;
             case SkillType.CriticalMaster:
                 Debug.Log("critChance");
-                player.CritChance += skillData.skillValue;
+                player.CritChance += skillData.skillValue * 100;
+                if (player.CritChance >= 100)
+                    RemoveSkillFromRandom(skillData.skillId);
                 break;
             case SkillType.CriticalBoost:
                 Debug.Log("crit");

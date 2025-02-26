@@ -29,6 +29,9 @@ public abstract class BaseEnemy : MonoBehaviour
     [SerializeField] protected float trackingRange; // 추적 범위
     [SerializeField] protected float attackRange;   // 공격 범위
 
+    [Header("EXP")]
+    [SerializeField] private GameObject expPrefab;
+
     // GET SET
     public Animator Animator { get { return animator; } }
     public int Damage {  get { return damage; } }
@@ -39,13 +42,6 @@ public abstract class BaseEnemy : MonoBehaviour
     {
         InitComponent();
         InitEnemy();
-
-        Debug.Log($"maxHP {MaxHP}");
-        Debug.Log($"hp {hp}");
-        Debug.Log($"damage {damage}");
-        Debug.Log($"moveSpeed {moveSpeed}");
-        Debug.Log($"trackingRange {trackingRange}");
-        Debug.Log($"attackRange {attackRange}");
     }
 
     private void Update()
@@ -96,6 +92,7 @@ public abstract class BaseEnemy : MonoBehaviour
 
     public void Dead()
     {
+        Instantiate(expPrefab, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 

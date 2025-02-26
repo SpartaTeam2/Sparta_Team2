@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
@@ -15,7 +16,7 @@ public class PlayerCtrl : MonoBehaviour
 
     public int level;
     public float MaxExp;
-    float Exp;
+    public float Exp;
 
     [Header("플레이어 장비 정보")]
     //public 
@@ -33,7 +34,7 @@ public class PlayerCtrl : MonoBehaviour
     public bool IsWideShot = false; //와이드샷 on/off
     public int WideCount = 0;
     public float CritChance = 0;
-    public float CritDamage = 0;
+    public float CritDamage = 1;
 
     public AudioClip FireSoundClip;
 
@@ -44,9 +45,14 @@ public class PlayerCtrl : MonoBehaviour
     public AudioClip HitSoundClip;
     public AudioClip DieSoundClip;
 
+    public bool canLvlUp = true;
+
     Vector2 newPos;
 
     Animator animator; // 애니메이터
+
+    [SerializeField]
+    GameObject _CardManager;
 
     // Start is called before the first frame update
     void Start()
@@ -78,7 +84,7 @@ public class PlayerCtrl : MonoBehaviour
             else
             {
                 //Debug.Log("The Input Value of xMove is 0");
-                Debug.Log(transform.position);
+                //Debug.Log(transform.position);
             }
         }
         else
@@ -229,23 +235,28 @@ public class PlayerCtrl : MonoBehaviour
 
     public void GetExp()
     {
-        if (MaxExp >= Exp)
+        if (Exp >= MaxExp)
         {
             LevelUp();
-            MaxExp -= Exp; // 남은 경험치만 남김
-
-            MaxExp++; //경험치통 1증가
-        }
-        else
-        {
-            MaxExp += Exp;
         }
     }
 
     public void LevelUp()
     {
+        if (!canLvlUp)
+            return;
+
+        canLvlUp = false;
+
         level++;
+        Exp -= MaxExp; // 남은 경험치만 남김
+        MaxExp++; //경험치통 1증가
+
+
+        _CardManager.GetComponent<SkillHandler>().RandomRarity(3);
+
         // 여기에 스킬 패널 키는거 추가
+
     }
     public void GetDamage(float Damage)
     {
@@ -253,7 +264,7 @@ public class PlayerCtrl : MonoBehaviour
         if (HP <= 0)
         {
             AudioSource.PlayClipAtPoint(DieSoundClip, transform.position);
-            Destroy(gameObject, 1.0f); //삭제처리 아니고 나중에 부활처리로 할겁니다요
+            Destroy(gameObject, 0.2f); //삭제처리 아니고 나중에 부활처리로 할겁니다요
             return;
         }
         else

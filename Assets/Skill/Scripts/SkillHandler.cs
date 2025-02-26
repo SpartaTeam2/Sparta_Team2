@@ -38,7 +38,7 @@ public class SkillHandler : MonoBehaviour
         epicSkillDict = basicSkills.epicSkillDict;
         legendSkillDict = basicSkills.legendSkillDict;
 
-        RandomRarity(3); //test code
+        //RandomRarity(3); //test code
     }
 
     public void DestroyCard()
@@ -61,6 +61,10 @@ public class SkillHandler : MonoBehaviour
         //이후 파괴
         StartCoroutine(DestroyObject());
     }
+    private void CreateList()
+    {
+        cardObjectList = new List<GameObject>();
+    }
 
     private IEnumerator DestroyObject()
     {
@@ -70,11 +74,16 @@ public class SkillHandler : MonoBehaviour
         {
             Destroy(card);
         }
-    }
+        cardObjectList.Clear();
+
+        ApplyBasicSkills.player.canLvlUp = true;
+
+}
 
     //프리팹 스킬 카드 생성
     public void CreateSkillCard(List<SkillData> selectedSkillList)
     {
+        CreateList();
         foreach (SkillData skill in selectedSkillList)
         {
             GameObject card = Instantiate(skillCardPrefab);

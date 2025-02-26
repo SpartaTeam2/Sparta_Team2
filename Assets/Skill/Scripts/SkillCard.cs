@@ -39,6 +39,8 @@ public class SkillCard : MonoBehaviour
         SkillHandler.Instance.DestroyCard();
     }
 
+
+
     public void GetSelectedSkill(SkillData data)
     {
         selectedIndex = SkillHandler.Instance.selectedSkillNum;

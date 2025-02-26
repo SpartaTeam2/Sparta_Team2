@@ -137,6 +137,9 @@ MonoBehaviour:
   HP: 0
   speed: 10
   AttackDamage: 1
+  level: 0
+  MaxExp: 10
+  Exp: 0
   BulletPrefab: {fileID: 5090293934867599194, guid: 8a8741543e4ffde4ca53488c3fd5ac8d, type: 3}
   GUN: {fileID: 109397673359166040}
   GunRate: 1
@@ -153,6 +156,7 @@ MonoBehaviour:
   _audioSource: {fileID: 3632396237188727380}
   HitSoundClip: {fileID: 8300000, guid: 4f41861152b609241bd1cf7e10188006, type: 3}
   DieSoundClip: {fileID: 8300000, guid: 478865717502e3841938426c1ac523ea, type: 3}
+  _CardManager: {fileID: 0}
 --- !u!50 &8923494476306431592
 Rigidbody2D:
   serializedVersion: 4
