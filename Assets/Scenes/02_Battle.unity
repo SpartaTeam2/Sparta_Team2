@@ -705,6 +705,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5511073935173680007, guid: d4288361a37c00146b0120da529ffa68, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1658186128}
+    - target: {fileID: 5511073935173680007, guid: d4288361a37c00146b0120da529ffa68, type: 3}
+      propertyPath: currentLevel
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5511073935173680007, guid: d4288361a37c00146b0120da529ffa68, type: 3}
+      propertyPath: experiencePerSecond
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7145292139889472440, guid: d4288361a37c00146b0120da529ffa68, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1336,6 +1348,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -3370623417837262171, guid: de358acb2123b6f488943ee2c6f26c14, type: 3}
+      propertyPath: MaxExp
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -3370623417837262171, guid: de358acb2123b6f488943ee2c6f26c14, type: 3}
       propertyPath: _CardManager
       value: 

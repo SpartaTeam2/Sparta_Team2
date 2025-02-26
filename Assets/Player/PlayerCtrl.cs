@@ -16,7 +16,7 @@ public class PlayerCtrl : MonoBehaviour
 
     public int level;
     public float MaxExp;
-    float Exp;
+    public float Exp;
 
     [Header("플레이어 장비 정보")]
     //public 
