@@ -373,9 +373,9 @@ GameObject:
   - component: {fileID: 4699155087459466302}
   - component: {fileID: 7727355607971563726}
   - component: {fileID: 360391160215477515}
-  - component: {fileID: 5714173638062125433}
   - component: {fileID: 2229643584916464150}
   - component: {fileID: 3921747751204561033}
+  - component: {fileID: 6337603203602304382}
   m_Layer: 10
   m_Name: 01_Enemy
   m_TagString: Monster
@@ -472,25 +472,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
---- !u!114 &5714173638062125433
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5535060253339384243}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 682b0c51c53155747ae6e6bc957603d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHP: 3
-  damage: 1
-  moveSpeed: 3
-  trackingRange: 10
-  attackRange: 7
-  expPrefab: {fileID: 9034968390482128985, guid: 00190666374105f43a6e7bd7181d4aaf, type: 3}
-  bulletPrefab: {fileID: 7125082019843310167, guid: e71f4b6a62446f34f8da9cf4ca3a077f, type: 3}
 --- !u!114 &2229643584916464150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -517,6 +498,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hpTEXT: {fileID: 4025875244113202924}
+--- !u!114 &6337603203602304382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5535060253339384243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dd36926206f711498d543c6d60c2923, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 3
+  damage: 1
+  moveSpeed: 3
+  trackingRange: 10
+  attackRange: 1.5
+  expPrefab: {fileID: 9034968390482128985, guid: 00190666374105f43a6e7bd7181d4aaf, type: 3}
 --- !u!1 &6331083092955457276
 GameObject:
   m_ObjectHideFlags: 0

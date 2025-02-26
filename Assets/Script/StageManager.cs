@@ -144,7 +144,8 @@ public class StageManager : MonoBehaviour
     }
     void EndGame()
     {
-        Player.GetComponent<PlayerCtrl>().GetExp();
+        if(Player.GetComponent<PlayerCtrl>().canLvlUp)
+            Player.GetComponent<PlayerCtrl>().GetExp();
         Portal.SetActive(true);
     }
     public void Upstage()
