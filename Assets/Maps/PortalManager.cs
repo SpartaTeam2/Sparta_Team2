@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class PortalManager : MonoBehaviour
 {
+    [SerializeField]
     GameObject GM;
+    [SerializeField]
     GameObject Player;
 
     private void Start()
@@ -23,7 +25,7 @@ public class PortalManager : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             gameObject.SetActive(false);
-            GameObject.Find("Player").GetComponent<Transform>().position = Vector2.zero;
+           Player.GetComponent<Transform>().position = new Vector2(0, -8);
             Camera.main.transform.position = Vector3.zero;
             GM.GetComponent<StageManager>().Upstage();
         }

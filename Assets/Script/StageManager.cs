@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
+using System.Xml;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -13,7 +15,7 @@ public class StageManager : MonoBehaviour
     public GameObject Map;
     public Sprite[] MapSprite;
     public GameObject[] Monsters;
-
+    public GameObject[] _monsterList;
     public GameObject Portal;
 
     GameObject Player;
@@ -45,7 +47,7 @@ public class StageManager : MonoBehaviour
 
     private void LateUpdate()
     {
-        GameObject[] _monsterList = GameObject.FindGameObjectsWithTag("Monster");
+        _monsterList = GameObject.FindGameObjectsWithTag("Monster");
         if (_monsterList.Length <= 0)
         {
             if (StageLevel < 10)
@@ -87,12 +89,14 @@ public class StageManager : MonoBehaviour
     {
         if (StageLevel % 5 == 0)
         {
+            MaxMonster = 1;
             _spawnType = SpawnType.Boss;
             AudioManager.Instance.StopBgm();
             AudioManager.Instance.PlayBgm(bossBgm);
         }
         else
         {
+            MaxMonster = 10 + StageLevel-1;
             int SpawnTypeIndex = Random.Range(0, 2);
             AudioManager.Instance.IsMainBGM();
             switch (SpawnTypeIndex)
@@ -133,19 +137,70 @@ public class StageManager : MonoBehaviour
     {
         for (int i = 0; i < MaxMonster; i++)
         {
-            GameObject _insMons = Instantiate(GetComponent<MonsterManager>().MonsterArr[Random.Range(0, 3)], new Vector2(Random.Range(-3, 3), Random.Range(-3, 3)), Quaternion.identity);
+            switch (DungeonLevel)
+            {
+                case 1:
+                    Instantiate(GetComponent<MonsterManager>().MonsterArr[Random.Range(0, 3)], new Vector2(Random.Range(-8, 8), Random.Range(-8, 8)), Quaternion.identity);
+                    break;
+
+                case 2:
+                    Instantiate(GetComponent<MonsterManager>().MonsterArr[Random.Range(3, 6)], new Vector2(Random.Range(-8, 8), Random.Range(-8, 8)), Quaternion.identity);
+                    break;
+                case 3:
+                    Instantiate(GetComponent<MonsterManager>().MonsterArr[Random.Range(6, 9)], new Vector2(Random.Range(-8, 8), Random.Range(-8, 8)), Quaternion.identity);
+                    break;
+
+                default:
+                    Instantiate(GetComponent<MonsterManager>().MonsterArr[Random.Range(9, 11)], new Vector2(Random.Range(-8, 8), Random.Range(-8, 8)), Quaternion.identity);
+                    break;
+            }
         }
     }
+
     void InsWaveType()
     {
         for (int i = 0; i < MaxMonster; i++)
         {
-            GameObject _insMons = Instantiate(GetComponent<MonsterManager>().MonsterArr[Random.Range(0, 3)], new Vector2(Random.Range(-3, 3), Random.Range(-3, 3)), Quaternion.identity);
+            switch(DungeonLevel)
+            {
+                case 1:
+                    Instantiate(GetComponent<MonsterManager>().MonsterArr[Random.Range(0, 3)], new Vector2(Random.Range(-8, 8), Random.Range(-8, 8)), Quaternion.identity);
+                    break;
+
+                case 2:
+                    Instantiate(GetComponent<MonsterManager>().MonsterArr[Random.Range(3, 6)], new Vector2(Random.Range(-8, 8), Random.Range(-8, 8)), Quaternion.identity);
+                    break;
+                case 3:
+                    Instantiate(GetComponent<MonsterManager>().MonsterArr[Random.Range(6, 9)], new Vector2(Random.Range(-8, 8), Random.Range(-8, 8)), Quaternion.identity);
+                    break;
+
+                default:
+                    Instantiate(GetComponent<MonsterManager>().MonsterArr[Random.Range(9, 11)], new Vector2(Random.Range(-8, 8), Random.Range(-8, 8)), Quaternion.identity);
+                    break;
+            }
         }
     }
     void InsBossType()
     {
-        GameObject _insMons = Instantiate(GetComponent<MonsterManager>()._boss[Random.Range(0, 3)], Vector2.zero, Quaternion.identity);
+        switch(DungeonLevel)
+        {
+            case 1:
+                Instantiate(GetComponent<MonsterManager>()._boss[Random.Range(0, 2)], new Vector2(Random.Range(-8, 8), Random.Range(-8, 8)), Quaternion.identity);
+                break;
+
+            case 2:
+                Instantiate(GetComponent<MonsterManager>()._boss[Random.Range(1, 3)], new Vector2(Random.Range(-8, 8), Random.Range(-8, 8)), Quaternion.identity);
+                break;
+
+            case 3:
+                Instantiate(GetComponent<MonsterManager>()._boss[Random.Range(2, 4)], new Vector2(Random.Range(-8, 8), Random.Range(-8, 8)), Quaternion.identity);
+                break;
+
+            default:
+                Instantiate(GetComponent<MonsterManager>()._boss[Random.Range(0, 5)], new Vector2(Random.Range(-8, 8), Random.Range(-8, 8)), Quaternion.identity);
+                break;
+
+        }
     }
     void EndGame()
     {
