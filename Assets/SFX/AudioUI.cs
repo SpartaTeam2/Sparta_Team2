@@ -16,6 +16,7 @@ public class AudioUI : MonoBehaviour
 
         bgmVolume.onValueChanged.AddListener(AudioManager.Instance.SetBgmVolume);
         sfxVolume.onValueChanged.AddListener(AudioManager.Instance.SetSfxVolume);
+        AudioManager.Instance.IsMainBGM();
     }
 
     public void Save()
