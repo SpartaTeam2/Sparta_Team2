@@ -17,6 +17,8 @@ public class StageManager : MonoBehaviour
     public GameObject[] Monsters;
     public GameObject[] _monsterList;
     public GameObject Portal;
+    public int stageGold;
+    private bool canGold;
 
     GameObject Player;
     SpriteRenderer MapSpriteRenderer;
@@ -43,6 +45,8 @@ public class StageManager : MonoBehaviour
         Portal.SetActive(false);
         InsMap();
         SpawnMonster();
+        stageGold = 0;
+        canGold = true;
     }
 
     private void LateUpdate()
@@ -56,12 +60,12 @@ public class StageManager : MonoBehaviour
             }
             else
             {
-                _canvas.GetComponent<PanelUI>().GameClear();
+                GameClearGold();
             }
         }
         if (!Player)
         {
-            _canvas.GetComponent<PanelUI>().GameOver();
+            GameOverGold();
         }
     }
     void InsMap()
@@ -212,5 +216,38 @@ public class StageManager : MonoBehaviour
     {
         StageLevel++;
         SpawnMonster();
+        GetGold();
+    }
+
+    public void GetGold()
+    {
+        stageGold += StageLevel * Random.Range(100, 150);
+    }
+
+    public void GameClearGold()
+    {
+        if (canGold)
+        {
+            canGold = false;
+            GetGold();
+            Player.GetComponent<PlayerCtrl>().gold += stageGold;
+            int currentGold = Player.GetComponent<PlayerCtrl>().gold;
+            _canvas.GetComponent<PanelUI>().GameClear(stageGold);
+            PlayerPrefs.SetInt("PlayerGold", currentGold);
+            PlayerPrefs.Save();
+        }
+    }
+
+    public void GameOverGold()
+    {
+        if (canGold)
+        {
+            canGold = false;
+            Player.GetComponent<PlayerCtrl>().gold += stageGold;
+            int currentGold = Player.GetComponent<PlayerCtrl>().gold;
+            _canvas.GetComponent<PanelUI>().GameOver(stageGold);
+            PlayerPrefs.SetInt("PlayerGold", currentGold);
+            PlayerPrefs.Save();
+        }
     }
 }

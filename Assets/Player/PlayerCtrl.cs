@@ -20,6 +20,7 @@ public class PlayerCtrl : MonoBehaviour
 
     [Header("플레이어 장비 정보")]
     //public 
+    public int gold;
 
 
     [Header("플레이어 공격 정보")]
@@ -61,6 +62,7 @@ public class PlayerCtrl : MonoBehaviour
             _audioSource = GetComponent<AudioSource>();
         animator = GetComponentInChildren<Animator>(); // 애니매이터 컴포넌트
         HP = MaxHp;
+        gold = PlayerPrefs.GetInt("PlayerGold", 0);
     }
 
     // Update is called once per frame
