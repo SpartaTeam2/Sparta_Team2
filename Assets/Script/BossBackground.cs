@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LobbyBackground : MonoBehaviour
+public class BossBackground : MonoBehaviour
 {
-    [SerializeField] private Sprite[] backgroundSprites;
-    private SpriteRenderer backgroundSprite;
+    private Animator animator;
+    private SpriteRenderer bossSpriteRenderer;
 
     private int currentIndex;
 
@@ -14,22 +14,24 @@ public class LobbyBackground : MonoBehaviour
 
     private void Start()
     {
-        backgroundSprite = GetComponent<SpriteRenderer>();
+        bossSpriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
 
         currentIndex = 1;
 
+        animator.SetTrigger($"Boss{currentIndex++}");
         StartCoroutine(ChangeBackground());
     }
 
     private IEnumerator ChangeBackground()
     {
-        while(true)
+        while (true)
         {
             yield return StartCoroutine(FadeOut());
 
-            backgroundSprite.sprite = backgroundSprites[currentIndex++];
-            if (currentIndex >= backgroundSprites.Length)
-                currentIndex = 0;
+            animator.SetTrigger($"Boss{currentIndex++}");
+            if (currentIndex >= 5)
+                currentIndex = 1;
 
             yield return StartCoroutine(FadeIn());
 
@@ -39,24 +41,24 @@ public class LobbyBackground : MonoBehaviour
 
     private IEnumerator FadeOut()
     {
-        Color color = backgroundSprite.color;
+        Color color = bossSpriteRenderer.color;
         for (float t = 0; t < fadeTime; t += Time.deltaTime)
         {
             float alpha = Mathf.Lerp(1f, 0f, t / fadeTime);
-            backgroundSprite.color = new Color(color.r, color.g, color.b, alpha);
+            bossSpriteRenderer.color = new Color(color.r, color.g, color.b, alpha);
             yield return null;
         }
-        backgroundSprite.color = new Color(color.r, color.g, color.b, 0f);
+        bossSpriteRenderer.color = new Color(color.r, color.g, color.b, 0f);
     }
     private IEnumerator FadeIn()
     {
-        Color color = backgroundSprite.color;
+        Color color = bossSpriteRenderer.color;
         for (float t = 0; t < fadeTime; t += Time.deltaTime)
         {
             float alpha = Mathf.Lerp(0f, 1f, t / fadeTime);
-            backgroundSprite.color = new Color(color.r, color.g, color.b, alpha);
+            bossSpriteRenderer.color = new Color(color.r, color.g, color.b, alpha);
             yield return null;
         }
-        backgroundSprite.color = new Color(color.r, color.g, color.b, 1f);
+        bossSpriteRenderer.color = new Color(color.r, color.g, color.b, 1f);
     }
 }
