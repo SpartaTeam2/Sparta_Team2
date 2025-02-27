@@ -18,7 +18,7 @@ public class UglyBoss : BaseEnemy, IEnemyIdle, IEnemyTracking, IEnemyAttack
 
         //damage = 10;
         //moveSpeed = 5f;
-        attackDelay = 1.5f;
+        attackDelay = 0.5f;
 
         //trackingRange = 10f;
         //attackRange = 8f;
