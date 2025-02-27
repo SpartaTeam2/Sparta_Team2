@@ -55,15 +55,15 @@ public class BulletCtrl : MonoBehaviour
                     if (i<= Attacker.GetComponent<PlayerCtrl>().CritChance) //크리티컬 처리
                     {
                         collision.GetComponent<BaseEnemy>().GetDamage(Damage + (Damage * Attacker.GetComponent<PlayerCtrl>().CritDamage));
-                        Debug.Log("크리 터짐");
+                        EffectManager.Instance?.PlayEffect(EffectType.ExplosionBlue, transform.position);
                     }
                     else //노크리 처리
                     {
                         collision.GetComponent<BaseEnemy>().GetDamage(Damage);
+                        EffectManager.Instance?.PlayEffect(EffectType.ExplosionYellow, transform.position);
                     }
 
-                    GetComponent<AudioSource>().clip = _audioClip;
-                    GetComponent<AudioSource>().Play();
+                    AudioManager.Instance.PlaySfx(_audioClip);
                     Destroy(gameObject);
                     break;
                 default:

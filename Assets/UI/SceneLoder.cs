@@ -31,6 +31,8 @@ public class SceneLoder : MonoBehaviour
     void LoadScene()
     {
         SceneManager.LoadScene(changeScene);
+        if (changeScene == "01_Lobby")
+            AudioManager.Instance.IsMainBGM();
     }
 }
 

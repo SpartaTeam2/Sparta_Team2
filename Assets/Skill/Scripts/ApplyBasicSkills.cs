@@ -26,25 +26,20 @@ public class ApplyBasicSkills : MonoBehaviour
         switch (skillData.skillType)
         {
             case SkillType.AttackBoost:
-                Debug.Log("attack");
                 player.AttackDamage *= (1 + skillData.skillValue);
                 break;
             case SkillType.AttackSpeedBoost:
-                Debug.Log("attackspeed");
                 player.GunRate *= (1 - skillData.skillValue);
                 break;
             case SkillType.CriticalMaster:
-                Debug.Log("critChance");
                 player.CritChance += skillData.skillValue * 100;
                 if (player.CritChance >= 100)
                     RemoveSkillFromRandom(skillData.skillId);
                 break;
             case SkillType.CriticalBoost:
-                Debug.Log("crit");
                 player.CritDamage += skillData.skillValue;
                 break;
             case SkillType.HealthBoost:
-                Debug.Log("health");
                 player.MaxHp *= (1 + skillData.skillValue);
                 break;
             case SkillType.ProjectileUp:
@@ -52,18 +47,15 @@ public class ApplyBasicSkills : MonoBehaviour
                 {
                     case 106:
                         player.IsBackShot = true;
-                        Debug.Log("back");
                         RemoveSkillFromRandom(skillData.skillId);
                         break;
                     case 107:
                         player.IsSideShot = true;
-                        Debug.Log("side");
                         RemoveSkillFromRandom(skillData.skillId);
                         break;
                     case 206:
                         player.BulletCount++;
                         player.AttackDamage *= (1 - skillData.skillValue);
-                        Debug.Log("double");
                         projectileLimit--;
                         if (projectileLimit == 0)
                             RemoveSkillFromRandom(skillData.skillId);
@@ -71,7 +63,6 @@ public class ApplyBasicSkills : MonoBehaviour
                     case 207:
                         player.IsWideShot = true;
                         player.WideCount++;
-                        Debug.Log("wide");
                         wideProjectileLimit--;
                         if (wideProjectileLimit == 0)
                             RemoveSkillFromRandom(skillData.skillId);
