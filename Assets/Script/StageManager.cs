@@ -40,13 +40,18 @@ public class StageManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (!PlayerPrefs.HasKey("DungeonLevel"))
+            PlayerPrefs.SetInt("DungeonLevel", 1);
+        
+        DungeonLevel = PlayerPrefs.GetInt("DungeonLevel");
         MapSpriteRenderer = Map.GetComponent<SpriteRenderer>();
         Player = GameObject.FindWithTag("Player");
         Portal.SetActive(false);
-        InsMap();
-        SpawnMonster();
         stageGold = 0;
         canGold = true;
+
+        InsMap();
+        SpawnMonster();
     }
 
     private void LateUpdate()
@@ -85,7 +90,7 @@ public class StageManager : MonoBehaviour
                 break;
 
             default:
-                MapSpriteRenderer.sprite = MapSprite[Random.Range(0, MapSprite.Length)];
+                MapSpriteRenderer.sprite = MapSprite[Random.Range(0, MapSprite.Length+1)];
                 break;
         }
     }
@@ -155,7 +160,7 @@ public class StageManager : MonoBehaviour
                     break;
 
                 default:
-                    Instantiate(GetComponent<MonsterManager>().MonsterArr[Random.Range(9, 11)], new Vector2(Random.Range(-8, 8), Random.Range(-8, 8)), Quaternion.identity);
+                    Instantiate(GetComponent<MonsterManager>().MonsterArr[Random.Range(9, 10)], new Vector2(Random.Range(-8, 8), Random.Range(-8, 8)), Quaternion.identity);
                     break;
             }
         }
@@ -179,7 +184,7 @@ public class StageManager : MonoBehaviour
                     break;
 
                 default:
-                    Instantiate(GetComponent<MonsterManager>().MonsterArr[Random.Range(9, 11)], new Vector2(Random.Range(-8, 8), Random.Range(-8, 8)), Quaternion.identity);
+                    Instantiate(GetComponent<MonsterManager>().MonsterArr[Random.Range(1, 9)], new Vector2(Random.Range(-8, 8), Random.Range(-8, 8)), Quaternion.identity);
                     break;
             }
         }
@@ -226,6 +231,7 @@ public class StageManager : MonoBehaviour
 
     public void GameClearGold()
     {
+        PlayerPrefs.SetInt("DungeonLevel", DungeonLevel++);
         if (canGold)
         {
             canGold = false;
