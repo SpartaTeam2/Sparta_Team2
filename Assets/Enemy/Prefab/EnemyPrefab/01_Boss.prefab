@@ -242,8 +242,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4058a6e98332d3643b62e39163affdef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 100
-  damage: 3
+  maxHP: 1500
+  damage: 5
   moveSpeed: 2.5
   trackingRange: 20
   attackRange: 19
