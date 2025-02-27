@@ -1520,6 +1520,7 @@ MonoBehaviour:
   - {fileID: 7438749161625797410, guid: b3d1a094f7d9948478fe27083037c359, type: 3}
   Portal: {fileID: 730545002}
   _canvas: {fileID: 892552887}
+  bossBgm: {fileID: 8300000, guid: 5b1621bd85d7e334a9b63b9bf4da3dda, type: 3}
   _spawnType: 0
 --- !u!114 &2013891535
 MonoBehaviour:

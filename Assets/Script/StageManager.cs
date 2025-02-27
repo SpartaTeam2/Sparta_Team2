@@ -22,6 +22,8 @@ public class StageManager : MonoBehaviour
     [SerializeField]
     GameObject _canvas;
 
+    [SerializeField] private AudioClip bossBgm;
+
     public enum SpawnType
     {
         Clean,
@@ -86,10 +88,13 @@ public class StageManager : MonoBehaviour
         if (StageLevel % 5 == 0)
         {
             _spawnType = SpawnType.Boss;
+            AudioManager.Instance.StopBgm();
+            AudioManager.Instance.PlayBgm(bossBgm);
         }
         else
         {
             int SpawnTypeIndex = Random.Range(0, 2);
+            AudioManager.Instance.IsMainBGM();
             switch (SpawnTypeIndex)
             {
                 case 0:

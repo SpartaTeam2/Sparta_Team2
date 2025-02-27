@@ -50,6 +50,17 @@ public class AudioManager : MonoBehaviour
     {
         PlayBgm(mainbgm);
     }
+
+    public void IsMainBGM()
+    {
+        if (bgmSource.clip == mainbgm)
+            return;
+        else
+        {
+            StopBgm();
+            PlayBgm(mainbgm);
+        }
+    }
     public void PlayBgm(AudioClip clip)
     {
         if (bgmSource.clip == clip)
