@@ -5,7 +5,10 @@ using UnityEngine;
 
 public enum EffectType
 {
-    ExplosionBlue
+    ExplosionBlue,
+    ExplosionHeart,
+    ExplosionPurple,
+    ExplosionYellow
 }
 
 public class EffectManager : MonoBehaviour
@@ -13,7 +16,7 @@ public class EffectManager : MonoBehaviour
     #region singleton
     private static EffectManager instance;
     public static EffectManager Instance 
-    { get  { return Instance; } }
+    { get  { return instance; } }
 
     private void Awake()
     {

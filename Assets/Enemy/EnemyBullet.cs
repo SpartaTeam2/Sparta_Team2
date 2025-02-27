@@ -17,6 +17,8 @@ public class EnemyBullet : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        EffectManager.Instance.PlayEffect(EffectType.ExplosionPurple, transform.position);
+
         if (collision.CompareTag(playerTag))
         {
             collision.GetComponent<PlayerCtrl>()?.GetDamage(damage);

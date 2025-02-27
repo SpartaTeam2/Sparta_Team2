@@ -200,6 +200,55 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 30, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &207978019
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 207978020}
+  - component: {fileID: 207978021}
+  m_Layer: 0
+  m_Name: EffectManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &207978020
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 207978019}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -6.3335404, y: 2.9901388, z: -0.04980216}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &207978021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 207978019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04aad7e8e8953b544bc3671510238b86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effectPrefabs:
+  - {fileID: 8760620115789493191, guid: d9230a8b99696ab42bc00377f2ff336a, type: 3}
+  - {fileID: 6536006800145383249, guid: 1bd358c89b99bc84c90c40e31210e1ff, type: 3}
+  - {fileID: 5659459449850182467, guid: 4f98c32da6e94b94cb60822aae2a225d, type: 3}
+  - {fileID: 2644568976652722118, guid: dbe627838336c5d4b97a60bb5cdd7f09, type: 3}
 --- !u!1 &246411014 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5720486117953798435, guid: 068725458529e1a47a569258010fb06b, type: 3}
@@ -1282,6 +1331,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -3370623417837262171, guid: de358acb2123b6f488943ee2c6f26c14, type: 3}
+      propertyPath: MaxHp
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: -3370623417837262171, guid: de358acb2123b6f488943ee2c6f26c14, type: 3}
+      propertyPath: speed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -3370623417837262171, guid: de358acb2123b6f488943ee2c6f26c14, type: 3}
       propertyPath: MaxExp
       value: 3
       objectReference: {fileID: 0}
@@ -1300,6 +1357,10 @@ PrefabInstance:
     - target: {fileID: -3370623417837262171, guid: de358acb2123b6f488943ee2c6f26c14, type: 3}
       propertyPath: BulletSpace
       value: 2.4
+      objectReference: {fileID: 0}
+    - target: {fileID: -3370623417837262171, guid: de358acb2123b6f488943ee2c6f26c14, type: 3}
+      propertyPath: AttackDamage
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: -3370623417837262171, guid: de358acb2123b6f488943ee2c6f26c14, type: 3}
       propertyPath: _CardManager
@@ -1839,3 +1900,4 @@ SceneRoots:
   - {fileID: 685701954}
   - {fileID: 1718109059}
   - {fileID: 809485207}
+  - {fileID: 207978020}

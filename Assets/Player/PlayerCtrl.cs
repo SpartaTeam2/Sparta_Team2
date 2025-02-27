@@ -264,6 +264,9 @@ public class PlayerCtrl : MonoBehaviour
     public void GetDamage(float Damage)
     {
         HP -= Damage;
+
+        EffectManager.Instance.PlayEffect(EffectType.ExplosionHeart, transform.position);
+
         if (HP <= 0)
         {
             AudioManager.Instance.PlaySfx(DieSoundClip);
@@ -274,6 +277,5 @@ public class PlayerCtrl : MonoBehaviour
         {
             AudioManager.Instance.PlaySfx(HitSoundClip);
         }
-        Destroy(Instantiate(HitEffect, transform.position, Quaternion.identity), 0.5f);
     }
 }

@@ -254,9 +254,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dd36926206f711498d543c6d60c2923, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 15
-  damage: 3
-  moveSpeed: 0.5
+  maxHP: 400
+  damage: 5
+  moveSpeed: 1
   trackingRange: 15
   attackRange: 1.2
   expPrefab: {fileID: 9034968390482128985, guid: 00190666374105f43a6e7bd7181d4aaf, type: 3}
