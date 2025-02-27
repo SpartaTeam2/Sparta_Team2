@@ -12,6 +12,7 @@ Unity 게임 개발 입문 팀프로젝트<br>
 1. [Intro Scene](#00_intro-scene)
 2. [Lobby Scene](#01_lobby-scene)
 3. [02_Battle Scene](#02_battle-scene)
+
 ---
 
 ## 00_Intro Scene
@@ -23,5 +24,8 @@ Unity 게임 개발 입문 팀프로젝트<br>
  - 던전 레벨++ -- 초기화는 테스트용도로 놔둔것이니 무시해주세요.
  - 설정 -> 사운드 조절 -> BGM / SFX 사운드 조절 가능
  - 전투 -> 02_Battle Scene으로 넘어갑니다.
+ - 배경
+   - 스테이지 배경들이 페이드인/아웃 됨
+   - 스테이지 보스들이 페이드인/아웃 됨
  
 ### 02_Battle Scene
