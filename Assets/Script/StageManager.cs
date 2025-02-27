@@ -67,7 +67,7 @@ public class StageManager : MonoBehaviour
                 GameClearGold();
             }
         }
-        if (!Player)
+        if (!Player.gameObject.activeSelf)
         {
             GameOverGold();
         }
@@ -159,7 +159,7 @@ public class StageManager : MonoBehaviour
                     break;
 
                 default:
-                    Instantiate(GetComponent<MonsterManager>().MonsterArr[Random.Range(9, 10)], new Vector2(Random.Range(-8, 8), Random.Range(-8, 8)), Quaternion.identity);
+                    Instantiate(GetComponent<MonsterManager>().MonsterArr[Random.Range(0, 10)], new Vector2(Random.Range(-8, 8), Random.Range(-8, 8)), Quaternion.identity);
                     break;
             }
         }
@@ -183,7 +183,7 @@ public class StageManager : MonoBehaviour
                     break;
 
                 default:
-                    Instantiate(GetComponent<MonsterManager>().MonsterArr[Random.Range(1, 9)], new Vector2(Random.Range(-8, 8), Random.Range(-8, 8)), Quaternion.identity);
+                    Instantiate(GetComponent<MonsterManager>().MonsterArr[Random.Range(0, 10)], new Vector2(Random.Range(-8, 8), Random.Range(-8, 8)), Quaternion.identity);
                     break;
             }
         }
@@ -230,7 +230,6 @@ public class StageManager : MonoBehaviour
 
     public void GameClearGold()
     {
-        PlayerPrefs.SetInt("DungeonLevel", DungeonLevel++);
         if (canGold)
         {
             canGold = false;

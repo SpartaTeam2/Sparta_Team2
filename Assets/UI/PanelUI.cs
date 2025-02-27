@@ -17,18 +17,7 @@ public class PanelUI : MonoBehaviour
         losePanel?.SetActive(false);
         winPanel?.SetActive(false);
     }
-    public void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.I))
-        {
-            GameClear(5000);
-        }
 
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            GameOver(500);
-        }
-    }
     public void GameOver(int stagegold)
     {
         Time.timeScale = 0f; 
@@ -40,5 +29,7 @@ public class PanelUI : MonoBehaviour
         Time.timeScale = 0f; 
         winPanel?.SetActive(true);
         goldText.text = $"GOLD : {stagegold.ToString()}";
+
+
     }
 }
