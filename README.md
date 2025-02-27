@@ -3,11 +3,14 @@
 ### 스파르타 내일배움캠프 유니티 7/8기  
 
 Unity 게임 개발 입문 팀프로젝트<br>
-궁수의전설 모작
+~~궁수의전설인척 하는것~~
 
 <p>$\huge{\rm{\color{#5ad7b7}팀장 : 이상범}}$</p>
 <p>$\it{\large{\color{#DD6565}팀원 : 박민영 / 류석민 / 천지훈 / 한재민}}$</p>
 
+1. [Intro Scene](#00_intro-scene)
+2. [Lobby Scene](#01_lobby-scene)
+3. [02_Battle Scene](#02_battle-scene)
 ---
 
 ## 00_Intro Scene
