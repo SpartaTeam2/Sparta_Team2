@@ -1,4 +1,5 @@
-게임 빌드 파일 [Google Drive](https://drive.google.com/file/d/1HRsLuNn90q5JHxQD2z5B4aY_FMiPvOMZ/view?usp=sharing)
+게임 빌드 파일 [Google Drive](https://drive.google.com/file/d/1HRsLuNn90q5JHxQD2z5B4aY_FMiPvOMZ/view?usp=sharing) <br>
+게임 시연 영상 [Youtubue](https://youtu.be/jbC7f0dJeow?si=R4VFNT3baBaxOJCg)
 
 ### 스파르타 내일배움캠프 유니티 7/8기  
 
