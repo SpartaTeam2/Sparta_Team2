@@ -72,10 +72,7 @@ Unity 게임 개발 입문 팀프로젝트<br>
 - 전투 UI
   - 플레이어의 정보를 받아와서 제작 <br>
 ![image](https://github.com/user-attachments/assets/a6ab7eb9-b303-437f-9379-6cc5686e791a)
-![image](https://github.com/user-attachments/assets/267f6d8a-2a54-41d8-a2f2-bf36e69c6744)
-
-### 사운드 설정 UI
-- 작업자 : 이상
+![image](h범
 - 싱글톤 적용
 - SFX의 경우 중복재생을 위해 AudioSource Component를 리스트에 미리 추가
 - 재생되고 있지 않은 AudioSource를 찾아 재생할 수 있도록 구현
