@@ -25,15 +25,16 @@ Unity 게임 개발 입문 팀프로젝트<br>
  - 설정 -> 사운드 조절 -> BGM / SFX 사운드 조절 가능
  - 전투 -> 02_Battle Scene으로 넘어갑니다.
  - 배경
-   - 스테이지 배경들이 페이드인/아웃 됨
-   - 스테이지 보스들이 페이드인/아웃 됨
+   - 스테이지 배경 이미지 페이드인/아웃
+   - 스테이지 보스 이미지 페이드인/아웃
  
 ### 02_Battle Scene
 ![image](https://github.com/user-attachments/assets/e23051b8-d91e-4ba7-9126-2077193d466a)
 - 스테이지가 클리어되면 획득한 경험치들을 레벨로 환산하고, 획득한 레벨만큼 스킬을 선택합니다.
 ![image](https://github.com/user-attachments/assets/f0e80ddd-a983-49c7-9342-50d568633e00)
 - 플레이어는 가장 가까운 적을 자동으로 공격합니다.
-- 몬스터는 플레이어를 원거리 or 근거리 공격을합니다.
+- 몬스터는 플레이어를 추적 및 원거리 or 근거리 공격을합니다.
+- 몬스터가 공격시 경고선이 우선 출력 후 공격합니다.
 - 피격시 하트 이펙트 / 몬스터의 공격은 보라색 이펙트 / 플레이어의 공격은 노란색, 파란색 이펙트가 발생합니다.
-- 몬스터의 행동패턴은 FSM구조로 작성되어있습니다.
-![image](https://github.com/user-attachments/assets/81a10b8d-d2df-4c42-8a9f-97f4529b401e)
+![image](https://github.com/user-attachments/assets/740e9691-fec9-475e-b254-f67702212d93)
+- 10스테이지까지 클리어시 던전레벨이 1 올라갑니다.
