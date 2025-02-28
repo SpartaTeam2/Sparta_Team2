@@ -49,7 +49,7 @@ Unity 게임 개발 입문 팀프로젝트<br>
 - 작업자 : 한재민
 - FSM 구조 몬스터의 동작을 구현했습니다.
 - 공격 경고선 / 피격,공격 이펙트는 싱글톤과 오브젝트풀링을 사용했습니다.
-![image](https://github.com/user-attachments/assets/a12f763b-b7cf-428f-9cd1-6911c3aba753)
+![image](https://github.com/user-attachments/assets/0745af66-c407-4763-bbbc-eac8050e2b0d)
 ![image](https://github.com/user-attachments/assets/8e7ca864-5764-4adc-b907-715b34197418)
 
 
